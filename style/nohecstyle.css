@@ -232,19 +232,19 @@ body .header:first-child {
 
 
 
-#jakto {
+#prijezd {
 	background: url(Martinhnedy.jpg) no-repeat center center;
 	background-size: cover;
 }
 
-#jakto h1,
-#mapa h1,
+#prijezd h1,
+#program h1,
 #media h1,
 #galerie h1 {
 	text-align: right;
 }
 
-#jakto img {
+#prijezd img {
 	margin-top: 20px;
 }
 
@@ -253,7 +253,7 @@ body .header:first-child {
 	text-align: left;
 }
 
-#mapa {
+#program {
 	background: url(honzah3.jpg) no-repeat center center;
 	background-size: cover;
 }
