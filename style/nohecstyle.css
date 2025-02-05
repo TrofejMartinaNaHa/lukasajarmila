@@ -168,6 +168,7 @@ body .header:first-child {
 	color: white;
 	text-shadow: 0 2px 4px rgba(0, 0, 0, .5);
 	border-bottom: 5px solid white;
+	opacity:70%;
 }
 
 .nav>li>a:active {
