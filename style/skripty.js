@@ -69,13 +69,6 @@ $(function(){
 		},
 		type: 'iframe' // this is default type
 	});
-		
-	$('#kostel_neratov').magnificPopup({
-		items: {
-			src: 'https://www.youtube.com/watch?v=JKCQGhUms7w'
-		},
-		type: 'iframe' // this is default type
-	});
 
 	$('#myTabs a').click(function (e) {
 		e.preventDefault()
