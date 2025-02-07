@@ -4,7 +4,7 @@ body {
 	padding: 0;
 	font-family: 'Dosis', serif;
 	font-size: 15px;
-	background-color: white;
+	background-color: #ff9cac;
 }
 
 /*.karl::after {
@@ -196,7 +196,7 @@ body .header:first-child {
 /* Jumbotron */
 
 .jumbotron {
-
+	background-color: #ff9cac;
 	background-size: cover;
 	margin: 20px auto;
 	padding-top: 0;
