@@ -68,7 +68,7 @@ font-style: italic;
 }
 
 .container {
-	max-width: 640px;
+	max-width: 620px;
 	margin: 0 auto;
 	background-color: white;
 }
@@ -234,12 +234,12 @@ body .header:first-child {
 
 
 
-#prijezd {
+#dary {
 	background: url(Martinhnedy.jpg) no-repeat center center;
 	background-size: cover;
 }
 
-#prijezd h1,
+#dary h1,
 #program h1,
 #prespat h1,
 #kontakt h1,
@@ -247,7 +247,7 @@ body .header:first-child {
 	text-align: right;
 }
 
-#prijezd img {
+#dary img {
 	margin-top: 20px;
 }
 
@@ -376,7 +376,8 @@ body .header:first-child {
 }
 
 #nohap2 {
-	display: none;
+	margin-top: -40px;
+	margin-bottom: 10px;
 }
 
 #pupikp1 {
