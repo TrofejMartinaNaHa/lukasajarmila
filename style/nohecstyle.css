@@ -4,7 +4,7 @@ body {
 	padding: 0;
 	font-family: 'Dosis', serif;
 	font-size: 15px;
-	background-color: #ff9cac;
+	background-color: white;
 }
 
 /*.karl::after {
@@ -195,16 +195,24 @@ body .header:first-child {
 
 /* Jumbotron */
 
-
 .jumbotron {
 
-	background: url(lukasajarmila_banner.JPG) no-repeat center center;
 	background-size: cover;
 	margin: 20px auto;
 	padding-top: 0;
 	padding-bottom: 0;
 	color: white;
 	text-align: center;
+}
+#home {
+
+	background-size: cover;
+	margin: 20px auto;
+	padding-top: 0;
+	padding-bottom: 0;
+	color: white;
+	text-align: center;
+	max-width: 960px;
 }
 
 #pozvanka {
@@ -218,6 +226,16 @@ body .header:first-child {
 	text-align: center;
 	width: 100%;
 }
+
+.layered.box {
+    box-shadow:
+      0 1px 1px hsl(0deg 0% 0% / 0.075),
+      0 2px 2px hsl(0deg 0% 0% / 0.075),
+      0 4px 4px hsl(0deg 0% 0% / 0.075),
+      0 8px 8px hsl(0deg 0% 0% / 0.075),
+      0 16px 16px hsl(0deg 0% 0% / 0.075)
+    ;
+  }
 
 .jumbotron img {
 	margin-top: 30px;
