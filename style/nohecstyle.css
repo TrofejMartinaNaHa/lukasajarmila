@@ -239,7 +239,13 @@ body .header:first-child {
 	background-size: cover;
 }
 
+#prijezd {
+	background: url(Martinhnedy.jpg) no-repeat center center;
+	background-size: cover;
+}
+
 #dary h1,
+#prijezd h1,
 #program h1,
 #prespat h1,
 #kontakt h1,
