@@ -195,10 +195,8 @@ body .header:first-child {
 
 /* Jumbotron */
 
-
 .jumbotron {
-
-	background: url(lukasajarmila_banner.JPG) no-repeat center center;
+	background-color: #ff9cac;
 	background-size: cover;
 	margin: 20px auto;
 	padding-top: 0;
@@ -206,6 +204,35 @@ body .header:first-child {
 	color: white;
 	text-align: center;
 }
+#home {
+
+	background-size: cover;
+	margin: 20px auto;
+	padding-top: 0;
+	padding-bottom: 0;
+	color: white;
+	text-align: center;
+	max-width: 960px;
+}
+
+#pozvanka, #pozvanka-img {
+
+	margin: auto;
+	background-size: cover;
+	margin: 20px auto;
+	padding-top: 0;
+	padding-bottom: 0;
+	color: white;
+	text-align: center;
+	width: 100%;
+	box-shadow: #80808038 5px 5px 5px 0px;
+}
+
+#pozvanka {
+
+	padding-left: 5px;
+}
+
 
 .jumbotron img {
 	margin-top: 30px;
