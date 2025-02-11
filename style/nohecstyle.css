@@ -250,6 +250,7 @@ body .header:first-child {
 
 #pozvanka-img {
 		box-shadow:  3px 3px 0px grey;
+		margin: 0 auto;
 }
 
 #dary h1,
