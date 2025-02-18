@@ -68,9 +68,15 @@ font-style: italic;
 }
 
 .container {
-	max-width: 620px;
+	max-width: 320px;
 	margin: 0 auto;
 	background-color: white;
+}
+
+.tlacitko-formular {
+	padding: 5px;
+	margin: 0 auto;
+	background-color: #57fc60;
 }
 
 .p-right {
@@ -163,6 +169,15 @@ body .header:first-child {
 
 
 .nav>li>a:hover {
+	text-decoration: none;
+	background-color: transparent;
+	color: white;
+	text-shadow: 0 2px 4px rgba(0, 0, 0, .5);
+	border-bottom: 5px solid white;
+	opacity:70%;
+}
+
+.tlacitko-formular>a:hover {
 	text-decoration: none;
 	background-color: transparent;
 	color: white;
