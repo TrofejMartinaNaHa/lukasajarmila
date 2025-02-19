@@ -415,7 +415,7 @@ body .header:first-child {
 }
 
 #pupikp2 {
-	display: none;
+	display: block;
 
 }
 
@@ -617,7 +617,7 @@ body .header:first-child {
 	}
 
 	#pupikp1 {
-		display: none;
+		display: block;
 	}
 
 	#pupikp2 {
