@@ -247,7 +247,7 @@ body .header:first-child {
 
 
 
-#dary {
+#darecek {
 	background: url(Martinhnedy.jpg) no-repeat center center;
 	background-size: cover;
 }
@@ -267,16 +267,16 @@ body .header:first-child {
 		margin: 0 auto;
 }
 
-#dary h1,
+#darecek h1,
 #prijezd h1,
 #program h1,
-#prespat h1,
+#prespani h1,
 #kontakt h1,
 #galerie h1 {
 	text-align: right;
 }
 
-#dary img {
+#darecek img {
 	margin-top: 20px;
 }
 
@@ -290,7 +290,7 @@ body .header:first-child {
 	background-size: cover;
 }
 
-#prespat {
+#prespani {
 	background: url(kartyor.jpg) no-repeat center center;
 	background-size: cover;
 }
