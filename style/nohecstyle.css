@@ -260,11 +260,10 @@ body .header:first-child {
 #pozvanka {
 	background: url(pozvanka_1228x1920.jpg) no-repeat center center;
 	background-size: cover;
-	box-shadow:  5px 5px 0px grey;
+	box-shadow:  5px 5px 5px 5px #80808063;
 }
 
 #pozvanka-img {
-		box-shadow:  3px 3px 0px grey;
 		margin: 0 auto;
 }
 
