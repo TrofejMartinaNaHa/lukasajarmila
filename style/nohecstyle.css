@@ -258,13 +258,12 @@ body .header:first-child {
 }
 
 #pozvanka {
-	background: url(pozvanka_1228x1920.jpg) no-repeat center center;
 	background-size: cover;
-	box-shadow:  5px 5px 5px 5px #80808063;
 }
 
 #pozvanka-img {
 		margin: 0 auto;
+		box-shadow:  5px 5px 5px 5px #80808063;
 }
 
 #darecek h1,
