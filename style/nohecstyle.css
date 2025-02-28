@@ -5,7 +5,8 @@ body {
 	font-family: 'Dosis', serif;
 	font-size: 15px;
 	background-color: #ff9cac;
-	background: url(pozadi_akvarel_vetsi.jpg) no-repeat center center fixed;
+	background: url(pozadi_akvarel_vetsi.jpg) no-repeat fixed;
+	background-size: cover;
 }
 
 /*.karl::after {
