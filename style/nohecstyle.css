@@ -4,9 +4,8 @@ body {
 	padding: 0;
 	font-family: 'Dosis', serif;
 	font-size: 15px;
-	background-color: #ff9cac;
-	background: url(pozadi_akvarel_vetsi.jpg) no-repeat fixed;
-	background-size: cover;
+	background: url(pozadi_akvarel_vetsi.jpg) no-repeat center center fixed;
+	background-size: contain;
 }
 
 /*.karl::after {
@@ -213,7 +212,7 @@ body .header:first-child {
 /* Jumbotron */
 
 .jumbotron {
-	background-color: #ff9cac;
+	background-color: #ffffff00;
 	background-size: cover;
 	margin: 20px auto;
 	padding-top: 0;
@@ -266,6 +265,7 @@ body .header:first-child {
 #pozvanka-img {
 		margin: 0 auto;
 		box-shadow:  5px 5px 5px 5px #80808063;
+		max-height: 960px;
 }
 
 #darecek h1,
