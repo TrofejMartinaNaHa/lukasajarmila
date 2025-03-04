@@ -72,6 +72,8 @@ font-style: italic;
 	max-width: 320px;
 	margin: 0 auto;
 	background-color: white;
+	background: url(pozadi_akvarel_vetsi.jpg) no-repeat center center fixed;
+	background-size: cover;
 }
 
 .tlacitko-formular {
@@ -246,6 +248,9 @@ body .header:first-child {
 	text-align: center;
 }
 
+.vykryti-bila {
+	background-color: white;
+}
 
 
 #darecek {
@@ -254,8 +259,15 @@ body .header:first-child {
 }
 
 #prijezd {
-	background: url(Martinhnedy.jpg) no-repeat center center;
+	background: url(pozadi_akvarel_vetsi.jpg) no-repeat center center fixed;
 	background-size: cover;
+	box-shadow: -1px 0px 10px -2px #bbb2b2d1;
+}
+
+#prijezd-jumbotron_II {
+	background: url(pozadi_akvarel_vetsi.jpg) no-repeat center center fixed;
+	background-size: cover;
+	box-shadow: -1px 0px 10px -2px #bbb2b2d1;
 }
 
 #pozvanka {
