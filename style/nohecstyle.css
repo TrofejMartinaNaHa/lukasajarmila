@@ -2,11 +2,12 @@ html,
 body {
 	margin: 0;
 	padding: 0;
-	font-family: 'Dosis', serif;
+	font-family: "DM Sans", sans-serif;
 	font-size: 15px;
 	background: url(pozadi_akvarel_vetsi.jpg) no-repeat center center fixed;
 	background-size: contain;
 }
+
 
 /*.karl::after {
 content:'Karl Lagerfeld';
@@ -70,10 +71,12 @@ font-style: italic;
 
 .container {
 	max-width: 320px;
+	padding: 0px 5px;
 	margin: 0 auto;
 	background-color: white;
 	background: url(pozadi_akvarel_vetsi.jpg) no-repeat center center fixed;
 	background-size: cover;
+	box-shadow: 4px 3px 14px 0px #80808052;
 }
 
 .tlacitko-formular {
@@ -176,7 +179,7 @@ body .header:first-child {
 	background-color: transparent;
 	color: white;
 	text-shadow: 0 2px 4px rgba(0, 0, 0, .5);
-	border-bottom: 5px solid white;
+	border-bottom: 2px solid white;
 	opacity:70%;
 }
 
@@ -224,7 +227,7 @@ body .header:first-child {
 }
 
 .jumbotron img {
-	margin-top: 30px;
+	margin-top: 3px;
 }
 
 .jumbotron h1 {
@@ -238,10 +241,10 @@ body .header:first-child {
 }
 
 .jumbotron h3 {
-	font-size: 28px;
+	font-size: 18px;
 	text-align: center;
 	font-weight: bold;
-	color: #d8192f;
+	color: #ffffff;
 }
 
 .jumbotron .row:nth-child(2) {
@@ -250,6 +253,7 @@ body .header:first-child {
 
 .vykryti-bila {
 	background-color: white;
+	padding: 9px 9px 9px 9px;	
 }
 
 
@@ -261,13 +265,13 @@ body .header:first-child {
 #prijezd {
 	background: url(pozadi_akvarel_vetsi.jpg) no-repeat center center fixed;
 	background-size: cover;
-	box-shadow: -1px 0px 10px -2px #bbb2b2d1;
+	box-shadow: 5px -4px 25px -4px #bbb2b2d1;
 }
 
 #prijezd-jumbotron_II {
 	background: url(pozadi_akvarel_vetsi.jpg) no-repeat center center fixed;
 	background-size: cover;
-	box-shadow: -1px 0px 10px -2px #bbb2b2d1;
+	box-shadow: 7px -4px 14px -4px #bbb2b2b8;
 }
 
 #pozvanka {
