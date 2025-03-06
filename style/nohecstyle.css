@@ -61,8 +61,8 @@ font-style: italic;
 }
 
 .page-header {
-	margin-top: 0;
 	border-bottom: none;
+	margin: 0px;
 }
 
 .page-header h3 {
@@ -171,6 +171,7 @@ body .header:first-child {
 	color: #f7ea3d;
 	text-shadow: 0 2px 4px rgba(0, 0, 0, .5);
 	border-bottom: 5px solid transparent;
+	padding: 0px 5px;
 }
 
 
@@ -241,7 +242,7 @@ body .header:first-child {
 }
 
 .jumbotron h3 {
-	font-size: 18px;
+	font-size: 16px;
 	text-align: center;
 	font-weight: bold;
 	color: #ffffff;
@@ -379,7 +380,7 @@ img.sipka-sekce {
 }
 
 .section img {
-	margin-top: -35px;
+	margin-top: 10px;
 
 }
 
@@ -528,7 +529,7 @@ img.sipka-sekce {
 	}
 
 	.jumbotron h1 {
-		font-size: 63px;
+		font-size: 48px;
 	}
 
 	.section h3 {
@@ -586,7 +587,7 @@ img.sipka-sekce {
 	.section h3 {
 		font-size: 22px;
 		letter-spacing: 5px;
-		text-transform: uppercase;
+	
 	}
 
 	.banner h2 {
