@@ -252,6 +252,10 @@ body .header:first-child {
 	text-align: center;
 }
 
+.jumbotron-vykryti {
+	background-color: #ffffff2c;
+}
+
 .vykryti-bila {
 	background-color: white;
 	padding: 9px 9px 9px 9px;
@@ -403,6 +407,7 @@ img.sipka-sekce {
 .section p {
 	margin: 10px auto;
 	font-size: 16px;
+	letter-spacing: 0.5px;
 }
 
 .section h3 {
