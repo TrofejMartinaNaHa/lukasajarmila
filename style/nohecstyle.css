@@ -74,7 +74,7 @@ font-style: italic;
 	padding: 0px 5px;
 	margin: 0 auto;
 	background-color: white;
-	background: url(pozadi_sirka_1280x641.jpg) no-repeat center center fixed;
+	background: url(pozadi_sirka_1920x962.jpg) no-repeat center center fixed;
 	background-size: cover;
 	box-shadow: 4px 3px 14px 0px #80808052;
 }
@@ -258,8 +258,8 @@ body .header:first-child {
 
 .vykryti-bila {
 	background-color: white;
-	padding: 9px 9px 9px 9px;
-	margin: 0px	0px 0px 0px;	
+	padding: 5px 15px 5px 15px;
+	margin: 0px	10px 0px 10px;	
 }
 
 img.sipka-sekce {
@@ -408,6 +408,7 @@ img.sipka-sekce {
 	margin: 10px auto;
 	font-size: 16px;
 	letter-spacing: 0.5px;
+	text-align: justify;
 }
 
 .section h3 {
