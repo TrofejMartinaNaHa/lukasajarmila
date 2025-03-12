@@ -220,11 +220,13 @@ body .header:first-child {
 .jumbotron {
 	background-color: #ffffff00;
 	background-size: cover;
-	margin: Opx auto 30px;
+	margin: Opx;
 	padding-top: 0;
 	padding-bottom: 0;
 	color: white;
 	text-align: center;
+	z-index: 100;
+	position: relative;		
 }
 
 .jumbotron img {
@@ -377,8 +379,8 @@ img.sipka-sekce {
 /* Section */
 .section {
 	text-align: center;
-	margin-bottom: 20px;
-	padding-bottom: 20px;
+	margin-bottom: 0px;
+	padding-bottom: 0px;
 	padding-left: 30px;
 	padding-right: 30px;
 }
