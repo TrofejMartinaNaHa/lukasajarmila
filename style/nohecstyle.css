@@ -233,6 +233,16 @@ body .header:first-child {
 	margin-top: 3px;
 }
 
+.ikona-kolecko-vykryti {
+	padding: 0px 10px;
+}
+
+.ikona-kolecko-vykryti-bila {
+	padding: 5px 0px;
+	border-radius: 50%;
+	background-color:white;
+}
+
 .jumbotron h1 {
 	text-transform: uppercase;
 	margin-top: 90px;
