@@ -268,6 +268,10 @@ img.sipka-sekce {
 	margin-top: 20px;
 }
 
+#home h3 {
+	margin: 10px 0px 15px 0px;
+}
+
 #darecek {
 	background: url(Martinhnedy.jpg) no-repeat center center;
 	background-size: cover;
@@ -510,6 +514,7 @@ img.sipka-sekce {
 
 /* Media Queries */
 
+
 @media (max-width: 320px) {
 	.nav {
 		display: block;
@@ -518,7 +523,18 @@ img.sipka-sekce {
 	}
 
 	.section p {
-		font-size: 20px;
+		font-size: 16px;
+	}
+
+	.nav>li {
+		display: block;
+	}
+}
+
+@media (max-width: 450px) {
+	.container {
+		background: url(pozadi_akvarel_vetsi.jpg) no-repeat center center fixed;
+		background-size: cover;
 	}
 
 	.nav>li {
