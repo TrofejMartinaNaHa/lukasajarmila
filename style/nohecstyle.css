@@ -161,6 +161,8 @@ body .header:first-child {
 
 .nav>li {
 	display: inline-block;
+	width: 120px;
+	margin: 0px auto;
 }
 
 .nav>li>a {
@@ -241,6 +243,8 @@ body .header:first-child {
 	padding: 5px 0px;
 	border-radius: 50%;
 	background-color:white;
+	height: 57px;
+	width: 57px;
 }
 
 .jumbotron h1 {
