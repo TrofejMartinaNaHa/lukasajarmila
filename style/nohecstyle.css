@@ -245,6 +245,7 @@ body .header:first-child {
 	background-color:white;
 	height: 57px;
 	width: 57px;
+	margin: 0px auto;
 }
 
 .jumbotron h1 {
