@@ -276,7 +276,7 @@ body .header:first-child {
 .vykryti-bila {
 	background-color: white;
 	padding: 5px 15px 5px 15px;
-	margin: 0px	10px 0px 10px;	
+	margin: 0px	5px 0px 5px;	
 }
 
 img.sipka-sekce {
@@ -293,16 +293,9 @@ img.sipka-sekce {
 }
 
 #prijezd {
-	background: url(pozadi_akvarel_vetsi.jpg) no-repeat center center fixed;
-	background-size: cover;
 	box-shadow: 5px -4px 25px -4px #bbb2b2d1;
 }
 
-#prijezd-jumbotron_II {
-	background: url(pozadi_akvarel_vetsi.jpg) no-repeat center center fixed;
-	background-size: cover;
-	box-shadow: 7px -4px 14px -4px #bbb2b2b8;
-}
 
 #pozvanka {
 	background-size: cover;
@@ -402,6 +395,12 @@ img.sipka-sekce {
 	padding-bottom: 0px;
 	padding-left: 30px;
 	padding-right: 30px;
+}
+
+.section > .container {
+	background: url(pozadi_sekce_cont_sirka_340_2088.jpg) no-repeat center center fixed;
+	background-size: cover;
+	
 }
 
 .section img {
@@ -547,14 +546,144 @@ img.sipka-sekce {
 }
 
 @media (max-width: 450px) {
-	.container {
-		background: url(pozadi_akvarel_vetsi.jpg) no-repeat center center fixed;
+	
+	#home {
+		background: url(pozadi_jumbotron_home_sirka_390_941.jpg) no-repeat center center fixed;
 		background-size: cover;
+	}
+
+	#prijezd {
+		background: url(pozadi_body_cont_sirka_416_340.jpg) no-repeat center center fixed;
+		background-size: cover;
+	
+	}
+	
+	#prijezd-jumbotron_II {
+		background: url(pozadi_body_cont_sirka_416_340.jpg) no-repeat center center fixed;
+		background-size: cover;
+		
+	}
+
+	#program {
+		background: url(pozadi_body_cont_sirka_416_340.jpg) no-repeat center center fixed;
+		background-size: cover;
+	
+	}
+	
+	#program-jumbotron_II {
+		background: url(pozadi_body_cont_sirka_416_340.jpg) no-repeat center center fixed;
+		background-size: cover;
+		
+	}
+
+	#prespani {
+		background: url(pozadi_body_cont_sirka_416_340.jpg) no-repeat center center fixed;
+		background-size: cover;
+	
+	}
+	
+	#prespani-jumbotron_II {
+		background: url(pozadi_body_cont_sirka_416_340.jpg) no-repeat center center fixed;
+		background-size: cover;
+		
+	}
+
+	#darecek {
+		background: url(pozadi_body_cont_sirka_416_340.jpg) no-repeat center center fixed;
+		background-size: cover;
+	
+	}
+	
+	#darecek-jumbotron_II {
+		background: url(pozadi_body_cont_sirka_416_340.jpg) no-repeat center center fixed;
+		background-size: cover;
+		
+	}
+
+	#kontakt {
+		background: url(pozadi_body_cont_sirka_416_340.jpg) no-repeat center center fixed;
+		background-size: cover;
+	
+	}
+	
+	#kontakt-jumbotron_II {
+		background: url(pozadi_body_cont_sirka_416_340.jpg) no-repeat center center fixed;
+		background-size: cover;
+		
 	}
 
 	.nav>li {
 		display: block;
 	}
+}
+
+@media (min-width: 451px) {
+
+	#home {
+		background: url(pozadi_jumbotron_home_sirka_860_511.jpg) no-repeat center center fixed;
+		background-size: cover;
+	}
+
+	#prijezd {
+		background: url(pozadi_body_cont_sirka_1370_384.jpg) no-repeat center center fixed;
+		background-size: cover;
+	
+	}
+	
+	#prijezd-jumbotron_II {
+		background: url(pozadi_body_cont_sirka_1370_384.jpg) no-repeat center center fixed;
+		background-size: cover;
+		
+	}
+
+	#program {
+		background: url(pozadi_body_cont_sirka_1370_384.jpg) no-repeat center center fixed;
+		background-size: cover;
+	
+	}
+	
+	#program-jumbotron_II {
+		background: url(pozadi_body_cont_sirka_1370_384.jpg) no-repeat center center fixed;
+		background-size: cover;
+		
+	}
+
+	#prespani {
+		background: url(pozadi_body_cont_sirka_1370_384.jpg) no-repeat center center fixed;
+		background-size: cover;
+	
+	}
+	
+	#prespani-jumbotron_II {
+		background: url(pozadi_body_cont_sirka_1370_384.jpg) no-repeat center center fixed;
+		background-size: cover;
+		
+	}
+
+	#darecek {
+		background: url(pozadi_body_cont_sirka_1370_384.jpg) no-repeat center center fixed;
+		background-size: cover;
+	
+	}
+	
+	#darecek-jumbotron_II {
+		background: url(pozadi_body_cont_sirka_1370_384.jpg) no-repeat center center fixed;
+		background-size: cover;
+		
+	}
+
+	#kontakt {
+		background: url(pozadi_body_cont_sirka_1370_384.jpg) no-repeat center center fixed;
+		background-size: cover;
+	
+	}
+	
+	#kontakt-jumbotron_II {
+		background: url(pozadi_body_cont_sirka_1370_384.jpg) no-repeat center center fixed;
+		background-size: cover;
+		
+	}
+
 }
 
 @media (min-width: 250px) {
