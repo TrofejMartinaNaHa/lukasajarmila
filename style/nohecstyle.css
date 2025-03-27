@@ -313,7 +313,8 @@ img.sipka-sekce {
 #prespani h1,
 #kontakt h1,
 #galerie h1 {
-	text-align: right;
+	text-align: left;
+	padding-left: 30px;
 }
 
 #darecek img {
