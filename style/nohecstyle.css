@@ -291,8 +291,8 @@ img.sipka-sekce {
 
 div#buttons-menu {
     position: fixed;
-    bottom: 10px;
-    right: 5px;
+    bottom: 20px;
+    right: 20px;
 }
 
 div#buttons-menu button {
@@ -319,7 +319,8 @@ div#buttons-menu button img, div#buttons-menu button svg {
     display: inline-block;
     width: auto;
     height: auto;
-    max-width: 120%;
+    max-width: 100%;
+	max-height: 75%;
 }
 
 #home h3 {
@@ -649,6 +650,12 @@ div#buttons-menu button img, div#buttons-menu button svg {
 		background-size: contain;
 	}
 
+	div#buttons-menu {
+		position: fixed;
+		bottom: 20px;
+		right: 20px;
+	}
+
 	/*
 	#prijezd {
 		background: url(pozadi_body_cont_sirka_1370_384.jpg) no-repeat center center;
@@ -757,15 +764,21 @@ div#buttons-menu button img, div#buttons-menu button svg {
 	}
 }
 
-@media screen and (min-width: 487px) {
+@media screen and (min-width: 430px) {
 
-	/*.image-grid img {
-		height: 15%;
-		width: 15%;
-	}*/
+	div#buttons-menu {
+		position: fixed;
+		bottom: 20px;
+		right: 30px;
+	}
+}
 
-	.zavinac {
-		width: 315px;
+@media screen and (min-width: 525px) {
+
+	div#buttons-menu {
+		position: fixed;
+		bottom: 20px;
+		right: 45px;
 	}
 }
 
@@ -851,6 +864,15 @@ div#buttons-menu button img, div#buttons-menu button svg {
 	}
 }
 
+@media screen and (min-width: 920px) {
+
+	div#buttons-menu {
+		position: fixed;
+		bottom: 20px;
+		right: 120px;
+	}
+}
+
 @media screen and (min-width: 992px) {
 
 
@@ -890,5 +912,59 @@ div#buttons-menu button img, div#buttons-menu button svg {
 
 	#fblogo1 {
 		display: block;
+	}
+}
+
+@media screen and (min-width: 1042px) {
+
+	div#buttons-menu {
+		position: fixed;
+		bottom: 20px;
+		right: 220px;
+	}
+}
+
+@media screen and (min-width: 1360px) {
+
+	div#buttons-menu {
+		position: fixed;
+		bottom: 20px;
+		right: 370px;
+	}
+}
+
+@media screen and (min-width: 1420px) {
+
+	div#buttons-menu {
+		position: fixed;
+		bottom: 20px;
+		right: 420px;
+	}
+}
+
+@media screen and (min-width: 1560px) {
+
+	div#buttons-menu {
+		position: fixed;
+		bottom: 20px;
+		right: 470px;
+	}
+}
+
+@media screen and (min-width: 1760px) {
+
+	div#buttons-menu {
+		position: fixed;
+		bottom: 20px;
+		right: 520px;
+	}
+}
+
+@media screen and (min-width: 1870px) {
+
+	div#buttons-menu {
+		position: fixed;
+		bottom: 20px;
+		right: 570px;
 	}
 }
