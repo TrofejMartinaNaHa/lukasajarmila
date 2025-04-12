@@ -296,13 +296,13 @@ div#buttons-menu {
 }
 
 div#buttons-menu button {
-    /* padding: 5px; */
-    margin-bottom: 5px;
+    padding: 2px;
+    margin-bottom: 7px;
     display: block;
     border-radius: 50%;
     border: 0;
-    width: 42px;
-    height: 42px;
+    width: 56px;
+    height: 53px;
     overflow: hidden;
     background: #ffffffa6;
     text-align: center;
@@ -344,8 +344,8 @@ div#buttons-menu button img, div#buttons-menu button svg {
 #prespani h1,
 #kontakt h1,
 #galerie h1 {
-	text-align: left;
-	padding-left: 40px;
+	text-align: center;
+	
 }
 
 #darecek img {
@@ -392,7 +392,7 @@ div#buttons-menu button img, div#buttons-menu button svg {
 	width: 15%;*/
 	/*display: block;
 	float: left;}*/
-	margin: 0 5px 5px 0;
+	margin: 0 5px 10px 0;
 	max-width: 100%;
 }
 
@@ -455,14 +455,13 @@ div#buttons-menu button img, div#buttons-menu button svg {
 
 .section h3 {
 
-	letter-spacing: 3px;
+	letter-spacing: 1px;
 	text-align: left;
 }
 
 .section h4 {
 	margin: 14px 0;
 	color: #000000;
-	text-transform: uppercase;
 	text-align: left;
 
 }
@@ -552,7 +551,7 @@ div#buttons-menu button img, div#buttons-menu button svg {
 /* Media Queries */
 
 
-@media (max-width: 320px) {
+@media (max-width: 370px) {
 	.nav {
 		display: block;
 		margin: 0 auto;
@@ -738,7 +737,7 @@ div#buttons-menu button img, div#buttons-menu button svg {
 
 	.section h3 {
 		font-size: 20px;
-		letter-spacing: 4px;
+		letter-spacing: 1px;
 		line-height: 40px;
 	}
 
@@ -765,6 +764,13 @@ div#buttons-menu button img, div#buttons-menu button svg {
 	}
 }
 
+@media screen and (max-width: 370px) {
+
+	div#buttons-menu {
+		right: 7px;
+	}
+}
+
 @media screen and (min-width: 430px) {
 
 	div#buttons-menu {
@@ -782,6 +788,9 @@ div#buttons-menu button img, div#buttons-menu button svg {
 		right: 45px;
 	}
 }
+
+
+
 
 @media screen and (max-width: 606px) {
 
@@ -824,7 +833,7 @@ div#buttons-menu button img, div#buttons-menu button svg {
 
 	.section h3 {
 		font-size: 22px;
-		letter-spacing: 5px;
+		letter-spacing: 1px;
 	
 	}
 
