@@ -83,7 +83,7 @@ font-style: italic;
 .tlacitko-formular {
 	padding: 5px;
 	margin: 15px auto;
-	background-color: #a8fc5794;
+	background-color: #d68ade;
 	text-align: center;
 	padding-left: 0px;
 	max-width: 240px;
@@ -455,15 +455,14 @@ div#buttons-menu button img, div#buttons-menu button svg {
 
 .section h3 {
 
-	letter-spacing: 5px;
+	letter-spacing: 3px;
 	text-align: left;
 }
 
 .section h4 {
 	margin: 14px 0;
-	color: #d8192f;
+	color: #000000;
 	text-transform: uppercase;
-	padding-left: 5px;
 	text-align: left;
 
 }
@@ -733,6 +732,8 @@ div#buttons-menu button img, div#buttons-menu button svg {
 
 	.jumbotron h1 {
 		font-size: 48px;
+		letter-spacing: 10px;
+
 	}
 
 	.section h3 {
