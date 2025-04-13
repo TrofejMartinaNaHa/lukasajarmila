@@ -231,7 +231,6 @@ body .header:first-child {
 	padding-bottom: 0;
 	color: white;
 	text-align: center;
-	z-index: 100;
 	position: relative;		
 }
 
@@ -296,7 +295,7 @@ div#buttons-menu {
 }
 
 div#buttons-menu button {
-    padding: 2px;
+    padding: 0px 0px 10px 8px;
     margin-bottom: 7px;
     display: block;
     border-radius: 50%;
