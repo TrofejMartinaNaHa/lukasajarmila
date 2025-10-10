@@ -1,0 +1,151 @@
+body {
+  background-color: #f8f9fa;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+/* === BANNER === */
+.banner {
+  height: 460px;
+  background-color: #ddd;
+  overflow: hidden;
+}
+.banner-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* === HLAVNÍ KONTEJNER === */
+.main-content {
+  max-width: 910px;
+  margin: 0 auto;
+}
+
+/* === SEKCE === */
+.section-row {
+  height: 460px;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* === TEXTOVÉ SEKCE === */
+.text-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem;
+  background: #fff;
+  height: 460px;
+  box-sizing: border-box;
+}
+
+/* === KUKÁTKO SEKCE === */
+.kukatko-section {
+  position: relative;
+  height: 460px;
+  overflow: hidden;
+  aspect-ratio: 10 / 12;
+}
+.layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.layer img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* === VLOŽENÝ OBRÁZEK / GALERIE === */
+.foto-ukazka-vlozene {
+  position: relative;
+  height: 460px;
+  overflow: hidden;
+  aspect-ratio: 10 / 12;
+}
+
+/* galerie jako mřížka 3x3 */
+.galerie-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 2px;
+  width: 100%;
+  height: 100%;
+}
+.galerie-grid img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* === GRID ROZLOŽENÍ OD 585 PX NAHORU === */
+@media (min-width: 585px) {
+  .col-custom-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+  .section-row {
+    flex-direction: row;
+    height: 460px;
+  }
+  .text-section,
+  .kukatko-section,
+  .foto-ukazka-vlozene {
+    height: 460px;
+  }
+
+  /* --- 1. řádek: kukátko vlevo, text vpravo --- */
+  .first-row .kukatko-section { order: 1; }
+  .first-row .text-section    { order: 2; }
+
+  /* --- 2. řádek: text vlevo, galerie vpravo --- */
+  .second-row .text-section        { order: 1; }
+  .second-row .foto-ukazka-vlozene { order: 2; }
+}
+
+/* === INTERVAL 992 PX → 585 PX === */
+@media (max-width: 991px) and (min-width: 585px) {
+  .section-row {
+    height: 420px;
+  }
+  .text-section,
+  .kukatko-section,
+  .foto-ukazka-vlozene {
+    height: 420px;
+  }
+}
+
+/* === INTERVAL 720 PX → 0 PX (nižší sekce – 360px) === */
+@media (max-width: 720px) {
+  .section-row {
+    height: 360px;
+  }
+  .text-section,
+  .kukatko-section,
+  .foto-ukazka-vlozene {
+    height: 360px;
+  }
+}
+
+/* === MOBILNÍ ZAŘÍZENÍ (≤585px): pod sebou + pořadí text → galerie === */
+@media (max-width: 585px) {
+  .section-row {
+    flex-direction: column;
+    height: auto;
+  }
+  .text-section,
+  .kukatko-section,
+  .foto-ukazka-vlozene {
+    width: 100%;
+    height: 360px;
+  }
+  .section-row .text-section { order: 1; }
+  .section-row .kukatko-section,
+  .section-row .foto-ukazka-vlozene { order: 2; }
+}
