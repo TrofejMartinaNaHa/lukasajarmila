@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kukátkový efekt + galerie</title>
+  <title>Nechte si nafotit sbírku</title>
   <link
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
     rel="stylesheet"
@@ -12,6 +12,23 @@
 </head>
 <body>
 
+  <!-- HORIZONTÁLNÍ MENU -->
+  <nav class="top-nav">
+    <div class="nav-col left">to je moje</div>
+    <div class="nav-col center"></div>
+    <div class="nav-col right">
+      <span id="menu-toggle" class="menu-icon">&#9776;</span>
+    </div>
+  </nav>
+
+  <!-- POSTRANNÍ MENU -->
+  <div id="side-menu" class="side-menu">
+    <a href="#">Jak na to</a>
+    <a href="#">Ceník</a>
+    <a href="#">Podmínky</a>
+    <a href="#">Kontakt</a>
+  </div>
+
   <!-- BANNER -->
   <section class="banner d-flex align-items-center justify-content-center">
     <img src="style/banner.jpg" alt="Banner" class="img-fluid banner-img" />
@@ -19,58 +36,110 @@
 
   <div class="container main-content">
 
-    <!-- 1. řádek – kukátko vlevo, text vpravo -->
+    <!-- 1. řádek – Kukátko vlevo, Text vpravo -->
     <div class="row align-items-center section-row first-row">
       <div class="col-12 col-custom-6 kukatko-section">
         <div class="layer layer-top">
-          <img src="style/top1.jpg" alt="Top 1">
+          <img src="style/top1.jpg" alt="Vrchní obrázek" />
         </div>
         <div class="layer layer-bottom">
-          <img src="style/bottom1.jpg" alt="Bottom 1">
+          <img src="style/bottom1.jpg" alt="Spodní obrázek" />
         </div>
       </div>
       <div class="col-12 col-custom-6 text-section">
-        <h2>Text – 1. sekce</h2>
-        <p>Toto je první textová sekce. Kukátko je vlevo.</p>
+        <h2>Nechte si nafotit sbírku uměleckých nebo osobních předmětů</h2>
+        <p>Díky fotografii můžete vytvořit ze zdánlivých maličkostí velké věci a možná, že i věrně známé uvidíte v novém světle neokoukané!</p>
       </div>
     </div>
 
-    <!-- 2. řádek – text vlevo, galerie vpravo -->
+    <!-- 2. řádek – Text vlevo, Galerie vpravo -->
     <div class="row align-items-center section-row second-row">
       <div class="col-12 col-custom-6 text-section">
-        <h2>Text – 2. sekce</h2>
-        <p>Tady je vlevo text a vpravo malá galerie (3×3 obrázky).</p>
+        <h2>Nabízíme digitální tvorbu katalogu s fotografiemi</h2>
+        <p>Kvalitní fotografie plní nezastupitelnou roli jak při zpřehledňování předmětů pro vlastní potřeby, tak i k prezentaci věcí širšímu publiku. V neposlední řadě plní nenahraditelnou úlohu při sestavování případných nabídek k prodeji a nezřídka fotografie napomáhá i na poli badatelském či restaurátorském.</p>
       </div>
-      <div class="col-12 col-custom-6 foto-ukazka-vlozene galerie-grid">
-        <img src="style/gallery1.jpg" alt="Obrázek 1">
-        <img src="style/gallery2.jpg" alt="Obrázek 2">
-        <img src="style/gallery3.jpg" alt="Obrázek 3">
-        <img src="style/gallery4.jpg" alt="Obrázek 4">
-        <img src="style/gallery5.jpg" alt="Obrázek 5">
-        <img src="style/gallery6.jpg" alt="Obrázek 6">
-        <img src="style/gallery7.jpg" alt="Obrázek 7">
-        <img src="style/gallery8.jpg" alt="Obrázek 8">
-        <img src="style/gallery9.jpg" alt="Obrázek 9">
+      <div class="col-12 col-custom-6 foto-ukazka-vlozene">
+        <div class="galerie-grid">
+          <img src="style/gallery1.jpg" alt="Foto 1">
+          <img src="style/gallery2.jpg" alt="Foto 2">
+          <img src="style/gallery3.jpg" alt="Foto 3">
+          <img src="style/gallery4.jpg" alt="Foto 4">
+          <img src="style/gallery5.jpg" alt="Foto 5">
+          <img src="style/gallery6.jpg" alt="Foto 6">
+          <img src="style/gallery7.jpg" alt="Foto 7">
+          <img src="style/gallery8.jpg" alt="Foto 8">
+          <img src="style/gallery9.jpg" alt="Foto 9">
+        </div>
       </div>
     </div>
 
-    <!-- 3. řádek – opět kukátko vlevo, text vpravo -->
+    <!-- 3. řádek – Kukátko vlevo, Text (formulář) vpravo -->
     <div class="row align-items-center section-row third-row">
       <div class="col-12 col-custom-6 kukatko-section">
         <div class="layer layer-top">
-          <img src="style/top2.jpg" alt="Top 2">
+          <img src="style/top2.jpg" alt="Vrchní obrázek" />
         </div>
         <div class="layer layer-bottom">
-          <img src="style/bottom2.jpg" alt="Bottom 2">
+          <img src="style/bottom2.jpg" alt="Spodní obrázek" />
         </div>
       </div>
+
       <div class="col-12 col-custom-6 text-section">
-        <h2>Text – 3. sekce</h2>
-        <p>Toto je třetí textová sekce. Kukátko je vlevo.</p>
+        <h2>Zkontaktujte nás</h2>
+        <form action="https://formspree.io/f/vas-kod" method="POST" class="order-form">
+          <div class="mb-3">
+            <label for="name" class="form-label">Jméno</label>
+            <input type="text" class="form-control" id="name" name="name" required
+                   placeholder="Emil Filla">
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">E-mail</label>
+            <input type="email" class="form-control" id="email" name="_replyto" required
+                   placeholder="rad@bych.com">
+          </div>
+          <div class="mb-3">
+            <label for="message" class="form-label">Zpráva</label>
+            <textarea class="form-control" id="message" name="message" rows="4" required
+                      placeholder="Tolik, toho, kdy a kde by se mi líbilo nafotit."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Odeslat</button>
+        </form>
       </div>
     </div>
 
   </div>
+
+  <!-- POPUP LIGHTBOX PRO GALERII -->
+  <div id="lightbox" class="lightbox">
+    <span class="close">&times;</span>
+    <img class="lightbox-content" id="lightbox-img" alt="">
+    <a class="prev">&#10094;</a>
+    <a class="next">&#10095;</a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <!-- Levý sloupec -->
+        <div class="col-6 footer-left">
+          <p>Odpovědná osoba<br>
+          Lukáš Rybka<br>
+          IČO 06384951<br>
+          <a href="mailto:tojemojexyz@gmail.com">tojemojexyz@gmail.com</a><br>
+          Voršilská 3<br>
+          11000 Praha 1</p>
+        </div>
+        <!-- Pravý sloupec -->
+        <div class="col-6 footer-right">
+          <a href="#">Podmínky</a><br>
+          <a href="https://instagram.com" target="_blank" class="insta-link">
+            <img src="style/instagram-icon.png" alt="Instagram" class="insta-icon">
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
 
   <script src="style/script.js"></script>
 </body>
