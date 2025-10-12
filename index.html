@@ -37,8 +37,8 @@
   <div class="container main-content">
 
     <!-- 1. řádek – Kukátko vlevo, Text vpravo -->
-    <div class="row align-items-center section-row first-row">
-      <div class="col-12 col-custom-6 kukatko-section">
+    <div class="row align-items-stretch section-row first-row">
+      <div class="col-12 col-custom-6 kukatko-section d-flex">
         <div class="layer layer-top">
           <img src="style/top1.jpg" alt="Vrchní obrázek" />
         </div>
@@ -46,7 +46,7 @@
           <img src="style/bottom1.jpg" alt="Spodní obrázek" />
         </div>
       </div>
-      <div class="col-12 col-custom-6 text-section">
+      <div class="col-12 col-custom-6 text-section d-flex flex-column">
         <img class="sipka-sekce" src="style/50x50_srdicko_cervene.png" height="30" alt="Navigacni sipka">
         <h2>Nechte si nafotit sbírku uměleckých nebo osobních předmětů</h2>
         <p>Díky fotografii můžete vytvořit ze zdánlivých maličkostí velké věci a možná, že i ty věrně známé uvidíte v novém světle neokoukané!</p>
@@ -55,12 +55,11 @@
     </div>
 
     <!-- 2. řádek – Text vlevo, Galerie vpravo -->
-    <div class="row align-items-center section-row second-row">
-      <div class="col-12 col-custom-6 text-section">
+    <div class="row align-items-stretch section-row second-row">
+      <div class="col-12 col-custom-6 text-section d-flex flex-column">
         <h2>Nabízíme digitální tvorbu katalogu s fotografiemi</h2>
         <img src="style/50x50_misto_obrad.png" height="40" alt="Modre srdicko ikonka">
-        <p>Kvalitní fotografie plní nezastupitelnou roli jak při zpřehledňování předmětů pro vlastní potřeby, tak i k prezentaci věcí širšímu publiku. V neposlední řadě plní nenahraditelnou úlohu při sestavování případných nabídek k prodeji a nezřídka fotografie napomáhá i na poli badatelském či restaurátorském.</p>
-        <img class="sipka-sekce" src="style/50x50_srdicko_cervene.png" height="30" alt="Navigacni sipka">
+    <p>Fotografie plní nezastupitelnou roli jak při zpřehledňování předmětů pro vlastní potřeby, tak i k prezentaci věcí širšímu publiku. V neposlední řadě je také nenahraditelnou při sestavování případných nabídek k prodeji a nezřídka fotografie napomáhá i na poli badatelském či restaurátorském.</p>        <img class="sipka-sekce" src="style/50x50_srdicko_cervene.png" height="30" alt="Navigacni sipka">
       </div>
       <div class="col-12 col-custom-6 foto-ukazka-vlozene">
         <div class="galerie-grid">
@@ -77,9 +76,9 @@
       </div>
     </div>
 
-    <!-- 3. řádek – Kukátko vlevo, Text (formulář) vpravo -->
-    <div class="row align-items-center section-row third-row">
-      <div class="col-12 col-custom-6 kukatko-section">
+    <!-- 3. řádek – Kukátko vlevo, Formulář vpravo -->
+    <div class="row align-items-stretch section-row third-row">
+      <div class="col-12 col-custom-6 kukatko-section d-flex">
         <div class="layer layer-top">
           <img src="style/top2.jpg" alt="Vrchní obrázek" />
         </div>
@@ -88,25 +87,27 @@
         </div>
       </div>
 
-      <div class="col-12 col-custom-6 text-section">
-        <h2>Zkontaktujte nás</h2>
-        <form action="https://formspree.io/f/vas-kod" method="POST" class="order-form">
-          <div class="mb-3">
+      <div class="col-12 col-custom-6 text-section d-flex flex-column">
+        <h2 class="mb-4">Napište nám</h2>
+        <form action="https://formspree.io/f/vas-kod" method="POST" class="order-form flex-grow-1 d-flex flex-column justify-content-center">
+          <div class="mb-small">
             <label for="name" class="form-label">Jméno</label>
             <input type="text" class="form-control" id="name" name="name" required
                    placeholder="Emil Filla">
           </div>
-          <div class="mb-3">
+          <div class="mb-small">
             <label for="email" class="form-label">E-mail</label>
             <input type="email" class="form-control" id="email" name="_replyto" required
                    placeholder="rad@bych.com">
           </div>
-          <div class="mb-3">
+          <div class="mb-small flex-grow-1">
             <label for="message" class="form-label">Zpráva</label>
-            <textarea class="form-control" id="message" name="message" rows="4" required
-                      placeholder="Tolik, toho, kdy a kde by se mi líbilo nafotit."></textarea>
+            <textarea class="form-control h-100" id="message" name="message" rows="2" required
+                      placeholder="Kolik, čeho, kdy a kde by se mi líbilo."></textarea>
           </div>
-          <button type="submit" class="btn btn-primary">Odeslat</button>
+          <div class="mt-auto">
+            <button type="submit" class="btn btn-primary w-100">Odeslat</button>
+          </div>
         </form>
       </div>
     </div>
@@ -125,7 +126,6 @@
   <footer class="footer">
     <div class="container">
       <div class="row">
-        <!-- Levý sloupec -->
         <div class="col-6 footer-left">
           <p>Odpovědná osoba<br>
           Lukáš Rybka<br>
@@ -134,7 +134,6 @@
           Voršilská 3<br>
           11000 Praha 1</p>
         </div>
-        <!-- Pravý sloupec -->
         <div class="col-6 footer-right">
           <a href="#">Podmínky</a><br>
           <a href="https://instagram.com" target="_blank" class="insta-link">

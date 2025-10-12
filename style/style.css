@@ -58,7 +58,7 @@ body {
 .main-content { max-width: 910px; margin: 0 auto; }
 
 /* === SEKCE === */
-.section-row { margin: 0; display: flex; flex-wrap: wrap; }
+.section-row { margin: 0; display: flex; flex-wrap: wrap; align-items: stretch; }
 
 /* === TEXTOVÉ SEKCE === */
 .text-section {
@@ -72,14 +72,19 @@ body {
 .order-form { width: 100%; }
 .order-form .form-label { font-weight: bold; margin-bottom: 5px; }
 .order-form .form-control {
-  margin-bottom: 15px; border-radius: 6px;
-  border: 1px solid #ccc; padding: 8px 10px;
+  margin-bottom: 3px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  padding: 8px 10px;
 }
 .order-form button {
   background: #007bff; border: none; border-radius: 6px;
   padding: 10px 20px; color: #fff; cursor: pointer;
 }
 .order-form button:hover { background: #0056b3; }
+
+/* extra malá mezera */
+.mb-small { margin-bottom: 3px !important; }
 
 /* === KUKÁTKO === */
 .kukatko-section { position: relative; overflow: hidden; aspect-ratio: 1/1; height: auto; }
@@ -126,12 +131,20 @@ body {
 
 /* === INTERVAL 992–585 === */
 @media (max-width: 991px) and (min-width: 585px) {
-  .text-section, .kukatko-section, .foto-ukazka-vlozene { min-height: 320px; }
+  .text-section, .kukatko-section, .foto-ukazka-vlozene {
+    min-height: 360px;
+    max-height: 480px;
+    height: auto;
+  }
 }
 
 /* === INTERVAL 720 PX → 0 === */
 @media (max-width: 720px) {
-  .text-section, .kukatko-section, .foto-ukazka-vlozene { min-height: 280px; }
+  .text-section, .kukatko-section, .foto-ukazka-vlozene {
+    min-height: 360px;
+    max-height: 480px;
+    height: auto;
+  }
 }
 
 /* === MOBIL (≤585px): správné pořadí === */
