@@ -89,7 +89,7 @@ function showLightbox(index) {
 
 galleryImages.forEach((img, index) => {
   img.addEventListener('click', (e) => {
-    e.stopPropagation(); // nezavře side-menu při kliknutí na galerii
+    e.stopPropagation();
     showLightbox(index);
   });
 });
