@@ -1,131 +1,119 @@
-// === Toggle side menu ===
-const menuToggle = document.getElementById('menu-toggle');
-const sideMenu = document.getElementById('side-menu');
-
-menuToggle.addEventListener('click', (e) => {
-  e.stopPropagation(); // nezavře se okamžitě klikem na hamburger
-  sideMenu.classList.toggle('active');
-});
-
-// Kliknutí mimo menu zavře side menu
-document.addEventListener('click', (e) => {
-  if (sideMenu.classList.contains('active')) {
+// === Side menu toggle ===
+const menuToggle = document.getElementById("menu-toggle");
+const sideMenu = document.getElementById("side-menu");
+if (menuToggle) {
+  menuToggle.addEventListener("click", (e) => {
+    e.stopPropagation();
+    sideMenu.classList.toggle("active");
+  });
+}
+document.addEventListener("click", (e) => {
+  if (sideMenu && sideMenu.classList.contains("active")) {
     if (!sideMenu.contains(e.target) && e.target !== menuToggle) {
-      sideMenu.classList.remove('active');
+      sideMenu.classList.remove("active");
     }
   }
 });
 
-// === Kukátkový efekt ===
-const kukatkoSections = document.querySelectorAll('.kukatko-section');
+// === Kukátko efekt ===
+const kukatkoSections = document.querySelectorAll(".kukatko-section");
 let activeSection = null;
-
-window.addEventListener('scroll', () => {
+window.addEventListener("scroll", () => {
   const scrollY = window.scrollY;
-  const viewportHeight = window.innerHeight;
-  let previousSectionBottom = 0;
-
+  const viewportH = window.innerHeight;
   kukatkoSections.forEach((section) => {
     const rect = section.getBoundingClientRect();
-    const layer = section.querySelector('.layer-bottom');
+    const layer = section.querySelector(".layer-bottom");
+    if (!layer) return;
     const sectionTop = rect.top + scrollY;
-    const sectionHeight = rect.height;
-    const sectionWidth = rect.width;
-    const diameter = Math.min(sectionWidth * 0.9, sectionHeight * 0.9);
-    const radius = diameter / 2;
-
-    const buffer = viewportHeight * 0.3;
-    const startY = sectionTop - viewportHeight + buffer;
-    const endY = sectionTop + sectionHeight - buffer;
-
-    if (scrollY >= startY && scrollY <= endY && scrollY > previousSectionBottom) {
-      if (activeSection !== section) {
-        if (activeSection) {
-          const prevLayer = activeSection.querySelector('.layer-bottom');
-          prevLayer.style.clipPath = "circle(0 at 50% 50%)";
-        }
-        activeSection = section;
-      }
-
-      const linearProgress = (scrollY - startY) / (endY - startY);
-
-      if (linearProgress < 0.1) {
-        layer.style.clipPath = "circle(0 at 50% 50%)"; // čistý TOP
-      } else if (linearProgress < 0.15) {
-        const progress = (linearProgress - 0.1) / 0.05;
-        const r = progress * radius;
-        layer.style.clipPath = `circle(${r}px at 50% ${sectionHeight/2}px)`;
-      } else if (linearProgress < 0.9) {
-        layer.style.clipPath = `circle(${radius}px at 50% ${sectionHeight/2}px)`;
+    const sectionH = rect.height;
+    const sectionW = rect.width;
+    const radius = Math.min(sectionW, sectionH) * 0.45;
+    const buffer = viewportH * 0.3;
+    const startY = sectionTop - viewportH + buffer;
+    const endY = sectionTop + sectionH - buffer;
+    if (scrollY >= startY && scrollY <= endY) {
+      const p = (scrollY - startY) / (endY - startY);
+      if (p < 0.1) layer.style.clipPath = "circle(0 at 50% 50%)";
+      else if (p < 0.15) {
+        const r = ((p - 0.1) / 0.05) * radius;
+        layer.style.clipPath = `circle(${r}px at 50% 50%)`;
+      } else if (p < 0.9) {
+        layer.style.clipPath = `circle(${radius}px at 50% 50%)`;
       } else {
-        const progress = (1 - linearProgress) / 0.1;
-        const r = progress * radius;
-        layer.style.clipPath = `circle(${r}px at 50% ${sectionHeight/2}px)`;
+        const r = ((1 - p) / 0.1) * radius;
+        layer.style.clipPath = `circle(${r}px at 50% 50%)`;
       }
-
-      previousSectionBottom = endY;
-    } else if (activeSection === section && scrollY > endY) {
+    } else {
       layer.style.clipPath = "circle(0 at 50% 50%)";
-      activeSection = null;
     }
   });
 });
 
-// === Lightbox galerie ===
-const galleryImages = document.querySelectorAll('.galerie-grid img');
-const lightbox = document.getElementById('lightbox');
-const lightboxImg = document.getElementById('lightbox-img');
-const closeBtn = document.querySelector('.lightbox .close');
-const prevBtn = document.querySelector('.lightbox .prev');
-const nextBtn = document.querySelector('.lightbox .next');
+// === Lightbox obrázky ===
+const galleryImgs = document.querySelectorAll(".galerie-grid img");
+const lbGallery = document.getElementById("lightbox-gallery");
+const lbImg = document.getElementById("lightbox-img");
+const lbGalleryClose = lbGallery.querySelector(".close");
+const lbGalleryPrev = lbGallery.querySelector(".prev");
+const lbGalleryNext = lbGallery.querySelector(".next");
+let galleryIndex = 0;
 
-let currentIndex = 0;
-
-function showLightbox(index) {
-  currentIndex = index;
-  lightbox.style.display = "block";
-  lightboxImg.src = galleryImages[index].src;
+function openGallery(i) {
+  galleryIndex = i;
+  lbImg.src = galleryImgs[i].src;
+  lbGallery.style.display = "flex";
 }
+function closeGallery() { lbGallery.style.display = "none"; }
 
-galleryImages.forEach((img, index) => {
-  img.addEventListener('click', (e) => {
-    e.stopPropagation();
-    showLightbox(index);
+galleryImgs.forEach((img, i) => {
+  img.addEventListener("click", () => openGallery(i));
+});
+lbGalleryClose.addEventListener("click", closeGallery);
+lbGalleryPrev.addEventListener("click", () => {
+  galleryIndex = (galleryIndex - 1 + galleryImgs.length) % galleryImgs.length;
+  lbImg.src = galleryImgs[galleryIndex].src;
+});
+lbGalleryNext.addEventListener("click", () => {
+  galleryIndex = (galleryIndex + 1) % galleryImgs.length;
+  lbImg.src = galleryImgs[galleryIndex].src;
+});
+lbGallery.addEventListener("click", (e) => { if (e.target === lbGallery) closeGallery(); });
+
+// === Lightbox texty ===
+const lbText = document.getElementById("lightbox-text");
+const textSlides = lbText.querySelectorAll(".text-slide");
+const lbTextClose = lbText.querySelector(".close");
+const lbTextPrev = lbText.querySelector(".prev");
+const lbTextNext = lbText.querySelector(".next");
+let textIndex = 0;
+
+function showTextSlide(i) {
+  textSlides.forEach((s, idx) => s.style.display = idx === i ? "block" : "none");
+}
+function openTextLightbox(i) {
+  textIndex = i;
+  lbText.style.display = "flex";
+  showTextSlide(i);
+}
+function closeTextLightbox() { lbText.style.display = "none"; }
+
+lbTextClose.addEventListener("click", closeTextLightbox);
+lbTextPrev.addEventListener("click", () => {
+  textIndex = (textIndex - 1 + textSlides.length) % textSlides.length;
+  showTextSlide(textIndex);
+});
+lbTextNext.addEventListener("click", () => {
+  textIndex = (textIndex + 1) % textSlides.length;
+  showTextSlide(textIndex);
+});
+lbText.addEventListener("click", (e) => { if (e.target === lbText) closeTextLightbox(); });
+
+// Napojení side menu odkazů
+document.querySelectorAll("#side-menu a").forEach((link) => {
+  link.addEventListener("click", (e) => {
+    e.preventDefault();
+    const idx = parseInt(link.dataset.textIndex, 10);
+    openTextLightbox(idx);
   });
-});
-
-closeBtn.addEventListener('click', () => {
-  lightbox.style.display = "none";
-});
-
-prevBtn.addEventListener('click', () => {
-  currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
-  lightboxImg.src = galleryImages[currentIndex].src;
-});
-
-nextBtn.addEventListener('click', () => {
-  currentIndex = (currentIndex + 1) % galleryImages.length;
-  lightboxImg.src = galleryImages[currentIndex].src;
-});
-
-// Zavření klikem mimo obrázek
-lightbox.addEventListener('click', (e) => {
-  if (e.target === lightbox) {
-    lightbox.style.display = "none";
-  }
-});
-
-// === Ovládání klávesnicí ===
-document.addEventListener('keydown', (e) => {
-  if (lightbox.style.display === "block") {
-    if (e.key === "Escape") {
-      lightbox.style.display = "none";
-    } else if (e.key === "ArrowLeft") {
-      currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
-      lightboxImg.src = galleryImages[currentIndex].src;
-    } else if (e.key === "ArrowRight") {
-      currentIndex = (currentIndex + 1) % galleryImages.length;
-      lightboxImg.src = galleryImages[currentIndex].src;
-    }
-  }
 });

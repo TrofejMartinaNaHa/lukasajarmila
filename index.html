@@ -20,10 +20,10 @@
 
   <!-- POSTRANNÍ MENU -->
   <div id="side-menu" class="side-menu">
-    <a href="#">Jak na to</a>
-    <a href="#">Ceník</a>
-    <a href="#">Podmínky</a>
-    <a href="#">Kontakt</a>
+    <a href="#" data-text-index="0">Jak na to</a>
+    <a href="#" data-text-index="1">Ceník</a>
+    <a href="#" data-text-index="2">Podmínky</a>
+    <a href="#" data-text-index="3">Kontakt</a>
   </div>
 
   <!-- BANNER -->
@@ -44,20 +44,16 @@
         </div>
       </div>
       <div class="col-12 col-custom-6 text-section d-flex flex-column">
-        <img class="sipka-sekce" src="style/50x50_srdicko_cervene.png" height="30" alt="Navigacni sipka">
-        <h2>Nechte si nafotit sbírku uměleckých nebo osobních předmětů</h2>
+        <h2>Nechte si nafotit sbírku</h2>
         <p>Díky fotografii můžete vytvořit ze zdánlivých maličkostí velké věci a možná, že i ty věrně známé uvidíte v novém světle neokoukané!</p>
-        <img src="style/50x50_misto_obrad.png" height="40" alt="Modre srdicko ikonka">
       </div>
     </div>
 
     <!-- 2. řádek – Text vlevo, Galerie vpravo -->
     <div class="row align-items-stretch section-row second-row">
       <div class="col-12 col-custom-6 text-section d-flex flex-column">
-        <h2>Nabízíme digitální tvorbu katalogu s fotografiemi</h2>
-        <img src="style/50x50_misto_obrad.png" height="40" alt="Modre srdicko ikonka">
-        <p>Fotografie plní nezastupitelnou roli jak při zpřehledňování předmětů pro vlastní potřeby, tak i k prezentaci věcí širšímu publiku. V neposlední řadě je také nenahraditelnou při sestavování případných nabídek k prodeji a nezřídka fotografie napomáhá i na poli badatelském či restaurátorském.</p>
-        <img class="sipka-sekce" src="style/50x50_srdicko_cervene.png" height="30" alt="Navigacni sipka">
+        <h2>Nabízíme digitální katalog</h2>
+        <p>Fotografie plní nezastupitelnou roli při zpřehledňování i prezentaci věcí, při nabídce k prodeji i pro badatele.</p>
       </div>
       <div class="col-12 col-custom-6 foto-ukazka-vlozene">
         <div class="galerie-grid">
@@ -84,7 +80,6 @@
           <img src="style/bottom2.jpg" alt="Spodní obrázek">
         </div>
       </div>
-
       <div class="col-12 col-custom-6 text-section d-flex flex-column">
         <h2 class="mb-4">Napište nám</h2>
         <form action="https://formspree.io/f/vas-kod" method="POST" class="order-form flex-grow-1 d-flex flex-column justify-content-center">
@@ -106,11 +101,23 @@
         </form>
       </div>
     </div>
-
   </div>
 
-  <!-- POPUP LIGHTBOX PRO GALERII -->
-  <div id="lightbox" class="lightbox">
+  <!-- POPUP LIGHTBOX TEXTY -->
+  <div id="lightbox-text" class="lightbox">
+    <span class="close">×</span>
+    <div class="lightbox-content text-lightbox">
+      <div class="text-slide"> <h2>Jak na to</h2> <p>Zde bude text s postupem…</p> </div>
+      <div class="text-slide"> <h2>Ceník</h2> <p>Zde bude ceník…</p> </div>
+      <div class="text-slide"> <h2>Podmínky</h2> <p>Zde budou podmínky…</p> </div>
+      <div class="text-slide"> <h2>Kontakt</h2> <p>Zde budou kontakty…</p> </div>
+    </div>
+    <a class="prev">❮</a>
+    <a class="next">❯</a>
+  </div>
+
+  <!-- POPUP LIGHTBOX OBRÁZKY -->
+  <div id="lightbox-gallery" class="lightbox">
     <span class="close">×</span>
     <img class="lightbox-content" id="lightbox-img" alt="">
     <a class="prev">❮</a>
