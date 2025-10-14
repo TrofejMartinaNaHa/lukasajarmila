@@ -58,6 +58,8 @@ body {
   max-width: 910px;
   margin: 0 auto;
   padding: 0 12px; /* dorovnání s main-content */
+  margin-top: 30px; /* kvůli fixed menu */
+  margin-bottom: 20px;
 }
 .banner-img {
   width: 100%;
