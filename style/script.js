@@ -17,7 +17,6 @@ document.addEventListener("click", (e) => {
 
 // === Kukátko efekt ===
 const kukatkoSections = document.querySelectorAll(".kukatko-section");
-let activeSection = null;
 window.addEventListener("scroll", () => {
   const scrollY = window.scrollY;
   const viewportH = window.innerHeight;
@@ -89,12 +88,18 @@ const lbTextNext = lbText.querySelector(".next");
 let textIndex = 0;
 
 function showTextSlide(i) {
-  textSlides.forEach((s, idx) => s.style.display = idx === i ? "block" : "none");
+  textSlides.forEach((s, idx) => {
+    s.classList.toggle("active", idx === i);
+  });
+  const wrapper = lbText.querySelector(".text-wrapper");
+  if (wrapper) wrapper.scrollTop = 0;
 }
+
 function openTextLightbox(i) {
   textIndex = i;
   lbText.style.display = "flex";
   showTextSlide(i);
+  if (sideMenu) sideMenu.classList.remove("active"); // zavře side menu
 }
 function closeTextLightbox() { lbText.style.display = "none"; }
 
@@ -109,7 +114,7 @@ lbTextNext.addEventListener("click", () => {
 });
 lbText.addEventListener("click", (e) => { if (e.target === lbText) closeTextLightbox(); });
 
-// Napojení side menu odkazů
+// Side menu odkazy
 document.querySelectorAll("#side-menu a").forEach((link) => {
   link.addEventListener("click", (e) => {
     e.preventDefault();

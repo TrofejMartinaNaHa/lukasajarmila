@@ -56,10 +56,8 @@ body {
   background-color: #ddd;
   overflow: hidden;
   max-width: 910px;
-  margin: 0 auto;
-  padding: 0 12px; /* dorovnání s main-content */
-  margin-top: 30px; /* kvůli fixed menu */
-  margin-bottom: 20px;
+  margin: 0 auto 20px auto;
+  padding: 0 12px;
 }
 .banner-img {
   width: 100%;
@@ -176,26 +174,45 @@ body {
 /* === TEXTOVÝ LIGHTBOX === */
 .text-lightbox {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  height: 100%;
 }
-.text-slide {
-  display: none;
-  max-width: 600px;
-  color: #fff;
+.text-wrapper {
+  background: #fff;
+  color: #000;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 585px;
+  width: calc(100% - 60px);
+  max-height: calc(100% - 60px);
+  overflow-y: auto;
+  position: relative;
+  text-align: left;
 }
+.text-slide { display: none; }
+.text-slide.active { display: block; }
 .text-slide h2 { margin-bottom: 1rem; }
+.text-slide p { margin: 0 10% 1rem 10%; }
+.text-image {
+  display: block;
+  max-width: 80%;
+  margin: 10px auto;
+}
 
-/* === OVLÁDACÍ PRVKY LIGHTBOXŮ === */
-.lightbox .close {
+/* === CLOSE BUTTON TEXT === */
+.text-wrapper .close {
   position: absolute;
-  top: 20px;
-  right: 35px;
-  color: #fff;
-  font-size: 40px;
+  top: 10px;
+  right: 15px;
+  color: #000;
+  font-size: 28px;
+  font-weight: bold;
   cursor: pointer;
 }
+
+/* === OVLÁDACÍ PRVKY LIGHTBOXŮ === */
 .lightbox .prev,
 .lightbox .next {
   cursor: pointer;
@@ -256,7 +273,7 @@ body {
   }
 }
 
-/* === MOBIL (≤585px): správné pořadí === */
+/* === MOBIL (≤585px) === */
 @media (max-width: 585px) {
   .section-row { flex-direction: column; height: auto; }
   .text-section, .kukatko-section, .foto-ukazka-vlozene {
