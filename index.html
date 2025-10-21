@@ -29,7 +29,10 @@
 
   <!-- BANNER -->
   <section class="banner d-flex align-items-center justify-content-center">
-    <img src="style/banner.jpg" alt="Banner" class="img-fluid banner-img">
+    <picture>
+      <source media="(max-width: 585px)" srcset="style/banner_maly.jpg">
+      <img src="style/banner_velky.jpg" alt="Banner" class="img-fluid banner-img">
+    </picture>
   </section>
 
   <div class="container main-content">
@@ -106,32 +109,23 @@
 
   <!-- POPUP LIGHTBOX TEXTY -->
   <div id="lightbox-text" class="lightbox">
-    <div class="text-lightbox">
-      <div class="text-wrapper">
-        <span class="close">×</span>
-        <div class="text-slide">
-          <h2>Jak na to</h2>
-          <p>
-            Stačí nám zaslat přibližný počet a charakter předmětů k nafocení na emailovou adresu 
-            <a href="mailto:tojemojexyz@gmail.com">tojemojexyz@gmail.com</a>. Poté si doladíme místo a čas vzhledem k možnostem a náročnosti převozu fotografovaných předmětů či fotografického vybavení.
-          </p>
-          <img src="style/sample1.jpg" alt="Ilustrace 1" class="text-image">
-          <p>
-            Menší sbírky jsme schopni zpracovávat na místě v našem ateliéru v centru Prahy, kam nám je můžete dopravit i sami a kde je zpracujeme v relativně flexibilním čase. Přijet ovšem můžeme i my za vámi tam, kde máte svou sbírku uloženou.
-          </p>
-          <img src="style/sample2.jpg" alt="Ilustrace 2" class="text-image">
-        </div>
-        <div class="text-slide">
-          <h2>Kde</h2>
-          <p>
-            Náš ateliér v centru Prahy se rozkládá na 21 metrech čtverečních. Je vytvořen minimalisticky jako "bílá kostka", která skýtá ideální vlastnosti pro focení zábleskovými světly a napomáhá nám zvládat práci na malé ploše, abychom byli schopni své pracoviště přenést třeba i k vám domů.
-          </p>
-          <img src="style/sample3.jpg" alt="Ilustrace 3" class="text-image">
-        </div>
-        <div class="text-slide"><h2>Ceník</h2><p>Zde bude ceník…</p></div>
-        <div class="text-slide"><h2>Podmínky</h2><p>Zde budou podmínky…</p></div>
-        <div class="text-slide"><h2>Kontakt</h2><p>Zde budou kontakty…</p></div>
+    <div class="text-wrapper">
+      <span class="close">×</span>
+      <div class="text-slide">
+        <h2>Jak na to</h2>
+        <p>Stačí nám zaslat přibližný počet a charakter předmětů k nafocení na <a href="#message">tojemojexyz@gmail.com</a>.</p>
+        <img src="style/sample1.jpg" alt="Ilustrační obrázek 1">
+        <p>Poté si doladíme místo a čas vzhledem k možnostem a náročnosti převozu fotografovaných předmětů či fotografického vybavení.</p>
       </div>
+      <div class="text-slide">
+        <h2>Kde</h2>
+        <p>Pracujeme v terénu i u nás v ateliér. S menší sbírkou se například můžete vydat rovnou za námi na naší adresu Voršilská 3, Praha 1, a nebo si naopak dohodneme návštěvu u vás, kam si dovezeme potřebné vybavení.</p>
+        <img src="style/sample2.jpg" alt="Ilustrační obrázek 2">
+        <p>Náš ateliér se rozkládá na poměrně malé ploše, takže jsme schopni naše působiště přenést třeba i k vám domů.</p>
+      </div>
+      <div class="text-slide"><h2>Ceník</h2><p>Zde bude ceník…</p></div>
+      <div class="text-slide"><h2>Podmínky</h2><p>Zde budou podmínky…</p></div>
+      <div class="text-slide"><h2>Kontakt</h2><p>Zde budou kontakty…</p></div>
     </div>
     <a class="prev">❮</a>
     <a class="next">❯</a>

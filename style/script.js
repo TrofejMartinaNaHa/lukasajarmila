@@ -88,18 +88,15 @@ const lbTextNext = lbText.querySelector(".next");
 let textIndex = 0;
 
 function showTextSlide(i) {
-  textSlides.forEach((s, idx) => {
-    s.classList.toggle("active", idx === i);
-  });
+  textSlides.forEach((s, idx) => s.style.display = idx === i ? "block" : "none");
   const wrapper = lbText.querySelector(".text-wrapper");
   if (wrapper) wrapper.scrollTop = 0;
 }
-
 function openTextLightbox(i) {
   textIndex = i;
   lbText.style.display = "flex";
   showTextSlide(i);
-  if (sideMenu) sideMenu.classList.remove("active"); // zavře side menu
+  sideMenu.classList.remove("active"); // zavře side menu
 }
 function closeTextLightbox() { lbText.style.display = "none"; }
 
@@ -112,9 +109,11 @@ lbTextNext.addEventListener("click", () => {
   textIndex = (textIndex + 1) % textSlides.length;
   showTextSlide(textIndex);
 });
-lbText.addEventListener("click", (e) => { if (e.target === lbText) closeTextLightbox(); });
+lbText.addEventListener("click", (e) => { 
+  if (e.target === lbText) closeTextLightbox(); 
+});
 
-// Side menu odkazy
+// === Side menu odkazy napojení ===
 document.querySelectorAll("#side-menu a").forEach((link) => {
   link.addEventListener("click", (e) => {
     e.preventDefault();
