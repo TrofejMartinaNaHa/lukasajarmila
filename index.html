@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>To je moje, to mám rád</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style/style.css">
 </head>
 <body>
@@ -30,15 +29,12 @@
 
   <!-- BANNER -->
   <section class="banner d-flex align-items-center justify-content-center">
-    <picture>
-      <source srcset="style/banner_maly.jpg" media="(max-width: 585px)">
-      <img src="style/banner_velky.jpg" alt="Banner" class="img-fluid banner-img">
-    </picture>
+    <img src="style/banner_velky.jpg" alt="Banner" class="img-fluid banner-img">
   </section>
 
   <div class="container main-content">
 
-    <!-- 1. řádek -->
+    <!-- 1. řádek – Kukátko vlevo, Text vpravo -->
     <div class="row align-items-stretch section-row first-row">
       <div class="col-12 col-custom-6 kukatko-section d-flex">
         <div class="layer layer-top">
@@ -54,11 +50,11 @@
       </div>
     </div>
 
-    <!-- 2. řádek -->
+    <!-- 2. řádek – Text vlevo, Galerie vpravo -->
     <div class="row align-items-stretch section-row second-row">
       <div class="col-12 col-custom-6 text-section d-flex flex-column">
         <h2>Nabízíme digitální tvorbu katalogu s fotografiemi</h2>
-        <p>Výsledkem je přehledné uspořádání předmětů jak pro vlastní potřeby, tak pro prezentaci věcí širšímu publiku. Fotografie plní nenahraditelnou úlohu při sestavování případných nabídek k prodeji a také pomáhá na poli badatelském či restaurátorském.</p>
+        <p>Výsledkem je přehledné uspořádání předmětů jak pro vlastní potřeby, tak pro prezentaci věci širšímu publiku. Fotografie plní svou nenahraditelnou úlohu při sestavování nabídek k prodeji, ale také nemálo napomáhá na poli badatelském či restaurátorském.</p>
       </div>
       <div class="col-12 col-custom-6 foto-ukazka-vlozene">
         <div class="galerie-grid">
@@ -75,7 +71,7 @@
       </div>
     </div>
 
-    <!-- 3. řádek -->
+    <!-- 3. řádek – Kukátko vlevo, Formulář vpravo -->
     <div class="row align-items-stretch section-row third-row">
       <div class="col-12 col-custom-6 kukatko-section d-flex">
         <div class="layer layer-top">
@@ -86,11 +82,11 @@
         </div>
       </div>
       <div class="col-12 col-custom-6 text-section d-flex flex-column">
-        <h2 id="contact-form" class="mb-4">Napište nám</h2>
+        <h2 class="mb-4">Napište nám</h2>
         <form action="https://formspree.io/f/vas-kod" method="POST" class="order-form flex-grow-1 d-flex flex-column justify-content-center">
           <div class="mb-small">
             <label for="name" class="form-label">Jméno</label>
-            <input type="text" class="form-control" id="name" name="name" required placeholder="Říkají mi">
+            <input type="text" class="form-control" id="name" name="name" required placeholder="Říkají mi...">
           </div>
           <div class="mb-small">
             <label for="email" class="form-label">E-mail</label>
@@ -98,7 +94,7 @@
           </div>
           <div class="mb-small flex-grow-1">
             <label for="message" class="form-label">Zpráva</label>
-            <textarea class="form-control h-100" id="message" name="message" rows="2" required placeholder="Tolik toho by se mi líbilo nafotit."></textarea>
+            <textarea class="form-control h-100" id="message" name="message" rows="1.5" required placeholder="Tolik toho by se mi líbilo nafotit."></textarea>
           </div>
           <div class="mt-auto">
             <button type="submit" class="btn btn-primary w-100">Odeslat</button>
@@ -110,19 +106,19 @@
 
   <!-- POPUP LIGHTBOX TEXTY -->
   <div id="lightbox-text" class="lightbox">
-    <div class="text-box">
+    <div class="text-lightbox">
       <span class="close">×</span>
       <div class="text-slide">
         <h2>Jak na to</h2>
         <p>Stačí nám jen napsat přibližný počet a typ předmětů k nafocení na 
-          <a href="#contact-form">tojemojexyz@gmail.com</a> a pak už společně doladíme místo a čas s ohledem na potřeby daného focení.
-        </p>
-        <img src="style/sample1.jpg" alt="Ilustrační obrázek">
+          <a href="#contact-form" id="goto-contact">tojemojexyz@gmail.com</a> 
+          a pak už společně doladíme místo a čas s ohledem na potřeby daného focení.</p>
+        <img src="style/sample1.jpg" alt="Ilustrační obrázek 1">
       </div>
       <div class="text-slide">
         <h2>Kde</h2>
         <p>Pracujeme v terénu i u nás v ateliéru. S menšími sbírkami se můžete vypravit klidně za námi na adresu Voršilská 3, Praha 1, a nebo navštívíme my vás a potřebné vybavení si vezmeme s sebou.</p>
-        <img src="style/sample2.jpg" alt="Ateliér">
+        <img src="style/sample2.jpg" alt="Ilustrační obrázek 2">
       </div>
       <div class="text-slide"><h2>Ceník</h2><p>Zde bude ceník…</p></div>
       <div class="text-slide"><h2>Podmínky</h2><p>Zde budou podmínky…</p></div>
@@ -134,7 +130,7 @@
 
   <!-- POPUP LIGHTBOX OBRÁZKY -->
   <div id="lightbox-gallery" class="lightbox">
-    <div class="img-box">
+    <div class="gallery-lightbox">
       <span class="close">×</span>
       <img class="lightbox-content" id="lightbox-img" alt="">
       <a class="prev">❮</a>
@@ -155,8 +151,8 @@
           11000 Praha 1</p>
         </div>
         <div class="col-6 footer-right">
-          <a href="https://instagram.com" target="_blank" class="insta-link">
-            <img src="style/insta_logo.png" alt="Instagram" class="insta-logo">
+          <a href="https://instagram.com" target="_blank">
+            <img src="style/insta_logo.png" alt="Instagram" class="insta-icon">
           </a>
         </div>
       </div>

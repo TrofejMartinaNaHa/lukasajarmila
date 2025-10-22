@@ -2,8 +2,8 @@ body {
   background-color: #f8f9fa;
   margin: 0;
   overflow-x: hidden;
-  padding-top: 35px; /* nav navýšený na 35px */
-  font-family: "DM Sans", sans-serif;
+  padding-top: 35px; /* nav bar height */
+  font-family: 'DM Sans', sans-serif;
 }
 
 /* === HORIZONTÁLNÍ MENU === */
@@ -12,7 +12,7 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  height: 35px;   /* ✅ zvětšeno z 30px na 35px */
+  height: 35px;
   display: flex;
   background: #222;
   color: #fff;
@@ -32,7 +32,7 @@ body {
 /* === SIDE MENU === */
 .side-menu {
   position: fixed;
-  top: 35px; /* přizpůsobeno vyšší liště */
+  top: 35px;
   right: -200px;
   width: 200px;
   height: 100%;
@@ -62,9 +62,8 @@ body {
 }
 .banner-img {
   width: 100%;
-  height: auto;  /* ✅ místo pevné výšky */
+  height: auto;
   object-fit: cover;
-  border-radius: 10%;
 }
 
 /* === HLAVNÍ KONTEJNER === */
@@ -81,6 +80,10 @@ body {
   flex-wrap: wrap;
   align-items: stretch;
 }
+.section-row > div {
+  border-radius: 10%;
+  overflow: hidden;
+}
 
 /* === TEXTOVÉ SEKCE === */
 .text-section {
@@ -92,12 +95,8 @@ body {
   box-sizing: border-box;
   aspect-ratio: 1 / 1;
   height: auto;
-  border-radius: 10%;
 }
-.text-section h2 {
-  margin: 0 0 1rem;
-  padding-top: 5px;
-}
+.text-section h2 { margin: 0 0 1rem; padding-top: 5px; }
 
 /* === FORMULÁŘ === */
 .order-form { width: 100%; }
@@ -109,13 +108,9 @@ body {
   padding: 8px 10px;
 }
 .order-form button {
-  background: #007bff;
-  border: none;
-  border-radius: 6px;
-  padding: 10px 20px;
-  color: #fff;
-  cursor: pointer;
-  margin-top: 35px; /* ✅ zvětšeno */
+  background: #007bff; border: none; border-radius: 6px;
+  padding: 10px 20px; color: #fff; cursor: pointer;
+  margin-top: 35px;
 }
 .order-form button:hover { background: #0056b3; }
 .mb-small { margin-bottom: 3px !important; }
@@ -126,10 +121,9 @@ body {
   overflow: hidden;
   aspect-ratio: 1/1;
   height: auto;
-  border-radius: 10%;
 }
 .layer { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
-.layer img { width: 100%; height: 100%; object-fit: cover; border-radius: 10%; }
+.layer img { width: 100%; height: 100%; object-fit: cover; }
 .layer-top { z-index: 1; }
 .layer-bottom {
   z-index: 2;
@@ -144,7 +138,6 @@ body {
   aspect-ratio: 1/1;
   height: auto;
   padding: 0 !important;
-  border-radius: 10%;
 }
 .galerie-grid {
   display: grid;
@@ -160,58 +153,52 @@ body {
   object-fit: cover;
   display: block;
   cursor: pointer;
-  border-radius: 10%;
 }
 
 /* === LIGHTBOX OBECNÝ === */
 .lightbox {
   display: none;
   position: fixed;
-  z-index: 9999;
+  z-index: 10000;
   left: 0; top: 0;
   width: 100%; height: 100%;
-  background-color: rgba(240,240,240,0.95);
+  background-color: rgba(0,0,0,0.6);
   justify-content: center;
   align-items: center;
   text-align: center;
-  overflow-y: auto;
 }
 
 /* === TEXTOVÝ LIGHTBOX === */
-.text-box {
+.text-lightbox {
   background: #fff;
-  max-width: 460px;  /* ✅ zmenšeno z 585px */
-  width: calc(100% - 60px);
-  margin: 30px;
-  padding: 35px;  /* ✅ zvětšený padding */
-  border-radius: 3%;
+  max-width: 460px;
+  max-height: 80vh;
+  overflow-y: auto;
+  padding: 35px;
+  border-radius: 10%;
   position: relative;
-}
-.text-slide {
-  display: none;
   text-align: left;
-  color: #000;
 }
+.text-slide { display: none; }
+.text-slide.active { display: block; }
 .text-slide h2 { margin-bottom: 1rem; }
-.text-slide p { margin: 0 0 1rem 0; }
+.text-slide p { margin: 0 0 1rem; }
 .text-slide img {
+  width: 70%;
+  margin: 10px auto;
   display: block;
-  width: 70%;  /* ✅ zmenšeno z 80% */
   border-radius: 3%;
-  margin: 0 auto 1rem auto;
 }
 
 /* === GALERIE LIGHTBOX === */
-.img-box {
+.gallery-lightbox {
   position: relative;
-  max-width: 90%;
-  max-height: 90%;
+  max-width: 90vw;
+  max-height: 80vh;
 }
-#lightbox-img {
+.gallery-lightbox img {
   max-width: 100%;
-  max-height: 85vh;
-  display: block;
-  margin: 0 auto;
+  max-height: 80vh;
   border-radius: 3%;
 }
 
@@ -220,25 +207,21 @@ body {
 .lightbox .prev,
 .lightbox .next {
   position: absolute;
-  color: rgba(100,100,100,0.9);
-  font-size: 32px;
+  color: #ccc;
+  font-size: 28px;
   cursor: pointer;
   user-select: none;
 }
 .lightbox .close {
-  top: 10px;
-  right: 15px;
+  top: 10px; right: 10px;
 }
-.lightbox .prev {
-  left: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-}
+.lightbox .prev,
 .lightbox .next {
-  right: 10px;
   top: 50%;
   transform: translateY(-50%);
 }
+.lightbox .prev { left: 10px; }
+.lightbox .next { right: 10px; }
 
 /* === FOOTER === */
 .footer {
@@ -250,9 +233,8 @@ body {
 .footer p { margin: 0; line-height: 1.6; }
 .footer a { color: #fff; text-decoration: none; }
 .footer a:hover { text-decoration: underline; }
-.footer .insta-logo {
-  width: 28px;
-  height: 28px;
+.footer .insta-icon {
+  width: 24px; height: 24px; margin-top: 8px;
   border-radius: 3%;
 }
 .footer-left { text-align: left; }
@@ -262,10 +244,41 @@ body {
 @media (min-width: 585px) {
   .col-custom-6 { flex: 0 0 50%; max-width: 50%; }
   .section-row { flex-direction: row; }
+
   .first-row .kukatko-section { order: 1; }
   .first-row .text-section    { order: 2; }
+
   .second-row .text-section        { order: 1; }
   .second-row .foto-ukazka-vlozene { order: 2; }
+
   .third-row .kukatko-section { order: 1; }
   .third-row .text-section    { order: 2; }
+}
+
+/* === INTERVAL 992–585 === */
+@media (max-width: 991px) and (min-width: 585px) {
+  .text-section, .kukatko-section, .foto-ukazka-vlozene {
+    min-height: 360px;
+    max-height: 480px;
+    height: auto;
+  }
+}
+
+/* === MOBIL (≤585px) === */
+@media (max-width: 585px) {
+  .section-row { flex-direction: column; height: auto; }
+  .text-section, .kukatko-section, .foto-ukazka-vlozene {
+    width: 100%; min-height: 260px;
+  }
+  .first-row .text-section { order: 1; }
+  .first-row .kukatko-section { order: 2; }
+  .second-row .text-section { order: 3; }
+  .second-row .foto-ukazka-vlozene { order: 4; }
+  .third-row .text-section { order: 5; }
+  .third-row .kukatko-section { order: 6; }
+}
+
+/* === FALLBACK === */
+@supports not (aspect-ratio: 1/1) {
+  .text-section, .kukatko-section, .foto-ukazka-vlozene { height: 420px; }
 }

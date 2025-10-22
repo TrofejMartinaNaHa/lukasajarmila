@@ -49,7 +49,7 @@ window.addEventListener("scroll", () => {
   });
 });
 
-// === Lightbox galerie obrázků ===
+// === Lightbox obrázky ===
 const galleryImgs = document.querySelectorAll(".galerie-grid img");
 const lbGallery = document.getElementById("lightbox-gallery");
 const lbImg = document.getElementById("lightbox-img");
@@ -88,12 +88,13 @@ const lbTextNext = lbText.querySelector(".next");
 let textIndex = 0;
 
 function showTextSlide(i) {
-  textSlides.forEach((s, idx) => s.style.display = idx === i ? "block" : "none");
+  textSlides.forEach((s, idx) => s.classList.toggle("active", idx === i));
 }
 function openTextLightbox(i) {
   textIndex = i;
   lbText.style.display = "flex";
   showTextSlide(i);
+  lbText.querySelector(".text-lightbox").scrollTop = 0;
 }
 function closeTextLightbox() { lbText.style.display = "none"; }
 
@@ -113,17 +114,17 @@ document.querySelectorAll("#side-menu a").forEach((link) => {
   link.addEventListener("click", (e) => {
     e.preventDefault();
     const idx = parseInt(link.dataset.textIndex, 10);
-    sideMenu.classList.remove("active");
     openTextLightbox(idx);
+    sideMenu.classList.remove("active");
   });
 });
 
-// Klik na email v lightboxu -> scroll na formulář
-const emailLink = document.querySelector('#lightbox-text a[href="#contact-form"]');
-if (emailLink) {
-  emailLink.addEventListener("click", (e) => {
+// Scroll na kontaktní formulář při kliknutí na email v text-lightboxu
+const gotoContact = document.getElementById("goto-contact");
+if (gotoContact) {
+  gotoContact.addEventListener("click", (e) => {
     e.preventDefault();
     closeTextLightbox();
-    document.getElementById("contact-form").scrollIntoView({ behavior: "smooth", block: "start" });
+    document.getElementById("message").scrollIntoView({ behavior: "smooth" });
   });
 }
