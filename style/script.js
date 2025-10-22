@@ -89,14 +89,13 @@ let textIndex = 0;
 
 function showTextSlide(i) {
   textSlides.forEach((s, idx) => s.style.display = idx === i ? "block" : "none");
-  const wrapper = lbText.querySelector(".text-wrapper");
+  const wrapper = textSlides[i]?.closest(".text-wrapper");
   if (wrapper) wrapper.scrollTop = 0;
 }
 function openTextLightbox(i) {
   textIndex = i;
   lbText.style.display = "flex";
   showTextSlide(i);
-  sideMenu.classList.remove("active"); // zavře side menu
 }
 function closeTextLightbox() { lbText.style.display = "none"; }
 
@@ -109,15 +108,24 @@ lbTextNext.addEventListener("click", () => {
   textIndex = (textIndex + 1) % textSlides.length;
   showTextSlide(textIndex);
 });
-lbText.addEventListener("click", (e) => { 
-  if (e.target === lbText) closeTextLightbox(); 
-});
+lbText.addEventListener("click", (e) => { if (e.target === lbText) closeTextLightbox(); });
 
-// === Side menu odkazy napojení ===
+// === Napojení side menu odkazů ===
 document.querySelectorAll("#side-menu a").forEach((link) => {
   link.addEventListener("click", (e) => {
     e.preventDefault();
     const idx = parseInt(link.dataset.textIndex, 10);
     openTextLightbox(idx);
+    sideMenu.classList.remove("active"); // zatáhnout zpět menu
   });
+});
+
+// === Speciální odkaz v textu na formulář ===
+document.addEventListener("click", (e) => {
+  if (e.target.matches("a[href='#contact-form']")) {
+    e.preventDefault();
+    closeTextLightbox();
+    const form = document.querySelector("form.order-form");
+    if (form) form.scrollIntoView({ behavior: "smooth" });
+  }
 });
