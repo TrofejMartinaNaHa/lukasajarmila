@@ -2,7 +2,7 @@ body {
   background-color: #f8f9fa;
   margin: 0;
   overflow-x: hidden;
-  padding-top: 30px;
+  padding-top: 35px; /* nav navýšený na 35px */
   font-family: "DM Sans", sans-serif;
 }
 
@@ -12,7 +12,7 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  height: 30px;
+  height: 35px;   /* ✅ zvětšeno z 30px na 35px */
   display: flex;
   background: #222;
   color: #fff;
@@ -32,7 +32,7 @@ body {
 /* === SIDE MENU === */
 .side-menu {
   position: fixed;
-  top: 30px;
+  top: 35px; /* přizpůsobeno vyšší liště */
   right: -200px;
   width: 200px;
   height: 100%;
@@ -53,28 +53,18 @@ body {
 
 /* === BANNER === */
 .banner {
-  height: 460px;
   background-color: #ddd;
   overflow: hidden;
   max-width: 910px;
-  margin: 0 auto 20px;
+  margin: 0 auto 20px auto;
   padding: 0 12px;
+  border-radius: 10%;
 }
 .banner-img {
   width: 100%;
-  height: 100%;
+  height: auto;  /* ✅ místo pevné výšky */
   object-fit: cover;
-  display: block;
-}
-.banner-img.small { display: none; }
-
-@media (max-width: 584px) {
-  .banner-img.large { display: none; }
-  .banner-img.small { display: block; }
-}
-@media (min-width: 585px) {
-  .banner-img.large { display: block; }
-  .banner-img.small { display: none; }
+  border-radius: 10%;
 }
 
 /* === HLAVNÍ KONTEJNER === */
@@ -102,6 +92,7 @@ body {
   box-sizing: border-box;
   aspect-ratio: 1 / 1;
   height: auto;
+  border-radius: 10%;
 }
 .text-section h2 {
   margin: 0 0 1rem;
@@ -118,8 +109,13 @@ body {
   padding: 8px 10px;
 }
 .order-form button {
-  background: #007bff; border: none; border-radius: 6px;
-  padding: 10px 20px; color: #fff; cursor: pointer;
+  background: #007bff;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+  color: #fff;
+  cursor: pointer;
+  margin-top: 35px; /* ✅ zvětšeno */
 }
 .order-form button:hover { background: #0056b3; }
 .mb-small { margin-bottom: 3px !important; }
@@ -130,9 +126,10 @@ body {
   overflow: hidden;
   aspect-ratio: 1/1;
   height: auto;
+  border-radius: 10%;
 }
 .layer { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
-.layer img { width: 100%; height: 100%; object-fit: cover; }
+.layer img { width: 100%; height: 100%; object-fit: cover; border-radius: 10%; }
 .layer-top { z-index: 1; }
 .layer-bottom {
   z-index: 2;
@@ -147,6 +144,7 @@ body {
   aspect-ratio: 1/1;
   height: auto;
   padding: 0 !important;
+  border-radius: 10%;
 }
 .galerie-grid {
   display: grid;
@@ -162,6 +160,7 @@ body {
   object-fit: cover;
   display: block;
   cursor: pointer;
+  border-radius: 10%;
 }
 
 /* === LIGHTBOX OBECNÝ === */
@@ -171,85 +170,75 @@ body {
   z-index: 9999;
   left: 0; top: 0;
   width: 100%; height: 100%;
-  background-color: rgba(0,0,0,0.6);
+  background-color: rgba(240,240,240,0.95);
   justify-content: center;
   align-items: center;
   text-align: center;
-  overflow: auto;
+  overflow-y: auto;
 }
 
 /* === TEXTOVÝ LIGHTBOX === */
-#lightbox-text .text-wrapper {
-  position: relative;
+.text-box {
   background: #fff;
-  color: #000;
-  max-width: 460px;
-  max-height: 90vh;
-  padding: 20px;
+  max-width: 460px;  /* ✅ zmenšeno z 585px */
+  width: calc(100% - 60px);
+  margin: 30px;
+  padding: 35px;  /* ✅ zvětšený padding */
   border-radius: 3%;
-  overflow-y: auto;
-  box-sizing: border-box;
-}
-
-.text-lightbox {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  position: relative;
 }
 .text-slide {
   display: none;
-  width: 100%;
   text-align: left;
-}
-.text-slide h2,
-.text-slide p,
-.text-slide img {
-  width: 70%;
-  margin-left: auto;
-  margin-right: auto;
+  color: #000;
 }
 .text-slide h2 { margin-bottom: 1rem; }
-.text-slide p { margin: 0 0 1rem; }
+.text-slide p { margin: 0 0 1rem 0; }
 .text-slide img {
-  border-radius: 3%;
-  margin-bottom: 1rem;
   display: block;
+  width: 70%;  /* ✅ zmenšeno z 80% */
+  border-radius: 3%;
+  margin: 0 auto 1rem auto;
 }
 
 /* === GALERIE LIGHTBOX === */
-#lightbox-gallery img.lightbox-content {
+.img-box {
+  position: relative;
   max-width: 90%;
   max-height: 90%;
-  object-fit: contain;
-  margin: auto;
+}
+#lightbox-img {
+  max-width: 100%;
+  max-height: 85vh;
   display: block;
+  margin: 0 auto;
   border-radius: 3%;
 }
 
-/* === OVLÁDACÍ PRVKY === */
+/* === OVLÁDACÍ PRVKY LIGHTBOXŮ === */
 .lightbox .close,
 .lightbox .prev,
 .lightbox .next {
-  color: #ccc;
+  position: absolute;
+  color: rgba(100,100,100,0.9);
   font-size: 32px;
   cursor: pointer;
-  position: absolute;
   user-select: none;
-  opacity: 0.9;
 }
-
 .lightbox .close {
   top: 10px;
-  right: 10px;
+  right: 15px;
 }
-
-.lightbox .prev,
-.lightbox .next {
+.lightbox .prev {
+  left: 10px;
   top: 50%;
   transform: translateY(-50%);
 }
-.lightbox .prev { left: 10px; }
-.lightbox .next { right: 10px; }
+.lightbox .next {
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
 
 /* === FOOTER === */
 .footer {
@@ -261,7 +250,11 @@ body {
 .footer p { margin: 0; line-height: 1.6; }
 .footer a { color: #fff; text-decoration: none; }
 .footer a:hover { text-decoration: underline; }
-.footer .insta-icon { width: 24px; height: 24px; margin-top: 8px; }
+.footer .insta-logo {
+  width: 28px;
+  height: 28px;
+  border-radius: 3%;
+}
 .footer-left { text-align: left; }
 .footer-right { text-align: right; }
 
@@ -269,50 +262,10 @@ body {
 @media (min-width: 585px) {
   .col-custom-6 { flex: 0 0 50%; max-width: 50%; }
   .section-row { flex-direction: row; }
-
   .first-row .kukatko-section { order: 1; }
   .first-row .text-section    { order: 2; }
-
   .second-row .text-section        { order: 1; }
   .second-row .foto-ukazka-vlozene { order: 2; }
-
   .third-row .kukatko-section { order: 1; }
   .third-row .text-section    { order: 2; }
-}
-
-/* === INTERVAL 992–585 === */
-@media (max-width: 991px) and (min-width: 585px) {
-  .text-section, .kukatko-section, .foto-ukazka-vlozene {
-    min-height: 360px;
-    max-height: 480px;
-    height: auto;
-  }
-}
-
-/* === INTERVAL 720 PX → 0 === */
-@media (max-width: 720px) {
-  .text-section, .kukatko-section, .foto-ukazka-vlozene {
-    min-height: 360px;
-    max-height: 480px;
-    height: auto;
-  }
-}
-
-/* === MOBIL (≤585px): správné pořadí === */
-@media (max-width: 585px) {
-  .section-row { flex-direction: column; height: auto; }
-  .text-section, .kukatko-section, .foto-ukazka-vlozene {
-    width: 100%; min-height: 260px;
-  }
-  .first-row .text-section { order: 1; }
-  .first-row .kukatko-section { order: 2; }
-  .second-row .text-section { order: 3; }
-  .second-row .foto-ukazka-vlozene { order: 4; }
-  .third-row .text-section { order: 5; }
-  .third-row .kukatko-section { order: 6; }
-}
-
-/* === FALLBACK === */
-@supports not (aspect-ratio: 1/1) {
-  .text-section, .kukatko-section, .foto-ukazka-vlozene { height: 420px; }
 }
