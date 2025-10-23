@@ -1,12 +1,14 @@
-// === Side menu toggle ===
+// === SIDE MENU TOGGLE ===
 const menuToggle = document.getElementById("menu-toggle");
 const sideMenu = document.getElementById("side-menu");
+
 if (menuToggle) {
   menuToggle.addEventListener("click", (e) => {
     e.stopPropagation();
     sideMenu.classList.toggle("active");
   });
 }
+
 document.addEventListener("click", (e) => {
   if (sideMenu && sideMenu.classList.contains("active")) {
     if (!sideMenu.contains(e.target) && e.target !== menuToggle) {
@@ -15,24 +17,30 @@ document.addEventListener("click", (e) => {
   }
 });
 
-// === Kukátko efekt ===
+// === KUKÁTKO EFEKT ===
 const kukatkoSections = document.querySelectorAll(".kukatko-section");
+
 window.addEventListener("scroll", () => {
   const scrollY = window.scrollY;
   const viewportH = window.innerHeight;
+
   kukatkoSections.forEach((section) => {
     const rect = section.getBoundingClientRect();
     const layer = section.querySelector(".layer-bottom");
     if (!layer) return;
+
     const sectionTop = rect.top + scrollY;
     const sectionH = rect.height;
     const sectionW = rect.width;
     const radius = Math.min(sectionW, sectionH) * 0.45;
+
     const buffer = viewportH * 0.3;
     const startY = sectionTop - viewportH + buffer;
     const endY = sectionTop + sectionH - buffer;
+
     if (scrollY >= startY && scrollY <= endY) {
       const p = (scrollY - startY) / (endY - startY);
+
       if (p < 0.1) layer.style.clipPath = "circle(0 at 50% 50%)";
       else if (p < 0.15) {
         const r = ((p - 0.1) / 0.05) * radius;
@@ -49,7 +57,7 @@ window.addEventListener("scroll", () => {
   });
 });
 
-// === Lightbox obrázky ===
+// === LIGHTBOX OBRÁZKY ===
 const galleryImgs = document.querySelectorAll(".galerie-grid img");
 const lbGallery = document.getElementById("lightbox-gallery");
 const lbImg = document.getElementById("lightbox-img");
@@ -63,12 +71,16 @@ function openGallery(i) {
   lbImg.src = galleryImgs[i].src;
   lbGallery.style.display = "flex";
 }
-function closeGallery() { lbGallery.style.display = "none"; }
+function closeGallery() {
+  lbGallery.style.display = "none";
+}
 
 galleryImgs.forEach((img, i) => {
   img.addEventListener("click", () => openGallery(i));
 });
+
 lbGalleryClose.addEventListener("click", closeGallery);
+
 lbGalleryPrev.addEventListener("click", () => {
   galleryIndex = (galleryIndex - 1 + galleryImgs.length) % galleryImgs.length;
   lbImg.src = galleryImgs[galleryIndex].src;
@@ -77,9 +89,12 @@ lbGalleryNext.addEventListener("click", () => {
   galleryIndex = (galleryIndex + 1) % galleryImgs.length;
   lbImg.src = galleryImgs[galleryIndex].src;
 });
-lbGallery.addEventListener("click", (e) => { if (e.target === lbGallery) closeGallery(); });
 
-// === Lightbox texty ===
+lbGallery.addEventListener("click", (e) => {
+  if (e.target === lbGallery) closeGallery();
+});
+
+// === LIGHTBOX TEXTY ===
 const lbText = document.getElementById("lightbox-text");
 const textSlides = lbText.querySelectorAll(".text-slide");
 const lbTextClose = lbText.querySelector(".close");
@@ -94,9 +109,10 @@ function openTextLightbox(i) {
   textIndex = i;
   lbText.style.display = "flex";
   showTextSlide(i);
-  lbText.querySelector(".text-lightbox").scrollTop = 0;
 }
-function closeTextLightbox() { lbText.style.display = "none"; }
+function closeTextLightbox() {
+  lbText.style.display = "none";
+}
 
 lbTextClose.addEventListener("click", closeTextLightbox);
 lbTextPrev.addEventListener("click", () => {
@@ -107,9 +123,12 @@ lbTextNext.addEventListener("click", () => {
   textIndex = (textIndex + 1) % textSlides.length;
   showTextSlide(textIndex);
 });
-lbText.addEventListener("click", (e) => { if (e.target === lbText) closeTextLightbox(); });
 
-// Napojení side menu odkazů
+lbText.addEventListener("click", (e) => {
+  if (e.target === lbText) closeTextLightbox();
+});
+
+// === NAPOJENÍ SIDE MENU ODKAZŮ ===
 document.querySelectorAll("#side-menu a").forEach((link) => {
   link.addEventListener("click", (e) => {
     e.preventDefault();
@@ -119,12 +138,12 @@ document.querySelectorAll("#side-menu a").forEach((link) => {
   });
 });
 
-// Scroll na kontaktní formulář při kliknutí na email v text-lightboxu
+// === PROKLIK Z EMAILU V POPUPU NA KONTAKTNÍ FORMULÁŘ ===
 const gotoContact = document.getElementById("goto-contact");
 if (gotoContact) {
   gotoContact.addEventListener("click", (e) => {
     e.preventDefault();
     closeTextLightbox();
-    document.getElementById("message").scrollIntoView({ behavior: "smooth" });
+    document.getElementById("name").scrollIntoView({ behavior: "smooth" });
   });
 }
