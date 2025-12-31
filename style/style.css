@@ -57,7 +57,7 @@ body {
   overflow: hidden;
   max-width: 910px;
   margin: 0 auto 20px auto;
-  padding: 0px; /* upraveno */
+  padding: 0px;
   border-radius: 10%;
 }
 .banner-img {
@@ -94,27 +94,56 @@ body {
   padding: 2rem;
   background: #fff;
   box-sizing: border-box;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 1 / 1; /* nad breakpointem chceme čtverec */
   height: auto;
 }
 .text-section h2 {
   margin: 0 0 1rem;
   padding-top: 5px;
-  font-weight: bold; /* nově tučně */
+  font-weight: bold;
 }
 .text-section p { font-weight: normal; }
 
+/* === SEZNAM S CHECKY (nově) === */
+.feature-list {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0;
+}
+.feature-item {
+  position: relative;
+  padding-left: 34px; /* odsazení pro ikonu */
+  margin: 0 0 0.6rem;
+  line-height: 1.35;
+}
+.feature-item::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 0.1rem;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #2ecc71; /* zelený circle */
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 /* === DEKORACE (ponechány jen spodní) === */
 .icon-deco {
-  position: absolute;
+  
   height: 75px;
   width: auto;
   z-index: 3;
-  opacity: 0.75; /* nově */
+  opacity: 0.75;
 }
 .icon-bottom-right {
-  bottom: 45px;
-  right: 40px;
+  margin: 0px auto;
+  
 }
 
 /* === FORMULÁŘ === */
@@ -127,8 +156,12 @@ body {
   padding: 8px 10px;
 }
 .order-form button {
-  background: #007bff; border: none; border-radius: 6px;
-  padding: 10px 20px; color: #fff; cursor: pointer;
+  background: #007bff;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+  color: #fff;
+  cursor: pointer;
   margin-top: 35px;
 }
 .order-form button:hover { background: #0056b3; }
@@ -138,7 +171,7 @@ body {
 .kukatko-section {
   position: relative;
   overflow: hidden;
-  aspect-ratio: 1/1;
+  aspect-ratio: 1/1; /* vždy čtverec */
   height: auto;
 }
 .layer { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
@@ -154,7 +187,7 @@ body {
 .foto-ukazka-vlozene {
   position: relative;
   overflow: hidden;
-  aspect-ratio: 1/1;
+  aspect-ratio: 1/1; /* vždy čtverec */
   height: auto;
   padding: 0 !important;
 }
@@ -204,7 +237,7 @@ body {
 .text-slide.active { display: block; }
 .text-slide h2 {
   margin-bottom: 1rem;
-  font-weight: bold; /* nově tučně */
+  font-weight: bold;
 }
 .text-slide p { margin: 0 0 1rem; }
 .text-slide img {
@@ -222,9 +255,7 @@ body {
   border-radius: 10px;
   border: 1px solid #ddd;
 }
-.calc-section {
-  margin-bottom: 1.2rem;
-}
+.calc-section { margin-bottom: 1.2rem; }
 .calc-section h4 {
   font-size: 1rem;
   margin-bottom: 0.6rem;
@@ -233,9 +264,8 @@ body {
   display: flex;
   justify-content: space-between;
   gap: 10px;
-  flex-wrap: nowrap; /* zachová vedle sebe */
+  flex-wrap: nowrap; /* default: vedle sebe */
 }
-
 .calc-btn {
   flex: 1 1 50%;
   text-align: center;
@@ -248,17 +278,12 @@ body {
   transition: all 0.2s ease;
   white-space: nowrap;
 }
-
-.calc-btn:hover {
-  background: #eee;
-}
-
+.calc-btn:hover { background: #eee; }
 .calc-btn.active {
   background: #007bff;
   color: #fff;
   border-color: #007bff;
 }
-
 .calc-result {
   text-align: center;
   margin-top: 1.5rem;
@@ -291,9 +316,7 @@ body {
   cursor: pointer;
   user-select: none;
 }
-.lightbox .close {
-  top: 10px; right: 10px;
-}
+.lightbox .close { top: 10px; right: 10px; }
 .lightbox .prev,
 .lightbox .next {
   top: 50%;
@@ -313,14 +336,20 @@ body {
 .footer a { color: #fff; text-decoration: none; }
 .footer a:hover { text-decoration: underline; }
 .footer .insta-icon {
-  width: 24px; height: 24px; margin-top: 8px;
+  width: 24px;
+  height: 24px;
+  margin-top: 8px;
   border-radius: 3%;
 }
 .footer-left { text-align: left; }
 .footer-right { text-align: right; }
 
-/* === GRID OD 585 PX === */
-@media (min-width: 585px) {
+/* ================================
+   BREAKPOINT: 785 PX (nově)
+   ================================ */
+
+/* === GRID OD 785 PX === */
+@media (min-width: 785px) {
   .col-custom-6 { flex: 0 0 50%; max-width: 50%; }
   .section-row { flex-direction: row; }
 
@@ -334,8 +363,8 @@ body {
   .third-row .text-section    { order: 2; }
 }
 
-/* === INTERVAL 992–585 === */
-@media (max-width: 991px) and (min-width: 585px) {
+/* === INTERVAL 992–785 === */
+@media (max-width: 991px) and (min-width: 785px) {
   .text-section, .kukatko-section, .foto-ukazka-vlozene {
     min-height: 360px;
     max-height: 480px;
@@ -343,18 +372,45 @@ body {
   }
 }
 
-/* === MOBIL (≤585px) === */
-@media (max-width: 585px) {
-  .section-row { flex-direction: column; height: auto; }
-  .text-section, .kukatko-section, .foto-ukazka-vlozene {
-    width: 100%; min-height: 260px;
+/* === POD 785 PX: textové sekce AUTO výška (wrap podle obsahu),
+   ale kukátka + 3×3 galerie zůstávají čtverce === */
+@media (max-width: 784px) {
+  .section-row {
+    flex-direction: column;
+    height: auto;
   }
+
+  /* TEXT/FORM: zrušíme čtvercové fixování */
+  .text-section {
+    aspect-ratio: auto;
+    height: auto;
+    min-height: unset;
+  }
+
+  /* ČTVERCE ponecháme */
+  .kukatko-section,
+  .foto-ukazka-vlozene {
+    width: 100%;
+    aspect-ratio: 1/1;
+    height: auto;
+    min-height: 260px; /* bezpečnostní minimum */
+  }
+
+  /* pořadí ve sloupci (ponecháváme vaše existující) */
   .first-row .text-section { order: 1; }
   .first-row .kukatko-section { order: 2; }
   .second-row .text-section { order: 3; }
   .second-row .foto-ukazka-vlozene { order: 4; }
   .third-row .text-section { order: 5; }
   .third-row .kukatko-section { order: 6; }
+
+  /* kdyby v ceníku začaly buttony přetékat, dovolíme wrap */
+  .calc-options {
+    flex-wrap: wrap;
+  }
+  .calc-btn {
+    white-space: normal;
+  }
 }
 
 /* === FALLBACK === */

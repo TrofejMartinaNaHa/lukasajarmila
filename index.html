@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="cs">
-<head>
+<html lang="cs"><head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>To je moje, to mám rád</title>
@@ -11,7 +10,7 @@
 
   <!-- HORIZONTÁLNÍ MENU -->
   <nav class="top-nav">
-    <div class="nav-col left">to je moje</div>
+    <div class="nav-col left">tojemoje</div>
     <div class="nav-col center"></div>
     <div class="nav-col right">
       <span id="menu-toggle" class="menu-icon">☰</span>
@@ -20,12 +19,12 @@
 
   <!-- POSTRANNÍ MENU -->
   <div id="side-menu" class="side-menu">
-    <a href="#" data-text-index="0">Jak na to</a>
-    <a href="#" data-text-index="1">Kde</a>
-    <a href="#" data-text-index="2">Ceník</a>
-    <a href="#" data-text-index="3">Podmínky</a>
-    <a href="#" data-text-index="4">Kontakt</a>
-  </div>
+  <a href="#" data-text-index="0">Jak na to</a>
+  <a href="#" data-text-index="1">Ceník</a>
+  <a href="#" data-text-index="2">Podmínky</a>
+  <a href="#" data-text-index="3">Kontakt</a>
+</div>
+
 
   <!-- BANNER -->
   <section class="banner d-flex align-items-center justify-content-center">
@@ -48,7 +47,7 @@
         <!-- NOVÉ DEKORACE -->
         
         <h2>Nechte si nafotit sbírku uměleckých nebo osobních předmětů</h2>
-        <p>S pomocí fotografie vytvoříte i ze zdánlivých maličkostí velké věci a možná, že i u věrně známzých kousků odhalíte krásu dosud nepozorovanou.</p>
+        <p>Ze zdánlivých maličkostí vytvářejte velké věci a u těch věrně známých odhalujte v novém světle krásu dosud nepozorovanou.</p>
         <img src="style/portretek.png" alt="Portrétek" class="icon-deco icon-bottom-right">
       </div>
     </div>
@@ -59,7 +58,22 @@
         <!-- NOVÉ DEKORACE -->
         
         <h2>Nabízíme digitální tvorbu katalogu s fotografiemi</h2>
-        <p> Výsledkem je přehledném uspořádání předmětů jak pro vlastní orientaci, tak pro prezentaci širšímu publiku. V tomto smyslu získáte nejen užitečného průvodce, ale i zhodnocení každé věci pro případný prodej. K tomu všemu navíc může kvalitní fotografie v čase prospět i na poli restaurátorském či badatelském.</p>
+        <p>Pro přehledné uspořádání předmětů, efektivní orientaci a působivou prezentaci širšímu publiku.</p>
+        <ul class="feature-list">
+          <li class="feature-item">
+            Praktický průvodce
+          </li>
+          <li class="feature-item">
+            Efektní prezentace
+          </li>
+          <li class="feature-item">
+            Elegantní zhodnocení předmětu
+          </li>
+          <li class="feature-item">
+            Podklady pro restaurátorské či badatelské účely
+          </li>
+          </ul>
+
         <img src="style/vaza_blesk.png" alt="Váza s bleskem" class="icon-deco icon-bottom-right">
       </div>
       <div class="col-12 col-custom-6 foto-ukazka-vlozene">
@@ -92,15 +106,15 @@
         <form action="https://formspree.io/f/vas-kod" method="POST" class="order-form flex-grow-1 d-flex flex-column justify-content-center">
           <div class="mb-small">
             <label for="name" class="form-label">Jméno</label>
-            <input type="text" class="form-control" id="name" name="name" required placeholder="Jmenuji se">
+            <input type="text" class="form-control" id="name" name="name" required="" placeholder="Jmenuji se">
           </div>
           <div class="mb-small">
             <label for="email" class="form-label">E-mail</label>
-            <input type="email" class="form-control" id="email" name="_replyto" required placeholder="muj@email.com">
+            <input type="email" class="form-control" id="email" name="_replyto" required="" placeholder="muj@email.com">
           </div>
           <div class="mb-small flex-grow-1">
             <label for="message" class="form-label">Zpráva</label>
-            <textarea class="form-control h-100" id="message" name="message" rows="1.5" required placeholder="Rád bych si nechal nafotit sbírku."></textarea>
+            <textarea class="form-control h-100" id="message" name="message" rows="1.5" required="" placeholder="Rád bych si nechal nafotit sbírku..."></textarea>
           </div>
           <div class="mt-auto">
             <button type="submit" class="btn btn-primary w-100">Odeslat</button>
@@ -116,52 +130,71 @@
       <span class="close">×</span>
 
       <div class="text-slide active">
-        <h2>Jak na to</h2>
-        <p>Napište nám na 
-          <a href="#contact-form" id="goto-contact">tojemojexyz@gmail.com</a> 
-          přibližný <strong>počet a typ předmětů</strong> k nafocení a potom si snadno doladíme i místo a čas pro naši práci.</p>
-        <img src="style/vaza_blesk.png" alt="Ilustrační obrázek – Váza">
-      </div>
+  <h2>Jak na to</h2>
 
-      <div class="text-slide">
-        <h2>Kde</h2>
-        <p>Pracujeme v terénu i u nás v ateliéru. Můžete se vypravit za námi na naší adresu Voršilská 3, Praha 1 a s sebou si klidně přivézt i svou sbírku...</p>
-        <img src="style/fotak.png" alt="Ilustrační obrázek – Fotoaparát">
-      </div>
+  <p>
+    Napište nám na 
+    <a href="mailto:tojemojexyz@gmail.com">tojemojexyz@gmail.com</a> 
+    přibližný <strong>počet a typ předmětů</strong> k nafocení
+    a potom si snadno doladíme i místo a čas pro naši práci.
+  </p>
 
-      <div class="text-slide">
+  <img src="style/vaza_blesk.png" alt="Ilustrační obrázek – Váza">
+
+  <!-- KOPIE KONTAKTNÍHO FORMULÁŘE -->
+  
+  <form action="https://formspree.io/f/vas-kod" method="POST" class="order-form">
+    <div class="mb-small">
+      <label class="form-label">Jméno</label>
+      <input type="text" class="form-control" name="name" required>
+    </div>
+
+    <div class="mb-small">
+      <label class="form-label">E-mail</label>
+      <input type="email" class="form-control" name="_replyto" required>
+    </div>
+
+    <div class="mb-small">
+      <label class="form-label">Zpráva</label>
+      <textarea class="form-control" rows="2" name="message" required></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary w-100 mt-3">
+      Odeslat
+    </button>
+  </form>
+</div>
+
+
+        <div class="text-slide">
   <h2>Ceník</h2>
-  <p>Ve své pořizovací ceně představuje fotografie zpravidla zlomek hodnoty fotografovaného předmětu a její pozitivní efekt může být v tomto smyslu naopak násobným.</p>
+  <p>Cena je počítána od 250 Kč za fotografii a je odvislá od náročnosti příprav a průběhu focení u jednotlivých předmětů (váha, velikost, specifické materiály a s nimi spojená manipulace apod.).</p>
   <img src="style/zatisi.png" alt="Ilustrační obrázek – Zátiší">
-  <div class="calculator">
-    <div class="calc-section">
-      <h4>Velikost fotografovaného předmětu:</h4>
-      <div class="calc-options" data-group="size">
-        <button class="calc-btn" data-value="small">Menší (do 150&nbsp;cm)</button>
-        <button class="calc-btn" data-value="large">Větší (nad 150&nbsp;cm)</button>
-      </div>
-    </div>
-
-    <div class="calc-section">
-      <h4>Váha fotografovaného předmětu:</h4>
-      <div class="calc-options" data-group="weight">
-        <button class="calc-btn" data-value="light">Lehčí (do 5&nbsp;kg)</button>
-        <button class="calc-btn" data-value="heavy">Těžší (nad 5&nbsp;kg)</button>
-      </div>
-    </div>
-
-    <div class="calc-result">
-      <h4>Orientační cena:</h4>
-      <p id="calc-output">–</p>
-    </div>
-  </div>
+  
 
   
 </div>
 
 
       <div class="text-slide"><h2>Podmínky</h2><p>Zde budou podmínky…</p></div>
-      <div class="text-slide"><h2>Kontakt</h2><p>Zde budou kontakty…</p></div>
+      
+      <div class="text-slide">
+        <h2>Kontakt</h2>
+          <p>
+          Pracujeme v terénu i u nás v ateliéru.
+          Můžete se vypravit za námi na adresu
+          <strong>Voršilská 3, Praha 1</strong>,
+          nebo přijedeme my za vámi a přivezeme si potřebné foto vybavení.
+          </p>
+
+          <img src="style/fotak.png" alt="Ilustrační obrázek – Fotoaparát">
+
+  <p>
+    📧 <a href="mailto:tojemojexyz@gmail.com">tojemojexyz@gmail.com</a><br>
+    📍 Voršilská 3, 110 00 Praha 1
+  </p>
+</div>
+
 
       <a class="prev">❮</a>
       <a class="next">❯</a>
@@ -200,5 +233,6 @@
   </footer>
 
   <script src="style/script.js"></script>
-</body>
-</html>
+
+
+</body></html>
