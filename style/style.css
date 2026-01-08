@@ -59,6 +59,13 @@ body {
   margin: 0 auto 20px auto;
   padding: 0px;
   border-radius: 10%;
+  aspect-ratio: 16 / 9;
+}
+.banner-video{
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
 }
 .banner-img {
   width: 100%;
@@ -101,6 +108,7 @@ body {
   margin: 0 0 1rem;
   padding-top: 5px;
   font-weight: bold;
+  font-size: calc(1.25rem + .9vw);
 }
 .text-section p { font-weight: normal; }
 
@@ -145,6 +153,36 @@ body {
   margin: 0px auto;
   
 }
+
+/* === IKONOVÝ LIST (3 ikony vedle sebe) === */
+.icon-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;            /* když není místo, zalomí se */
+}
+
+.icon-list li { margin: 0; padding: 0; }
+
+/* pokud chceš držet stejnou logiku "bottom-right" jako dřív */
+.text-section { position: relative; } /* už máš, jen připomínám */
+
+.icon-list.icon-bottom-right {
+  margin: 0 auto;
+}
+
+/* velikost ikon v listu */
+.icon-list .icon-deco {
+  height: 75px;               /* odpovídá tvé současné velikosti */
+  width: auto;
+  opacity: 0.75;
+  display: block;
+}
+
 
 /* === FORMULÁŘ === */
 .order-form { width: 100%; }
@@ -246,6 +284,11 @@ body {
   display: block;
   border-radius: 3%;
 }
+
+.list_middle_img {
+        min-height: 120px;
+    }
+
 
 /* === KALKULAČKA V CENÍKU === */
 .calculator {
@@ -361,7 +404,12 @@ body {
 
   .third-row .kukatko-section { order: 1; }
   .third-row .text-section    { order: 2; }
+
+  #icon_zatisi {
+        display: none;
+    }
 }
+
 
 /* === INTERVAL 992–785 === */
 @media (max-width: 991px) and (min-width: 785px) {
@@ -385,7 +433,14 @@ body {
     aspect-ratio: auto;
     height: auto;
     min-height: unset;
+    padding: 7% 12%;
+    
   }
+
+  .main-content {
+      padding: 0 7%;
+}
+
 
   /* ČTVERCE ponecháme */
   .kukatko-section,
@@ -411,9 +466,15 @@ body {
   .calc-btn {
     white-space: normal;
   }
+
+  
 }
 
 /* === FALLBACK === */
 @supports not (aspect-ratio: 1/1) {
   .text-section, .kukatko-section, .foto-ukazka-vlozene { height: 420px; }
+}
+
+@supports not (aspect-ratio: 16 / 9) {
+  .banner { height: 320px; }
 }
