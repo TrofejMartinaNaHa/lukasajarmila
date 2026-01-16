@@ -1,5 +1,5 @@
 body {
-  background-color: #f8f9fa;
+  background-color: white;
   margin: 0;
   overflow-x: hidden;
   padding-top: 35px;
@@ -52,27 +52,47 @@ body {
 .side-menu.active { right: 0; }
 
 /* === BANNER === */
-.banner {
-  background-color: #ddd;
+.banner{
+  position: relative;
   overflow: hidden;
   max-width: 910px;
   margin: 0 auto 20px auto;
-  padding: 0px;
+  padding: 0;
   border-radius: 10%;
   aspect-ratio: 16 / 9;
-  margin: 0 7% 3% 7%;
 }
+
+/* video jako pozadí */
 .banner-video{
   width: 100%;
   height: 100%;
+  object-fit: cover;
   display: block;
-  object-fit: cover;
 }
-.banner-img {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
+
+/* textová vrstva */
+.banner-overlay{
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  z-index: 2;
+  pointer-events: none; /* neblokuje interakce */
 }
+
+/* samotný nadpis */
+.banner-overlay h1{
+  color: #fff;
+  text-align: center;
+  font-weight: 700;
+  line-height: 1.2;
+  max-width: 80%;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.45);
+  font-size: clamp(1.4rem, 3.5vw, 2.6rem);
+}
+
 
 /* === HLAVNÍ KONTEJNER === */
 .main-content {
@@ -113,6 +133,17 @@ body {
 }
 .text-section p { font-weight: normal; }
 
+.emotikon_uprostred_p {
+    font-size: 1rem;
+    text-align: center;
+    margin: 0;
+}
+
+.w-100 {
+    width: 100% !important;
+    margin: auto;
+}
+
 /* === SEZNAM S CHECKY (nově) === */
 .feature-list {
   list-style: none;
@@ -145,7 +176,7 @@ body {
 /* === DEKORACE (ponechány jen spodní) === */
 .icon-deco {
   
-  height: 75px;
+  height: 120px;
   width: auto;
   z-index: 3;
   opacity: 0.75;
@@ -253,8 +284,8 @@ body {
   z-index: 10000;
   left: 0; top: 0;
   width: 100%; height: 100%;
-  background-color: rgba(0,0,0,0.6);
-  justify-content: center;
+  background-color: #e9ecef;
+  justify-content:  center;
   align-items: center;
   text-align: center;
 }
@@ -487,6 +518,10 @@ body {
   }
 
   
+}
+
+@media (max-width: 785px){
+  .banner{ aspect-ratio: 4 / 5; }  /* nebo 1/1 či 9/16 podle videa */
 }
 
 /* === FALLBACK === */
