@@ -381,6 +381,31 @@ body {
   border-radius: 3%;
 }
 
+/* === ANIMOVANÝ TEXT === */
+
+.animovany-text {
+  /* 1. Nastavení přechodu */
+  background: linear-gradient(to right, #aa41ff, #e62bff, #23b5f9, #b341ff);
+  background-size: 200% auto; /* Zvětšení pozadí pro plynulý posun */
+  
+  /* 2. Oříznutí pozadí na text */
+  -webkit-background-clip: text;
+  background-clip: text;
+  
+  /* 3. Zprůhlednění původní barvy textu */
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  
+  /* 4. Animace */
+  animation: menicibarevnytext 3s linear infinite;
+}
+
+/* Definice animace */
+@keyframes menicibarevnytext {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
 /* === OVLÁDACÍ PRVKY LIGHTBOXŮ === */
 .lightbox .close,
 .lightbox .prev,
@@ -428,11 +453,11 @@ body {
   .col-custom-6 { flex: 0 0 50%; max-width: 50%; }
   .section-row { flex-direction: row; }
 
-  .first-row .kukatko-section { order: 1; }
+  .first-row .foto-ukazka-vlozene { order: 1; }
   .first-row .text-section    { order: 2; }
 
   .second-row .text-section        { order: 1; }
-  .second-row .foto-ukazka-vlozene { order: 2; }
+  .second-row .kukatko-section { order: 2; }
 
   .third-row .kukatko-section { order: 1; }
   .third-row .text-section    { order: 2; }
@@ -502,12 +527,12 @@ body {
   }
 
   /* pořadí ve sloupci (ponecháváme vaše existující) */
-  .first-row .text-section { order: 1; }
-  .first-row .kukatko-section { order: 2; }
-  .second-row .text-section { order: 3; }
-  .second-row .foto-ukazka-vlozene { order: 4; }
-  .third-row .text-section { order: 5; }
-  .third-row .kukatko-section { order: 6; }
+  .first-row .foto-ukazka-vlozene { order: 1; }
+  .first-row .text-section { order: 2; }
+  .second-row .kukatko-section { order: 3; }
+  .second-row .text-section { order: 4; }
+  .third-row .kukatko-section { order: 5; }
+  .third-row .text-section { order: 6; }
 
   /* kdyby v ceníku začaly buttony přetékat, dovolíme wrap */
   .calc-options {
