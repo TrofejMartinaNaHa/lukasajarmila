@@ -277,6 +277,98 @@ body {
   cursor: pointer;
 }
 
+/* === DRAG GRID (3x3) === */
+.drag-grid .grid-item {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+  user-select: none;
+  touch-action: none; /* důležité pro mobile pointer drag */
+  border-radius: 6px;           /* jemné zaoblení pro efekt */
+  overflow: hidden;             /* aby ring seděl na okrajích */
+}
+
+/* pseudo-rámeček, který umí animaci */
+.drag-grid .grid-item::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 6px;
+  pointer-events: none;
+
+  /* "rám" uděláme přes background + mask */
+  padding: 2px;
+  background: linear-gradient(90deg, #000, #fff, #000);
+  background-size: 200% 200%;
+  opacity: 0;
+  transform: scale(0.995);
+  transition: opacity 160ms ease, transform 160ms ease;
+  
+  /* maska aby byl vidět jen okraj */
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+}
+
+.drag-grid .grid-item:active {
+  cursor: grabbing;
+}
+
+.drag-grid .grid-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* číslo v levém horním rohu */
+.drag-grid .grid-index {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 999px;
+  color: #1b7f2a; /* zelený "check" vibe */
+  z-index: 2;
+}
+
+/* drag styling */
+.drag-grid .grid-item.dragging {
+  opacity: 0.55;
+}
+
+.drag-grid .grid-item.drop-target {
+  outline: 2px dashed rgba(0,0,0,0.35);
+  outline-offset: -4px;
+}
+
+/* "tap highlight" pro touch – spustíme přes JS třídou */
+.drag-grid .grid-item.is-pressed::after {
+  opacity: 1;
+  transform: scale(1);
+  animation: bwRing 1.2s linear infinite;
+}
+
+/* při samotném tažení trošku výraznější feedback */
+.drag-grid .grid-item.dragging::after {
+  opacity: 1;
+  transform: scale(1);
+  animation: bwRing 0.8s linear infinite;
+}
+
+
 /* === LIGHTBOX OBECNÝ === */
 .lightbox {
   display: none;
@@ -385,7 +477,7 @@ body {
 
 .animovany-text {
   /* 1. Nastavení přechodu */
-  background: linear-gradient(to right, #aa41ff, #e62bff, #23b5f9, #b341ff);
+  background: linear-gradient(to right, #c477f7, #e62bff, #23b5f9, #fd912b);
   background-size: 200% auto; /* Zvětšení pozadí pro plynulý posun */
   
   /* 2. Oříznutí pozadí na text */
@@ -527,12 +619,12 @@ body {
   }
 
   /* pořadí ve sloupci (ponecháváme vaše existující) */
-  .first-row .foto-ukazka-vlozene { order: 1; }
-  .first-row .text-section { order: 2; }
-  .second-row .kukatko-section { order: 3; }
-  .second-row .text-section { order: 4; }
-  .third-row .kukatko-section { order: 5; }
-  .third-row .text-section { order: 6; }
+  .first-row .text-section { order: 1; }
+  .first-row .foto-ukazka-vlozene { order: 2; }
+  .second-row .text-section { order: 3; }
+  .second-row .kukatko-section { order: 4; }
+  .third-row .text-section { order: 5; }
+  .third-row .kukatko-section { order: 6; }
 
   /* kdyby v ceníku začaly buttony přetékat, dovolíme wrap */
   .calc-options {
@@ -547,6 +639,28 @@ body {
 
 @media (max-width: 785px){
   .banner{ aspect-ratio: 4 / 5; }  /* nebo 1/1 či 9/16 podle videa */
+}
+
+/* hover na desktopu */
+@media (hover: hover) and (pointer: fine) {
+  .drag-grid .grid-item:hover::after {
+    opacity: 1;
+    transform: scale(1);
+    animation: bwRing 1.2s linear infinite;
+  }
+}
+
+@keyframes bwRing {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+/* volitelně: lehké "nadskočení" při hoveru (jen desktop) */
+@media (hover: hover) and (pointer: fine) {
+  .drag-grid .grid-item:hover {
+    transform: translateY(-2px);
+    transition: transform 160ms ease;
+  }
 }
 
 /* === FALLBACK === */

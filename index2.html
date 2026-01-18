@@ -1,0 +1,259 @@
+<!DOCTYPE html> 
+<html lang="cs"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To je moje, to mám rád</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+
+  <!-- HORIZONTÁLNÍ MENU -->
+  <nav class="top-nav">
+    <div class="nav-col left">tojemoje</div>
+    <div class="nav-col center"></div>
+    <div class="nav-col right">
+      <span id="menu-toggle" class="menu-icon">☰</span>
+    </div>
+  </nav>
+
+  <!-- POSTRANNÍ MENU -->
+  <div id="side-menu" class="side-menu">
+  <a href="#" data-text-index="0">Jak na to</a>
+  <a href="#" data-text-index="1">Ceník</a>
+  <a href="#" data-text-index="2">Podmínky</a>
+  <a href="#" data-text-index="3">Kontakt</a>
+</div>
+
+
+  
+  <!-- BANNER -->
+<section class="banner d-flex align-items-center justify-content-center">
+  <video class="banner-video" autoplay="" muted="" loop="" playsinline="" preload="metadata">
+    <source src="style/Tojemoje_banner_video_Nova_sin.MP4" type="video/mp4">
+    Váš prohlížeč nepodporuje video tag.
+  </video>
+</section>
+
+
+  <div class="container main-content">
+
+    <!-- 1. řádek – Kukátko vlevo, Text vpravo -->
+    <div class="row align-items-stretch section-row first-row">
+      <div class="col-12 col-custom-6 kukatko-section d-flex">
+        <div class="layer layer-top">
+          <img src="style/top1.jpg" alt="Vrchní obrázek">
+        </div>
+        <div class="layer layer-bottom" style="clip-path: circle(175.5px at 50% 50%);">
+          <img src="style/bottom1.jpg" alt="Spodní obrázek">
+        </div>
+      </div>
+      <div class="col-12 col-custom-6 text-section d-flex flex-column">
+        <!-- NOVÉ DEKORACE -->
+        
+        <h2>Nechte si nafotit sbírku uměleckých nebo osobních předmětů</h2>
+        <p>⭐ Díky fotografii zazáří vaše milé kousky ve zcela novém světle. Objevte skryté detaily, nové úhly pohledu i krásu běžně nevídanou. <br><br>  🌎 Z jednotlivých fotek si tvořte vlastní kompozice a posílejte je s námi dál do světa ve formě přehledného online katalogu.</p>
+        <ul class="icon-list icon-bottom-right" aria-label="Dekorativní ikony">
+          <li><img src="style/vaza_blesk.png" alt="Ilustrace vaza" id="icon_vaza_blesk" class="icon-deco list_middle_img"></li>
+        </ul>
+
+      </div>
+    </div>
+
+    <!-- 2. řádek – Text vlevo, Galerie vpravo -->
+    <div class="row align-items-stretch section-row second-row">
+      <div class="col-12 col-custom-6 text-section d-flex flex-column">
+        <!-- NOVÉ DEKORACE -->
+        
+        <h2>Nabízíme tvorbu digitálního katalogu s fotografiemi</h2>
+        <p>Pro vlastní organizaci předmětů i prezentaci širšímu publiku.</p>
+        <ul class="feature-list">
+          <li class="feature-item">
+            Praktický průvodce
+          </li>
+          <li class="feature-item">
+            Působivá prezentace
+          </li>
+          <li class="feature-item">
+            Lehce přenositelná data
+          </li>
+          <li class="feature-item">
+            Možnost vytvoření online katalogu na webu
+          </li>
+        </ul>
+
+        <img src="style/zatisi.png" alt="Zatisi fotografie" id="icon_zatisi" class="icon-deco list_middle_img icon-bottom-right">
+      </div>
+      <div class="col-12 col-custom-6 foto-ukazka-vlozene">
+        <div class="galerie-grid">
+          <img src="style/gallery1.jpg" alt="Foto 1">
+          <img src="style/gallery2.jpg" alt="Foto 2">
+          <img src="style/gallery3.jpg" alt="Foto 3">
+          <img src="style/gallery4.jpg" alt="Foto 4">
+          <img src="style/gallery5.jpg" alt="Foto 5">
+          <img src="style/gallery6.jpg" alt="Foto 6">
+          <img src="style/gallery7.jpg" alt="Foto 7">
+          <img src="style/gallery8.jpg" alt="Foto 8">
+          <img src="style/gallery9.jpg" alt="Foto 9">
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. řádek – Kukátko vlevo, Formulář vpravo -->
+    <div class="row align-items-stretch section-row third-row">
+      <div class="col-12 col-custom-6 kukatko-section d-flex">
+        <div class="layer layer-top">
+          <img src="style/top2.jpg" alt="Vrchní obrázek">
+        </div>
+        <div class="layer layer-bottom" style="clip-path: circle(0px at 50% 50%);">
+          <img src="style/bottom2.jpg" alt="Spodní obrázek">
+        </div>
+      </div>
+      <div class="col-12 col-custom-6 text-section d-flex flex-column">
+        <h2 class="mb-4">Napište nám</h2>
+        <form action="https://formspree.io/f/vas-kod" method="POST" class="order-form flex-grow-1 d-flex flex-column justify-content-center">
+          <div class="mb-small">
+            <label for="name" class="form-label">Jméno</label>
+            <input type="text" class="form-control" id="name" name="name" required="" placeholder="Jmenuji se">
+          </div>
+          <div class="mb-small">
+            <label for="email" class="form-label">E-mail</label>
+            <input type="email" class="form-control" id="email" name="_replyto" required="" placeholder="muj@email.com">
+          </div>
+          <div class="mb-small flex-grow-1">
+            <label for="message" class="form-label">Zpráva</label>
+            <textarea class="form-control h-100" id="message" name="message" rows="1.5" required="" placeholder="Rád bych si nechal nafotit sbírku..."></textarea>
+          </div>
+          <div class="mt-auto">
+            <button type="submit" class="btn btn-primary w-100">Odeslat</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- POPUP LIGHTBOX TEXTY -->
+  <div id="lightbox-text" class="lightbox">
+    <div class="text-lightbox">
+      <span class="close">×</span>
+
+      <div class="text-slide active">
+  <h2>Jak na to</h2>
+
+  <p>
+    Napište nám na 
+    <a href="mailto:tojemojexyz@gmail.com">tojemojexyz@gmail.com</a> 
+    přibližný <strong>počet a typ předmětů</strong> k nafocení
+    a potom si snadno doladíme i místo a čas pro naši práci.
+  </p>
+
+  <img src="style/vaza_blesk.png" alt="Ilustrační obrázek – Váza">
+
+  <!-- KOPIE KONTAKTNÍHO FORMULÁŘE -->
+  
+  <form action="https://formspree.io/f/vas-kod" method="POST" class="order-form">
+    <div class="mb-small">
+      <label class="form-label">Jméno</label>
+      <input type="text" class="form-control" name="name" required="">
+    </div>
+
+    <div class="mb-small">
+      <label class="form-label">E-mail</label>
+      <input type="email" class="form-control" name="_replyto" required="">
+    </div>
+
+    <div class="mb-small">
+      <label class="form-label">Zpráva</label>
+      <textarea class="form-control" rows="2" name="message" required=""></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary w-100 mt-3">
+      Odeslat
+    </button>
+  </form>
+</div>
+
+
+        <div class="text-slide">
+  <h2>Ceník</h2>
+  <p>Cena je orientačně počítána <strong>od 250 Kč za fotografii</strong> a je odvislá od náročnosti příprav, průběhu focení a způsobu předání a postprodukce nafocených dat.</p>
+  <img src="style/zatisi.png" alt="Ilustrační obrázek – Zátiší">
+  <p>Výsledkem mohou být fotografie: 
+    <br> 📦 na fyzickém nosiči, <br>
+    <br> 📧 odeslané elektronicky prostřednictvím externího úložiště, <br>
+    <br> 🛰️ přístupné ve formě online katalogu prostřednictvím uživatelského účtu na našich webových stránkách tojemoje.xyz, kde si můžete svou sbírku sami dále doplňovat a spravovat.</p>
+  <div class="galerie-grid">
+          <img src="style/gallery1.jpg" alt="Foto 1">
+          <img src="style/gallery2.jpg" alt="Foto 2">
+          <img src="style/gallery3.jpg" alt="Foto 3">
+          <img src="style/gallery4.jpg" alt="Foto 4">
+          <img src="style/gallery5.jpg" alt="Foto 5">
+          <img src="style/gallery6.jpg" alt="Foto 6">
+          <img src="style/gallery7.jpg" alt="Foto 7">
+          <img src="style/gallery8.jpg" alt="Foto 8">
+          <img src="style/gallery9.jpg" alt="Foto 9">
+        </div>
+  
+
+  
+</div>
+
+
+      <div class="text-slide"><h2>Podmínky</h2><p>Zde budou podmínky…</p></div>
+      
+      <div class="text-slide">
+        <h2>Kontakt</h2>
+          <p>
+          Pracujeme v terénu i u nás v ateliéru.
+          Můžete se vypravit za námi na adresu
+          <strong>Voršilská 3, Praha 1</strong>,
+          nebo přijedeme my za vámi a přivezeme si potřebné foto vybavení.
+          </p>
+
+          <img src="style/fotak.png" alt="Ilustrační obrázek – Fotoaparát">
+
+  <p>
+    📧 <a href="mailto:tojemojexyz@gmail.com">tojemojexyz@gmail.com</a><br>
+    📍 Voršilská 3, 110 00 Praha 1 <br> Lukáš Rybka <br> IČO 06384951
+  </p>
+</div>
+
+
+      <a class="prev">❮</a>
+      <a class="next">❯</a>
+    </div>
+  </div>
+
+  <!-- POPUP LIGHTBOX OBRÁZKY -->
+  <div id="lightbox-gallery" class="lightbox">
+    <div class="gallery-lightbox">
+      <span class="close">×</span>
+      <img class="lightbox-content" id="lightbox-img" alt="">
+      <a class="prev">❮</a>
+      <a class="next">❯</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-8 footer-left">
+          <p>
+          📧 <a href="mailto:tojemojexyz@gmail.com">tojemojexyz@gmail.com</a><br>
+          📍 Voršilská 3, 110 00 Praha 1 <br> 🕺 Lukáš Rybka <br> 📏 IČO 06384951
+         </p>
+        </div>
+        <div class="col-4 footer-right">
+          <a href="https://instagram.com" target="_blank">
+            <img src="style/insta_logo.png" alt="Instagram" class="insta-icon">
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="style/script.js"></script>
+
+
+</body></html>

@@ -225,3 +225,114 @@ if (calcButtons.length && calcOutput) {
     calcOutput.textContent = price;
   }
 }
+
+function initSortableGrid(grid) {
+  if (!grid) return;
+
+  const items = () => Array.from(grid.querySelectorAll(".grid-item"));
+
+  function updateIndexes() {
+    items().forEach((it, idx) => {
+      const badge = it.querySelector(".grid-index");
+      if (badge) badge.textContent = String(idx + 1);
+    });
+  }
+
+  updateIndexes();
+
+  // --- Desktop HTML5 drag & drop ---
+  let dragging = null;
+
+  grid.addEventListener("dragstart", (e) => {
+    const item = e.target.closest(".grid-item");
+    if (!item) return;
+    dragging = item;
+    item.classList.add("dragging");
+    e.dataTransfer.effectAllowed = "move";
+    // nutné kvůli některým prohlížečům
+    e.dataTransfer.setData("text/plain", "drag");
+  });
+
+  grid.addEventListener("dragend", () => {
+    if (dragging) dragging.classList.remove("dragging");
+    items().forEach(it => it.classList.remove("drop-target"));
+    dragging = null;
+    updateIndexes();
+  });
+
+  grid.addEventListener("dragover", (e) => {
+    e.preventDefault();
+    if (!dragging) return;
+
+    const over = e.target.closest(".grid-item");
+    if (!over || over === dragging) return;
+
+    items().forEach(it => it.classList.remove("drop-target"));
+    over.classList.add("drop-target");
+
+    const overRect = over.getBoundingClientRect();
+    const before = (e.clientY < overRect.top + overRect.height / 2);
+
+    grid.insertBefore(dragging, before ? over : over.nextSibling);
+  });
+
+  // --- Mobile/Touch: Pointer drag (funguje i na mobilech) ---
+  let pointerDragging = null;
+  let pointerId = null;
+
+ grid.addEventListener("pointerdown", (e) => {
+  const item = e.target.closest(".grid-item");
+  if (!item) return;
+
+  // zabráníme default "drag image"
+  if (e.target.tagName === "IMG") e.preventDefault();
+
+  // touch highlight – krátké označení, aby bylo jasné, že je to interaktivní
+  item.classList.add("is-pressed");
+  window.clearTimeout(item._pressTimer);
+  item._pressTimer = window.setTimeout(() => {
+    item.classList.remove("is-pressed");
+  }, 600);
+
+  pointerDragging = item;
+  pointerId = e.pointerId;
+  item.classList.add("dragging");
+  item.setPointerCapture(pointerId);
+});
+
+
+  grid.addEventListener("pointermove", (e) => {
+    if (!pointerDragging || e.pointerId !== pointerId) return;
+
+    const el = document.elementFromPoint(e.clientX, e.clientY);
+    const over = el ? el.closest(".grid-item") : null;
+
+    if (!over || over === pointerDragging) return;
+
+    items().forEach(it => it.classList.remove("drop-target"));
+    over.classList.add("drop-target");
+
+    const overRect = over.getBoundingClientRect();
+    const before = (e.clientY < overRect.top + overRect.height / 2);
+
+    grid.insertBefore(pointerDragging, before ? over : over.nextSibling);
+  });
+
+ function endPointerDrag() {
+  if (!pointerDragging) return;
+  pointerDragging.classList.remove("dragging");
+  pointerDragging.classList.remove("is-pressed");
+  items().forEach(it => it.classList.remove("drop-target"));
+  pointerDragging = null;
+  pointerId = null;
+  updateIndexes();
+}
+
+  grid.addEventListener("pointerup", endPointerDrag);
+  grid.addEventListener("pointercancel", endPointerDrag);
+}
+
+// Inicializace všech mřížek, které chceš dělat přetahovací
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".galerie-grid.drag-grid").forEach(initSortableGrid);
+});
