@@ -57,7 +57,7 @@ body {
   overflow: hidden;
   max-width: 910px;
   margin: 0 auto 20px auto;
-  padding: 0;
+  padding-bottom: 120px;
   border-radius: 10%;
   aspect-ratio: 16 / 9;
 }
@@ -275,6 +275,7 @@ body {
   object-fit: cover;
   display: block;
   cursor: pointer;
+  padding: 4px;
 }
 
 /* === DRAG GRID (3x3) === */
@@ -297,20 +298,7 @@ body {
   border-radius: 6px;
   pointer-events: none;
 
-  /* "rám" uděláme přes background + mask */
-  padding: 2px;
-  background: linear-gradient(90deg, #000, #fff, #000);
-  background-size: 200% 200%;
-  opacity: 0;
-  transform: scale(0.995);
-  transition: opacity 160ms ease, transform 160ms ease;
   
-  /* maska aby byl vidět jen okraj */
-  -webkit-mask:
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-          mask-composite: exclude;
 }
 
 .drag-grid .grid-item:active {
@@ -327,8 +315,8 @@ body {
 /* číslo v levém horním rohu */
 .drag-grid .grid-index {
   position: absolute;
-  top: 6px;
-  left: 6px;
+  top: 5%;
+  left: 10%;
   width: 22px;
   height: 22px;
   display: flex;
@@ -600,7 +588,7 @@ body {
     aspect-ratio: auto;
     height: auto;
     min-height: unset;
-    padding: 7% 12%;
+    padding: 3% 7%;
     
   }
 
@@ -637,9 +625,6 @@ body {
   
 }
 
-@media (max-width: 785px){
-  .banner{ aspect-ratio: 4 / 5; }  /* nebo 1/1 či 9/16 podle videa */
-}
 
 /* hover na desktopu */
 @media (hover: hover) and (pointer: fine) {
