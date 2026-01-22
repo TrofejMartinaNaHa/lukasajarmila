@@ -511,6 +511,7 @@ body {
   color: #fff;
   padding: 20px 0;
   font-size: 14px;
+  margin-top: 20px;
 }
 .footer p { margin: 0; line-height: 1.6; }
 .footer a { color: #fff; text-decoration: none; }
