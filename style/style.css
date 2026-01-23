@@ -93,6 +93,13 @@ body {
   font-size: clamp(1.4rem, 3.5vw, 2.6rem);
 }
 
+.nav-col h1 {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-bottom: 3px solid white;
+    
+}
 
 /* === HLAVNÍ KONTEJNER === */
 .main-content {
