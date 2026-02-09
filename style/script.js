@@ -6,7 +6,57 @@ document.addEventListener("DOMContentLoaded", () => {
     menuToggle.addEventListener("click", (e) => {
       e.stopPropagation();
       sideMenu.classList.toggle("active");
+    })
+    
+      // === BANNER SLIDER (3 obrázky + tečky) ===
+  const banner = document.getElementById("banner-slider");
+  if (banner) {
+    const slides = banner.querySelectorAll(".banner-slide");
+    const dots = banner.querySelectorAll(".banner-dot");
+    let current = 0;
+    let timer = null;
+    const intervalMs = 4500;
+
+    function showSlide(i) {
+      current = (i + slides.length) % slides.length;
+      slides.forEach((s, idx) => s.classList.toggle("is-active", idx === current));
+      dots.forEach((d, idx) => d.classList.toggle("is-active", idx === current));
+    }
+
+    function nextSlide() {
+      showSlide(current + 1);
+    }
+
+    function start() {
+      stop();
+      timer = setInterval(nextSlide, intervalMs);
+    }
+
+    function stop() {
+      if (timer) clearInterval(timer);
+      timer = null;
+    }
+
+    dots.forEach((dot) => {
+      dot.addEventListener("click", () => {
+        const i = parseInt(dot.dataset.slide, 10);
+        showSlide(i);
+        start(); // po kliknutí znovu nastartuje auto-rotaci
+      });
     });
+
+    // pauza při hoveru (desktop)
+    banner.addEventListener("mouseenter", stop);
+    banner.addEventListener("mouseleave", start);
+
+    // na touch: první dotyk jen "probudí" a zruší interval, po uvolnění zase jede
+    banner.addEventListener("touchstart", stop, { passive: true });
+    banner.addEventListener("touchend", start, { passive: true });
+
+    // init
+    showSlide(0);
+    start();
+  };
   }
   document.addEventListener("click", (e) => {
     if (sideMenu && sideMenu.classList.contains("active")) {
@@ -16,7 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // === KUKÁTKO EFEKT – původní scroll-based verze ===
+  // === KUKÁTKO EFEKT – scroll-based ===
   const kukatkoSections = document.querySelectorAll(".kukatko-section");
   window.addEventListener("scroll", () => {
     const scrollY = window.scrollY;
@@ -28,10 +78,11 @@ document.addEventListener("DOMContentLoaded", () => {
       const sectionTop = rect.top + scrollY;
       const sectionH = rect.height;
       const sectionW = rect.width;
-      const radius = Math.min(sectionW, sectionH) * 0.45; // nikdy nepřesáhne okraje
+      const radius = Math.min(sectionW, sectionH) * 0.45;
       const buffer = viewportH * 0.3;
       const startY = sectionTop - viewportH + buffer;
       const endY = sectionTop + sectionH - buffer;
+
       if (scrollY >= startY && scrollY <= endY) {
         const p = (scrollY - startY) / (endY - startY);
         if (p < 0.1) layer.style.clipPath = "circle(0 at 50% 50%)";
@@ -51,7 +102,8 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // === LIGHTBOX OBRÁZKY ===
-  const galleryImgs = document.querySelectorAll(".galerie-grid img");
+  // (jen z hlavní galerie v .foto-ukazka-vlozene)
+  const galleryImgs = document.querySelectorAll(".foto-ukazka-vlozene .galerie-grid img");
   const lbGallery = document.getElementById("lightbox-gallery");
   const lbImg = document.getElementById("lightbox-img");
   const lbGalleryClose = lbGallery.querySelector(".close");
@@ -93,9 +145,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let textIndex = 0;
 
   function showTextSlide(i) {
-    textSlides.forEach((s, idx) =>
-      s.classList.toggle("active", idx === i)
-    );
+    textSlides.forEach((s, idx) => s.classList.toggle("active", idx === i));
   }
   function openTextLightbox(i) {
     textIndex = i;
@@ -157,182 +207,4 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   addSwipe(lbGallery, () => lbGalleryNext.click(), () => lbGalleryPrev.click());
   addSwipe(lbText, () => lbTextNext.click(), () => lbTextPrev.click());
-
-  // === Jednoduchá kalkulačka (Ceník) ===
-  const simpleForm = document.getElementById("simple-price-form");
-  const simpleOutput = document.getElementById("simple-price-output");
-  if (simpleForm && simpleOutput) {
-    const optionBoxes = simpleForm.querySelectorAll(".option-box");
-    let selected = { size: null, weight: null };
-
-    optionBoxes.forEach(box => {
-      box.addEventListener("click", () => {
-        const group = box.parentElement.dataset.group;
-        box.parentElement.querySelectorAll(".option-box").forEach(b => b.classList.remove("active"));
-        box.classList.add("active");
-        selected[group] = box.dataset.value;
-        updateSimplePrice();
-      });
-    });
-
-    function updateSimplePrice() {
-      const { size, weight } = selected;
-      let priceText = "–";
-      if (weight === "lehci" && !size) priceText = "od 250 Kč/ks";
-      if (weight === "tezsi" && !size) priceText = "od 500 Kč/ks";
-      if (size === "mensi" && weight === "lehci") priceText = "od 250 Kč";
-      if (size === "vetsi" && weight === "lehci") priceText = "od 500 Kč";
-      if (size === "mensi" && weight === "tezsi") priceText = "od 500 Kč";
-      if (size === "vetsi" && weight === "tezsi") priceText = "od 500 Kč";
-      simpleOutput.textContent = priceText;
-    }
-  }
-});
-
-// === Kalkulačka v ceníku ===
-const calcButtons = document.querySelectorAll(".calc-btn");
-const calcOutput = document.getElementById("calc-output");
-
-if (calcButtons.length && calcOutput) {
-  const selections = { size: null, weight: null };
-
-  calcButtons.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const group = btn.parentElement.dataset.group;
-      const value = btn.dataset.value;
-
-      // reset aktivního tlačítka v dané skupině
-      btn.parentElement.querySelectorAll(".calc-btn").forEach(b => b.classList.remove("active"));
-      btn.classList.add("active");
-
-      selections[group] = value;
-      updateCalc();
-    });
-  });
-
-  function updateCalc() {
-    const { size, weight } = selections;
-    let price = "–";
-
-    if (size || weight) {
-      // základní logika
-      if (weight === "light") price = "od 250 Kč";
-      if (weight === "heavy") price = "od 500 Kč";
-
-      if (size === "large" && weight === "light") price = "od 500 Kč";
-      if (size === "large" && weight === "heavy") price = "od 500 Kč";
-    }
-    calcOutput.textContent = price;
-  }
-}
-
-function initSortableGrid(grid) {
-  if (!grid) return;
-
-  const items = () => Array.from(grid.querySelectorAll(".grid-item"));
-
-  function updateIndexes() {
-    items().forEach((it, idx) => {
-      const badge = it.querySelector(".grid-index");
-      if (badge) badge.textContent = String(idx + 1);
-    });
-  }
-
-  updateIndexes();
-
-  // --- Desktop HTML5 drag & drop ---
-  let dragging = null;
-
-  grid.addEventListener("dragstart", (e) => {
-    const item = e.target.closest(".grid-item");
-    if (!item) return;
-    dragging = item;
-    item.classList.add("dragging");
-    e.dataTransfer.effectAllowed = "move";
-    // nutné kvůli některým prohlížečům
-    e.dataTransfer.setData("text/plain", "drag");
-  });
-
-  grid.addEventListener("dragend", () => {
-    if (dragging) dragging.classList.remove("dragging");
-    items().forEach(it => it.classList.remove("drop-target"));
-    dragging = null;
-    updateIndexes();
-  });
-
-  grid.addEventListener("dragover", (e) => {
-    e.preventDefault();
-    if (!dragging) return;
-
-    const over = e.target.closest(".grid-item");
-    if (!over || over === dragging) return;
-
-    items().forEach(it => it.classList.remove("drop-target"));
-    over.classList.add("drop-target");
-
-    const overRect = over.getBoundingClientRect();
-    const before = (e.clientY < overRect.top + overRect.height / 2);
-
-    grid.insertBefore(dragging, before ? over : over.nextSibling);
-  });
-
-  // --- Mobile/Touch: Pointer drag (funguje i na mobilech) ---
-  let pointerDragging = null;
-  let pointerId = null;
-
- grid.addEventListener("pointerdown", (e) => {
-  const item = e.target.closest(".grid-item");
-  if (!item) return;
-
-  // zabráníme default "drag image"
-  if (e.target.tagName === "IMG") e.preventDefault();
-
-  // touch highlight – krátké označení, aby bylo jasné, že je to interaktivní
-  item.classList.add("is-pressed");
-  window.clearTimeout(item._pressTimer);
-  item._pressTimer = window.setTimeout(() => {
-    item.classList.remove("is-pressed");
-  }, 600);
-
-  pointerDragging = item;
-  pointerId = e.pointerId;
-  item.classList.add("dragging");
-  item.setPointerCapture(pointerId);
-});
-
-
-  grid.addEventListener("pointermove", (e) => {
-    if (!pointerDragging || e.pointerId !== pointerId) return;
-
-    const el = document.elementFromPoint(e.clientX, e.clientY);
-    const over = el ? el.closest(".grid-item") : null;
-
-    if (!over || over === pointerDragging) return;
-
-    items().forEach(it => it.classList.remove("drop-target"));
-    over.classList.add("drop-target");
-
-    const overRect = over.getBoundingClientRect();
-    const before = (e.clientY < overRect.top + overRect.height / 2);
-
-    grid.insertBefore(pointerDragging, before ? over : over.nextSibling);
-  });
-
- function endPointerDrag() {
-  if (!pointerDragging) return;
-  pointerDragging.classList.remove("dragging");
-  pointerDragging.classList.remove("is-pressed");
-  items().forEach(it => it.classList.remove("drop-target"));
-  pointerDragging = null;
-  pointerId = null;
-  updateIndexes();
-}
-
-  grid.addEventListener("pointerup", endPointerDrag);
-  grid.addEventListener("pointercancel", endPointerDrag);
-}
-
-// Inicializace všech mřížek, které chceš dělat přetahovací
-document.addEventListener("DOMContentLoaded", () => {
-  document.querySelectorAll(".galerie-grid.drag-grid").forEach(initSortableGrid);
 });

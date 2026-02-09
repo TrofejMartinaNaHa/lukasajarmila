@@ -20,95 +20,40 @@
 
   <!-- POSTRANNÍ MENU -->
   <div id="side-menu" class="side-menu">
-  <a href="#" data-text-index="0">Jak na to</a>
-  <a href="#" data-text-index="1">Ceník</a>
-  <a href="#" data-text-index="2">Podmínky</a>
-  <a href="#" data-text-index="3">Kontakt</a>
-</div>
+    <a href="#" data-text-index="0">Jak na to</a>
+    <a href="#" data-text-index="1">Ceník</a>
+    <a href="#" data-text-index="2">Kontakt</a>
+  </div>
 
+  <section class="banner d-flex align-items-center justify-content-center" id="banner-slider">
+  <div class="banner-slides">
+    <img src="style/banner_velky_zesvetleno3.jpg" alt="Banner 1" class="img-fluid banner-img banner-slide is-active">
+    <img src="style/gallery1.JPG" alt="Banner 2" class="img-fluid banner-img banner-slide">
+    <img src="style/gallery5.jpg" alt="Banner 3" class="img-fluid banner-img banner-slide">
+  </div>
 
-  
- 
-  <section class="banner d-flex align-items-center justify-content-center">
-      <img src="style/banner_velky_zesvetleno3.jpg" alt="Banner" class="img-fluid banner-img">
-  </section>
+  <div class="banner-dots" aria-label="Ovládání banneru">
+    <button type="button" class="banner-dot is-active" data-slide="0" aria-label="Slide 1"></button>
+    <button type="button" class="banner-dot" data-slide="1" aria-label="Slide 2"></button>
+    <button type="button" class="banner-dot" data-slide="2" aria-label="Slide 3"></button>
+  </div>
+</section>
+
 
   <div class="container main-content">
 
-    
-    <!-- 1. řádek – Kukátko vlevo, Text vpravo -->
-    <div class="row align-items-stretch section-row first-row">
-      <div class="col-12 col-custom-6 text-section d-flex flex-column">
-        <!-- NOVÉ DEKORACE -->
-        <h2 class="mb-4">Tvořte vlastní katalogy a přehledy online</h2>
-
-        <p style="margin: 0px;">Organizujte, přemisťujte, prezentujte. Zaznamenávejte pohyby předmětů fyzicky i elektronicky, sdílejte vybrané části své tvorby či sbírky a posílejte je dál do světa s pomocí online katalogu.</p>
-        <img src="style/portretek.png" alt="Zatisi fotografie" class="icon-deco icon-bottom-right">
-        
-            
-      </div>
-
-      <div class="col-12 col-custom-6 foto-ukazka-vlozene">
-        <div class="galerie-grid drag-grid">
-            <div class="grid-item" draggable="true">
-                <span class="grid-index">1</span>
-                <img src="style/gallery1.jpg" alt="Foto 1" draggable="false">
-            </div>
-
-            <div class="grid-item" draggable="true">
-                <span class="grid-index">2</span>
-                <img src="style/gallery2.jpg" alt="Foto 2" draggable="false">
-            </div>
-
-            <div class="grid-item" draggable="true">
-                <span class="grid-index">3</span>
-                <img src="style/gallery3.jpg" alt="Foto 3" draggable="false">
-            </div>
-
-            <div class="grid-item" draggable="true">
-                <span class="grid-index">4</span>
-                <img src="style/gallery4.jpg" alt="Foto 4" draggable="false">
-            </div>
-
-            <div class="grid-item" draggable="true">
-                <span class="grid-index">5</span>
-                <img src="style/gallery5.jpg" alt="Foto 5" draggable="false">
-            </div>
-
-            <div class="grid-item" draggable="true">
-                <span class="grid-index">6</span>
-                <img src="style/gallery6.jpg" alt="Foto 6" draggable="false">
-            </div>
-
-            <div class="grid-item" draggable="true">
-                <span class="grid-index">7</span>
-                <img src="style/gallery7.jpg" alt="Foto 7" draggable="false">
-            </div>
-
-            <div class="grid-item" draggable="true">
-                <span class="grid-index">8</span>
-                <img src="style/gallery8.jpg" alt="Foto 8" draggable="false">
-            </div>
-
-            <div class="grid-item" draggable="true">
-                <span class="grid-index">9</span>
-                <img src="style/sample2.jpg" alt="Foto 9" draggable="false">
-            </div>
-        </div>
-      </div>
-    </div>
-        
-    <!-- 2. řádek – Text vlevo, Galerie vpravo -->
+    <!-- 1. řádek – Text vlevo, Kukátko vpravo -->
     <div class="row align-items-stretch section-row second-row">
       <div class="col-12 col-custom-6 text-section d-flex flex-column">
-        <!-- NOVÉ DEKORACE -->
-         <h2 class="mb-4">Vyfotografujte svá díla nebo sbírky osobních předmětů</h2>
+        <h2 class="mb-4">Vyfotografujte si svá díla nebo sbírky osobních předmětů</h2>
 
-        <p style="margin: 0px;">Díky fotografii získáváte nejen základní přehled, ale objevujete i nové detaily, nečekané úhly pohledu a krásu běžně oku skrytou.</p>
+        <p style="margin: 0px;">
+          Díky fotografii získáváte nejen základní přehled, ale objevujete i nové detaily, nečekané úhly pohledu
+          a krásu běžnému oku skrytou.
+        </p>
         <img src="style/vaza_blesk.png" alt="Vazicka s bleskem" class="icon-deco icon-bottom-right">
-             
-        
       </div>
+
       <div class="col-12 col-custom-6 kukatko-section d-flex">
         <div class="layer layer-top">
           <img src="style/top1.jpg" alt="Vrchní obrázek">
@@ -119,28 +64,20 @@
       </div>
     </div>
 
-    <!-- 3. řádek – Kukátko vlevo, Formulář vpravo -->
+    <!-- 2. řádek – Text vlevo, Kukátko vpravo -->
     <div class="row align-items-stretch section-row third-row">
       <div class="col-12 col-custom-6 text-section d-flex flex-column">
-        <h2>Nabízíme focení a tvorbu digitálního katalogu uměleckých předmětů</h2>
-        <p>Pro vlastní organizaci a prezentaci širšímu publiku sběratelů, umělců i galeristů.</p>
+        <h2>Nabízíme focení, tvorbu a správu digitálního katalogu</h2>
+        <p>Pro vlastní organizaci a prezentaci předmětů širšímu publiku sběratelů, umělců i galeristů.</p>
+
         <ul class="feature-list">
-          <li class="feature-item">
-            Praktický průvodce
-          </li>
-          <li class="feature-item">
-            Působivá prezentace
-          </li>
-          <li class="feature-item">
-            Lehce přenositelná data
-          </li>
-          <li class="feature-item"> 
-            Možnost tvorby a správy katalogu online
-          </li>
+          <li class="feature-item">Praktický průvodce</li>
+          <li class="feature-item">Působivá prezentace</li>
+          <li class="feature-item">Lehce přenositelná data</li>
+          <li class="feature-item">Možnost vlastní tvorby a správy katalogu online</li>
         </ul>
 
         <img src="style/zatisi.png" alt="Zatisi fotografie" id="icon_zatisi" class="icon-deco list_middle_img icon-bottom-right">
-              
       </div>
 
       <div class="col-12 col-custom-6 kukatko-section d-flex">
@@ -152,6 +89,33 @@
         </div>
       </div>
     </div>
+
+    <!-- 3. řádek – Text vlevo, Galerie vpravo -->
+    <div class="row align-items-stretch section-row first-row">
+      <div class="col-12 col-custom-6 text-section d-flex flex-column">
+        <h2 class="mb-4">Tvořte vlastní katalogy a přehledy online</h2>
+
+        <p style="margin: 0px;">
+          Organizujte, přemisťujte, prezentujte. Zaznamenávejte pohyby předmětů fyzicky i elektronicky,
+          sdílejte vybrané části své tvorby či sbírky a posílejte je dál do světa v podobě přehledného online katalogu.
+        </p>
+        <img src="style/portretek.png" alt="Zatisi fotografie" class="icon-deco icon-bottom-right">
+      </div>
+
+      <div class="col-12 col-custom-6 foto-ukazka-vlozene">
+        <div class="galerie-grid">
+          <img src="style/gallery1.jpg" alt="Foto 1">
+          <img src="style/gallery2.jpg" alt="Foto 2">
+          <img src="style/gallery3.jpg" alt="Foto 3">
+          <img src="style/gallery4.jpg" alt="Foto 4">
+          <img src="style/gallery5.jpg" alt="Foto 5">
+          <img src="style/gallery6.jpg" alt="Foto 6">
+          <img src="style/gallery7.jpg" alt="Foto 7">
+          <img src="style/gallery8.jpg" alt="Foto 8">
+          <img src="style/sample2.jpg" alt="Foto 9">
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- POPUP LIGHTBOX TEXTY -->
@@ -160,51 +124,52 @@
       <span class="close">×</span>
 
       <div class="text-slide active">
-  <h2>Jak na to</h2>
+        <h2>Jak na to</h2>
 
-  <p>
-    Napište nám na 
-    <a href="mailto:tojemojexyz@gmail.com">tojemojexyz@gmail.com</a> 
-    přibližný <strong>počet a typ předmětů</strong> k nafocení
-    a potom si snadno doladíme i místo a čas pro naši práci.
-  </p>
+        <p>
+          Napište nám na
+          <a href="mailto:tojemojexyz@gmail.com">tojemojexyz@gmail.com</a>
+          přibližný <strong>počet a typ předmětů</strong> k nafocení
+          a potom si snadno doladíme i místo a čas pro naši práci.
+        </p>
 
-  <img src="style/vaza_blesk.png" alt="Ilustrační obrázek – Váza">
+        <img src="style/vaza_blesk.png" alt="Ilustrační obrázek – Váza">
 
-  <!-- KOPIE KONTAKTNÍHO FORMULÁŘE -->
-  
-  <form action="https://formspree.io/f/vas-kod" method="POST" class="order-form">
-    <div class="mb-small">
-      <label class="form-label">Jméno</label>
-      <input type="text" class="form-control" name="name" required>
-    </div>
+        <form action="https://formspree.io/f/vas-kod" method="POST" class="order-form">
+          <div class="mb-small">
+            <label class="form-label">Jméno</label>
+            <input type="text" class="form-control" name="name" required>
+          </div>
 
-    <div class="mb-small">
-      <label class="form-label">E-mail</label>
-      <input type="email" class="form-control" name="_replyto" required>
-    </div>
+          <div class="mb-small">
+            <label class="form-label">E-mail</label>
+            <input type="email" class="form-control" name="_replyto" required>
+          </div>
 
-    <div class="mb-small">
-      <label class="form-label">Zpráva</label>
-      <textarea class="form-control" rows="2" name="message" required></textarea>
-    </div>
+          <div class="mb-small">
+            <label class="form-label">Zpráva</label>
+            <textarea class="form-control" rows="2" name="message" required></textarea>
+          </div>
 
-    <button type="submit" class="btn btn-primary w-100 mt-3">
-      Odeslat
-    </button>
-  </form>
-</div>
+          <button type="submit" class="btn btn-primary w-100 mt-3">Odeslat</button>
+        </form>
+      </div>
 
+      <div class="text-slide">
+        <h2>Ceník</h2>
+        <p>
+          Cena je orientačně počítána <strong>od 150 Kč za fotografii</strong> a je odvislá od náročnosti příprav,
+          průběhu focení a způsobu předání a postprodukce nafocených dat.
+        </p>
+        <img src="style/zatisi.png" alt="Ilustrační obrázek – Zátiší">
+        <p>
+          Výsledkem mohou být fotografie:
+          <br> 📦 na fyzickém nosiči, <br><br>
+          📧 odeslané elektronicky prostřednictvím externího úložiště, <br><br>
+          &#128752;&#65039; nebo přístupné ve formě online katalogu prostřednictvím vašeho uživatelského účtu na webových stránkách goodcatalook.cz.
+        </p>
 
-        <div class="text-slide">
-  <h2>Ceník</h2>
-  <p>Cena je orientačně počítána <strong>od 250 Kč za fotografii</strong> a je odvislá od náročnosti příprav, průběhu focení a způsobu předání a postprodukce nafocených dat.</p>
-  <img src="style/zatisi.png" alt="Ilustrační obrázek – Zátiší">
-  <p>Výsledkem mohou být fotografie: 
-    <br> 📦 na fyzickém nosiči, <br>
-    <br> 📧 odeslané elektronicky prostřednictvím externího úložiště, <br>
-    <br> &#128752;&#65039; přístupné ve formě online katalogu prostřednictvím uživatelského účtu na našich webových stránkách tojemoje.xyz, kde si můžete svou sbírku sami dále doplňovat a spravovat.</p>
-  <div class="galerie-grid">
+        <div class="galerie-grid">
           <img src="style/gallery1.jpg" alt="Foto 1">
           <img src="style/gallery2.jpg" alt="Foto 2">
           <img src="style/gallery3.jpg" alt="Foto 3">
@@ -215,31 +180,22 @@
           <img src="style/gallery8.jpg" alt="Foto 8">
           <img src="style/gallery9.jpg" alt="Foto 9">
         </div>
-  
+      </div>
 
-  
-</div>
-
-
-      <div class="text-slide"><h2>Podmínky</h2><p>Zde budou podmínky…</p></div>
-      
       <div class="text-slide">
         <h2>Kontakt</h2>
-          <p>
-          Pracujeme v terénu i u nás v ateliéru.
-          Můžete se vypravit za námi na adresu
-          <strong>Voršilská 3, Praha 1</strong>,
-          nebo přijedeme my za vámi a přivezeme si potřebné foto vybavení.
-          </p>
+        <p>
+          Pracujeme v terénu i u nás v ateliéru. Můžete se vypravit za námi na adresu
+          <strong>Voršilská 3, Praha 1</strong>, nebo přijedeme my za vámi a přivezeme si potřebné foto vybavení.
+        </p>
 
-          <img src="style/fotak.png" alt="Ilustrační obrázek – Fotoaparát">
+        <img src="style/fotak.png" alt="Ilustrační obrázek – Fotoaparát">
 
-  <p>
-    📧 <a href="mailto:info@goodcatalook.com">info@goodcatalook.com</a><br>
-    📍 Voršilská 3, 110 00 Praha 1 <br> Lukáš Rybka <br> IČO 06384951
-  </p>
-</div>
-
+        <p>
+          📧 <a href="mailto:info@goodcatalook.com">info@goodcatalook.com</a><br>
+          📍 Voršilská 3, 110 00 Praha 1 <br> Lukáš Rybka <br> IČO 06384951
+        </p>
+      </div>
 
       <a class="prev">❮</a>
       <a class="next">❯</a>
@@ -262,9 +218,9 @@
       <div class="row">
         <div class="col-8 footer-left">
           <p>
-          📧 <a href="mailto:info@goodcatalook.com">info@goodcatalook.com</a><br>
-          📍 Voršilská 3, 110 00 Praha 1 <br> &#128378; Lukáš Rybka <br> &#128207; IČO 06384951
-         </p>
+            📧 <a href="mailto:info@goodcatalook.com">info@goodcatalook.com</a><br>
+            📍 Voršilská 3, 110 00 Praha 1 <br> &#128378; Lukáš Rybka <br> &#128207; IČO 06384951
+          </p>
         </div>
         <div class="col-4 footer-right">
           <a href="https://instagram.com" target="_blank">
@@ -276,6 +232,4 @@
   </footer>
 
   <script src="style/script.js"></script>
-
-
 </body></html>

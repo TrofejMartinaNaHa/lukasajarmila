@@ -3,7 +3,7 @@ body {
   margin: 0;
   overflow-x: hidden;
   padding-top: 35px;
-  font-family: 'DM Sans', sans-serif;
+  font-family: "DM Sans", sans-serif;
   background-image: linear-gradient(to right, white 0%, white 50%, #fcf9fc 61%, #fcfafc 100%);
 }
 
@@ -58,7 +58,6 @@ body {
   overflow: hidden;
   max-width: 910px;
   margin: 30px auto 20px auto;
-  padding-bottom: 125px;
   border-radius: 0%;
   aspect-ratio: 16 / 9;
 }
@@ -291,83 +290,6 @@ body {
   --bs-btn-bg: #6992da;
   }
 
-/* === DRAG GRID (3x3) === */
-.drag-grid .grid-item {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  cursor: grab;
-  user-select: none;
-  touch-action: none; /* důležité pro mobile pointer drag */
-
-  overflow: hidden;             /* aby ring seděl na okrajích */
-}
-
-/* pseudo-rámeček, který umí animaci */
-.drag-grid .grid-item::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  
-  pointer-events: none;
-
-  
-}
-
-.drag-grid .grid-item:active {
-  cursor: grabbing;
-}
-
-.drag-grid .grid-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-/* číslo v levém horním rohu */
-.drag-grid .grid-index {
-  position: absolute;
-  top: 5%;
-  left: 10%;
-  width: 22px;
-  height: 22px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  font-size: 12px;
-  font-weight: 700;
-
-  background: rgba(255, 255, 255, 0.85);
-  border-radius: 999px;
-  color: #1b7f2a; /* zelený "check" vibe */
-  z-index: 2;
-}
-
-/* drag styling */
-.drag-grid .grid-item.dragging {
-  opacity: 0.55;
-}
-
-.drag-grid .grid-item.drop-target {
-  outline: 2px dashed rgba(0,0,0,0.35);
-  outline-offset: -4px;
-}
-
-/* "tap highlight" pro touch – spustíme přes JS třídou */
-.drag-grid .grid-item.is-pressed::after {
-  opacity: 1;
-  transform: scale(1);
-  animation: bwRing 1.2s linear infinite;
-}
-
-/* při samotném tažení trošku výraznější feedback */
-.drag-grid .grid-item.dragging::after {
-  opacity: 1;
-  transform: scale(1);
-  animation: bwRing 0.8s linear infinite;
-}
 
 
 /* === LIGHTBOX OBECNÝ === */
@@ -549,14 +471,14 @@ body {
   .col-custom-6 { flex: 0 0 50%; max-width: 50%; }
   .section-row { flex-direction: row; }
 
-  .first-row .foto-ukazka-vlozene { order: 1; }
-  .first-row .text-section    { order: 2; }
+  .first-row .text-section        { order: 1; }
+  .first-row .kukatko-section { order: 2; }
 
-  .second-row .text-section        { order: 1; }
-  .second-row .kukatko-section { order: 2; }
+  .second-row .kukatko-section { order: 1; }
+  .second-row .text-section    { order: 2; }
 
-  .third-row .kukatko-section { order: 1; }
-  .third-row .text-section    { order: 2; }
+  .third-row .text-section { order: 1; }
+  .third-row .kukatko-section { order: 2; }
 
   #icon_zatisi {
         display: none;
@@ -640,6 +562,73 @@ body {
 
   
 }
+
+/* === BANNER SLIDESHOW === */
+#banner-slider {
+  position: relative;
+}
+
+.banner-slides {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* všechny slidy přes sebe */
+.banner-slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  opacity: 0;
+  transition: opacity 600ms ease;
+}
+
+/* aktivní slide */
+.banner-slide.is-active {
+  opacity: 1;
+  position: relative; /* aby se banner "nepropadl" */
+}
+
+/* tečky dole uprostřed */
+.banner-dots {
+  position: absolute;
+  left: 50%;
+  bottom: 14px;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 5;
+}
+
+.banner-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 999px;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+
+  background: rgba(140, 140, 140, 0.45);
+  transform: scale(0.75);
+  transition: transform 200ms ease, background-color 200ms ease, opacity 200ms ease;
+}
+
+/* aktivní tečka */
+.banner-dot.is-active {
+  background: #ffc107;
+  transform: scale(1.35);
+  opacity: 1;
+}
+
+/* focus pro klávesnici */
+.banner-dot:focus-visible {
+  outline: 2px solid #ffc107;
+  outline-offset: 3px;
+}
+
 
 
 /* hover na desktopu */
