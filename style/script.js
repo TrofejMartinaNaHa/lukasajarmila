@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-
   /* =========================================================
      SIDE MENU TOGGLE
      ========================================================= */
@@ -27,44 +26,122 @@ document.addEventListener("DOMContentLoaded", () => {
      TOP NAV – hide on scroll (jen pod 785 px)
      ========================================================= */
   const topNav = document.querySelector(".top-nav");
+  const mobileMQ = window.matchMedia("(max-width: 784px)");
   let lastScrollY = window.scrollY;
   let ticking = false;
-  const mobileMQ = window.matchMedia("(max-width: 784px)");
 
   function updateTopNav() {
+    if (!topNav) return;
+
     const currentY = window.scrollY;
     const diff = currentY - lastScrollY;
 
-    if (mobileMQ.matches) {
-      if (currentY <= 10) {
-        topNav.classList.remove("nav-hidden");
-      } else if (Math.abs(diff) > 6) {
-        if (diff > 0) {
-          // scroll dolů
-          topNav.classList.add("nav-hidden");
-        } else {
-          // scroll nahoru
-          topNav.classList.remove("nav-hidden");
-        }
-      }
-    } else {
-      // nad breakpointem je menu vždy viditelné
+    // Když je otevřené side-menu, necháme top-nav viditelné (praktičtější)
+    const sideMenuOpen = sideMenu?.classList.contains("active");
+
+    if (!mobileMQ.matches || sideMenuOpen) {
       topNav.classList.remove("nav-hidden");
+      lastScrollY = currentY;
+      ticking = false;
+      return;
+    }
+
+    if (currentY <= 10) {
+      topNav.classList.remove("nav-hidden");
+    } else if (Math.abs(diff) > 6) {
+      if (diff > 0) topNav.classList.add("nav-hidden"); // dolů
+      else topNav.classList.remove("nav-hidden");       // nahoru
     }
 
     lastScrollY = currentY;
     ticking = false;
   }
 
-  if (topNav) {
-    window.addEventListener("scroll", () => {
+  window.addEventListener(
+    "scroll",
+    () => {
       if (!ticking) {
-        window.requestAnimationFrame(updateTopNav);
+        requestAnimationFrame(updateTopNav);
         ticking = true;
       }
-    }, { passive: true });
+    },
+    { passive: true }
+  );
+  window.addEventListener("resize", updateTopNav);
 
-    window.addEventListener("resize", updateTopNav);
+  /* =========================================================
+     BANNER SLIDESHOW (3 fotky + doty) – bez úprav HTML
+     ========================================================= */
+  const banner = document.querySelector(".banner");
+  const bannerImg = banner?.querySelector("img.banner-img");
+
+  if (banner && bannerImg) {
+    // zdroje banneru (1. je ten aktuální z HTML)
+    const slides = [
+      bannerImg.getAttribute("src"),
+      "style/gallery1.jpg",
+      "style/gallery5.jpg",
+    ].filter(Boolean);
+
+    let current = 0;
+    let timer = null;
+    const intervalMs = 4500;
+
+    // vytvoření dotů
+    const dotsWrap = document.createElement("div");
+    dotsWrap.className = "banner-dots";
+
+    const dots = slides.map((_, i) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "banner-dot" + (i === 0 ? " is-active" : "");
+      b.setAttribute("aria-label", `Banner slide ${i + 1}`);
+      b.addEventListener("click", () => {
+        goTo(i, true);
+      });
+      dotsWrap.appendChild(b);
+      return b;
+    });
+
+    banner.appendChild(dotsWrap);
+
+    function render() {
+      bannerImg.src = slides[current];
+      dots.forEach((d, i) => d.classList.toggle("is-active", i === current));
+    }
+
+    function goTo(i, restartTimer = false) {
+      current = (i + slides.length) % slides.length;
+      render();
+      if (restartTimer) startAuto();
+    }
+
+    function next() {
+      goTo(current + 1, false);
+    }
+
+    function startAuto() {
+      stopAuto();
+      timer = setInterval(next, intervalMs);
+    }
+
+    function stopAuto() {
+      if (timer) clearInterval(timer);
+      timer = null;
+    }
+
+    // preload (rychlejší přepínání)
+    slides.forEach((src) => {
+      const im = new Image();
+      im.src = src;
+    });
+
+    render();
+    startAuto();
+
+    // volitelně: pauza při hoveru (desktop)
+    banner.addEventListener("mouseenter", stopAuto);
+    banner.addEventListener("mouseleave", startAuto);
   }
 
   /* =========================================================
@@ -72,42 +149,47 @@ document.addEventListener("DOMContentLoaded", () => {
      ========================================================= */
   const kukatkoSections = document.querySelectorAll(".kukatko-section");
 
-  window.addEventListener("scroll", () => {
-    const scrollY = window.scrollY;
-    const viewportH = window.innerHeight;
+  window.addEventListener(
+    "scroll",
+    () => {
+      const scrollY = window.scrollY;
+      const viewportH = window.innerHeight;
 
-    kukatkoSections.forEach((section) => {
-      const rect = section.getBoundingClientRect();
-      const layer = section.querySelector(".layer-bottom");
-      if (!layer) return;
+      kukatkoSections.forEach((section) => {
+        const rect = section.getBoundingClientRect();
+        const layer = section.querySelector(".layer-bottom");
+        if (!layer) return;
 
-      const sectionTop = rect.top + scrollY;
-      const sectionH = rect.height;
-      const radius = Math.min(rect.width, rect.height) * 0.45;
+        const sectionTop = rect.top + scrollY;
+        const sectionH = rect.height;
+        const sectionW = rect.width;
 
-      const buffer = viewportH * 0.3;
-      const startY = sectionTop - viewportH + buffer;
-      const endY = sectionTop + sectionH - buffer;
+        const radius = Math.min(sectionW, sectionH) * 0.45;
+        const buffer = viewportH * 0.3;
 
-      if (scrollY >= startY && scrollY <= endY) {
-        const p = (scrollY - startY) / (endY - startY);
+        const startY = sectionTop - viewportH + buffer;
+        const endY = sectionTop + sectionH - buffer;
 
-        if (p < 0.1) {
-          layer.style.clipPath = "circle(0 at 50% 50%)";
-        } else if (p < 0.15) {
-          const r = ((p - 0.1) / 0.05) * radius;
-          layer.style.clipPath = `circle(${r}px at 50% 50%)`;
-        } else if (p < 0.9) {
-          layer.style.clipPath = `circle(${radius}px at 50% 50%)`;
+        if (scrollY >= startY && scrollY <= endY) {
+          const p = (scrollY - startY) / (endY - startY);
+
+          if (p < 0.1) layer.style.clipPath = "circle(0 at 50% 50%)";
+          else if (p < 0.15) {
+            const r = ((p - 0.1) / 0.05) * radius;
+            layer.style.clipPath = `circle(${r}px at 50% 50%)`;
+          } else if (p < 0.9) {
+            layer.style.clipPath = `circle(${radius}px at 50% 50%)`;
+          } else {
+            const r = ((1 - p) / 0.1) * radius;
+            layer.style.clipPath = `circle(${r}px at 50% 50%)`;
+          }
         } else {
-          const r = ((1 - p) / 0.1) * radius;
-          layer.style.clipPath = `circle(${r}px at 50% 50%)`;
+          layer.style.clipPath = "circle(0 at 50% 50%)";
         }
-      } else {
-        layer.style.clipPath = "circle(0 at 50% 50%)";
-      }
-    });
-  });
+      });
+    },
+    { passive: true }
+  );
 
   /* =========================================================
      LIGHTBOX – GALERIE
@@ -116,36 +198,37 @@ document.addEventListener("DOMContentLoaded", () => {
   const lbGallery = document.getElementById("lightbox-gallery");
   const lbImg = document.getElementById("lightbox-img");
 
+  let galleryIndex = 0;
+
+  function openGallery(i) {
+    if (!lbGallery || !lbImg || !galleryImgs.length) return;
+    galleryIndex = i;
+    lbImg.src = galleryImgs[i].src;
+    lbGallery.style.display = "flex";
+  }
+
+  function closeGallery() {
+    if (!lbGallery) return;
+    lbGallery.style.display = "none";
+  }
+
   if (lbGallery && lbImg && galleryImgs.length) {
-    const closeBtn = lbGallery.querySelector(".close");
-    const prevBtn = lbGallery.querySelector(".prev");
-    const nextBtn = lbGallery.querySelector(".next");
-    let index = 0;
+    const lbGalleryClose = lbGallery.querySelector(".close");
+    const lbGalleryPrev = lbGallery.querySelector(".prev");
+    const lbGalleryNext = lbGallery.querySelector(".next");
 
-    function openGallery(i) {
-      index = i;
-      lbImg.src = galleryImgs[i].src;
-      lbGallery.style.display = "flex";
-    }
+    galleryImgs.forEach((img, i) => img.addEventListener("click", () => openGallery(i)));
 
-    function closeGallery() {
-      lbGallery.style.display = "none";
-    }
+    lbGalleryClose?.addEventListener("click", closeGallery);
 
-    galleryImgs.forEach((img, i) => {
-      img.addEventListener("click", () => openGallery(i));
+    lbGalleryPrev?.addEventListener("click", () => {
+      galleryIndex = (galleryIndex - 1 + galleryImgs.length) % galleryImgs.length;
+      lbImg.src = galleryImgs[galleryIndex].src;
     });
 
-    closeBtn.addEventListener("click", closeGallery);
-
-    prevBtn.addEventListener("click", () => {
-      index = (index - 1 + galleryImgs.length) % galleryImgs.length;
-      lbImg.src = galleryImgs[index].src;
-    });
-
-    nextBtn.addEventListener("click", () => {
-      index = (index + 1) % galleryImgs.length;
-      lbImg.src = galleryImgs[index].src;
+    lbGalleryNext?.addEventListener("click", () => {
+      galleryIndex = (galleryIndex + 1) % galleryImgs.length;
+      lbImg.src = galleryImgs[galleryIndex].src;
     });
 
     lbGallery.addEventListener("click", (e) => {
@@ -157,38 +240,42 @@ document.addEventListener("DOMContentLoaded", () => {
      LIGHTBOX – TEXTY
      ========================================================= */
   const lbText = document.getElementById("lightbox-text");
-  const slides = lbText?.querySelectorAll(".text-slide");
-  const btnClose = lbText?.querySelector(".close");
-  const btnPrev = lbText?.querySelector(".prev");
-  const btnNext = lbText?.querySelector(".next");
+  const textSlides = lbText?.querySelectorAll(".text-slide") || [];
+  const lbTextClose = lbText?.querySelector(".close");
+  const lbTextPrev = lbText?.querySelector(".prev");
+  const lbTextNext = lbText?.querySelector(".next");
 
   let textIndex = 0;
 
-  function showSlide(i) {
-    slides.forEach((s, idx) => s.classList.toggle("active", idx === i));
+  function showTextSlide(i) {
+    textSlides.forEach((s, idx) => s.classList.toggle("active", idx === i));
   }
 
   function openTextLightbox(i) {
+    if (!lbText || !textSlides.length) return;
     textIndex = i;
     lbText.style.display = "flex";
-    showSlide(i);
+    showTextSlide(i);
     lbText.scrollTop = 0;
     sideMenu?.classList.remove("active");
   }
 
   function closeTextLightbox() {
+    if (!lbText) return;
     lbText.style.display = "none";
   }
 
-  btnClose?.addEventListener("click", closeTextLightbox);
-  btnPrev?.addEventListener("click", () => {
-    textIndex = (textIndex - 1 + slides.length) % slides.length;
-    showSlide(textIndex);
+  lbTextClose?.addEventListener("click", closeTextLightbox);
+
+  lbTextPrev?.addEventListener("click", () => {
+    textIndex = (textIndex - 1 + textSlides.length) % textSlides.length;
+    showTextSlide(textIndex);
     lbText.scrollTop = 0;
   });
-  btnNext?.addEventListener("click", () => {
-    textIndex = (textIndex + 1) % slides.length;
-    showSlide(textIndex);
+
+  lbTextNext?.addEventListener("click", () => {
+    textIndex = (textIndex + 1) % textSlides.length;
+    showTextSlide(textIndex);
     lbText.scrollTop = 0;
   });
 
@@ -199,22 +286,88 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll("#side-menu a").forEach((link) => {
     link.addEventListener("click", (e) => {
       e.preventDefault();
-      openTextLightbox(parseInt(link.dataset.textIndex, 10));
+      const idx = parseInt(link.dataset.textIndex, 10);
+      openTextLightbox(idx);
     });
   });
 
   /* =========================================================
-     KLÁVESY + SWIPE
+     Klávesy (Lightbox)
      ========================================================= */
   document.addEventListener("keydown", (e) => {
     if (lbText?.style.display === "flex") {
-      if (e.key === "ArrowLeft") btnPrev.click();
-      if (e.key === "ArrowRight") btnNext.click();
+      if (e.key === "ArrowLeft") lbTextPrev?.click();
+      if (e.key === "ArrowRight") lbTextNext?.click();
       if (e.key === "Escape") closeTextLightbox();
     }
     if (lbGallery?.style.display === "flex") {
-      if (e.key === "Escape") lbGallery.style.display = "none";
+      if (e.key === "ArrowLeft") lbGallery.querySelector(".prev")?.click();
+      if (e.key === "ArrowRight") lbGallery.querySelector(".next")?.click();
+      if (e.key === "Escape") closeGallery();
     }
   });
 
+  /* =========================================================
+     Swipe (mobile) – galerie + texty
+     ========================================================= */
+  function addSwipe(el, onLeft, onRight) {
+    let startX = 0;
+
+    el.addEventListener(
+      "touchstart",
+      (e) => (startX = e.touches[0].clientX),
+      { passive: true }
+    );
+
+    el.addEventListener(
+      "touchend",
+      (e) => {
+        const diff = e.changedTouches[0].clientX - startX;
+        if (Math.abs(diff) > 15) diff > 0 ? onRight() : onLeft();
+      },
+      { passive: true }
+    );
+  }
+
+  if (lbGallery) addSwipe(lbGallery, () => lbGallery.querySelector(".next")?.click(), () => lbGallery.querySelector(".prev")?.click());
+  if (lbText) addSwipe(lbText, () => lbTextNext?.click(), () => lbTextPrev?.click());
+
+  /* =========================================================
+     Kalkulačka v ceníku (calc-btn + #calc-output)
+     ========================================================= */
+  const calcButtons = document.querySelectorAll(".calc-btn");
+  const calcOutput = document.getElementById("calc-output");
+
+  if (calcButtons.length && calcOutput) {
+    const selections = { size: null, weight: null };
+
+    calcButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const group = btn.parentElement.dataset.group;
+        const value = btn.dataset.value;
+
+        // reset aktivního tlačítka ve skupině
+        btn.parentElement.querySelectorAll(".calc-btn").forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+
+        selections[group] = value;
+        updateCalc();
+      });
+    });
+
+    function updateCalc() {
+      const { size, weight } = selections;
+      let price = "–";
+
+      if (size || weight) {
+        if (weight === "light") price = "od 250 Kč";
+        if (weight === "heavy") price = "od 500 Kč";
+
+        if (size === "large" && weight === "light") price = "od 500 Kč";
+        if (size === "large" && weight === "heavy") price = "od 500 Kč";
+      }
+
+      calcOutput.textContent = price;
+    }
+  }
 });

@@ -32,7 +32,7 @@ body {
 /* === SIDE MENU === */
 .side-menu {
   position: fixed;
-  top: 35px;
+  top: 49px;
   right: -200px;
   width: 200px;
   height: 100%;
@@ -602,43 +602,62 @@ body {
   position: relative; /* aby se banner "nepropadl" */
 }
 
-/* tečky dole uprostřed */
-.banner-dots {
+/* =========================
+   BANNER DOTS – sjednocení vzhledu (fix „jiný levý dot“)
+   ========================= */
+
+.banner {
+  position: relative; /* aby se dots mohly absolutně kotvit */
+}
+
+.banner-dots{
   position: absolute;
   left: 50%;
-  bottom: 14px;
+  bottom: 12px;
   transform: translateX(-50%);
   display: flex;
-  gap: 10px;
+  gap: 40px;
   z-index: 5;
+  align-items: center;
+  justify-content: center;
 }
 
-.banner-dot {
-  width: 5px;
-  height: 5px;
-  border-radius: 999px;
-  border: none;
+/* Reset + jednotný vzhled všech dotů */
+.banner-dot{
+  appearance: none;
+  -webkit-appearance: none;
+  border: 0;
+  outline: 0;
   padding: 0;
+  margin: 0;
+
+  width: 15px;
+  height: 15px;
+  border-radius: 999px;
+
+  background: rgba(140,140,140,0.45); /* neaktivní šedá */
+  opacity: 0.8;
   cursor: pointer;
 
-  background: rgba(140, 140, 140, 0.45);
-  transform: scale(1.75);
-  transition: transform 200ms ease, background-color 200ms ease, opacity 200ms ease;
+  /* zmenšení neaktivních */
+  transform: scale(0.75);
+
+  /* žádné „tlačítkové“ efekty prohlížeče */
+  box-shadow: none;
 }
 
-/* aktivní tečka */
-.banner-dot.is-active {
+/* Aktivní dot – jediný rozdíl */
+.banner-dot.is-active{
   background: #ffc107;
-  transform: scale(2.35);
   opacity: 1;
+  transform: scale(1);
 }
 
-/* focus pro klávesnici */
-.banner-dot:focus-visible {
-  outline: 2px solid #ffc107;
+/* Fokus (klávesnice) – ať to nevypadá divně a není jen na prvním */
+.banner-dot:focus-visible{
+  outline: 2px solid rgba(255,193,7,0.65);
   outline-offset: 3px;
 }
-
 
 
 /* hover na desktopu */
