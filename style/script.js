@@ -22,52 +22,58 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  /* =========================================================
-     TOP NAV – hide on scroll (jen pod 785 px)
-     ========================================================= */
-  const topNav = document.querySelector(".top-nav");
-  const mobileMQ = window.matchMedia("(max-width: 784px)");
-  let lastScrollY = window.scrollY;
-  let ticking = false;
+ /* =========================================================
+   TOP NAV – hide on scroll (na všech šířkách)
+   ========================================================= */
+const topNav = document.querySelector(".top-nav");
+let lastScrollY = window.scrollY;
+let ticking = false;
 
-  function updateTopNav() {
-    if (!topNav) return;
+function updateTopNav() {
+  if (!topNav) return;
 
-    const currentY = window.scrollY;
-    const diff = currentY - lastScrollY;
+  const currentY = window.scrollY;
+  const diff = currentY - lastScrollY;
 
-    // Když je otevřené side-menu, necháme top-nav viditelné (praktičtější)
-    const sideMenuOpen = sideMenu?.classList.contains("active");
-
-    if (!mobileMQ.matches || sideMenuOpen) {
-      topNav.classList.remove("nav-hidden");
-      lastScrollY = currentY;
-      ticking = false;
-      return;
-    }
-
-    if (currentY <= 10) {
-      topNav.classList.remove("nav-hidden");
-    } else if (Math.abs(diff) > 6) {
-      if (diff > 0) topNav.classList.add("nav-hidden"); // dolů
-      else topNav.classList.remove("nav-hidden");       // nahoru
-    }
-
+  // Když je otevřené side-menu, necháme top-nav viditelné
+  const sideMenuOpen = sideMenu?.classList.contains("active");
+  if (sideMenuOpen) {
+    topNav.classList.remove("nav-hidden");
     lastScrollY = currentY;
     ticking = false;
+    return;
   }
 
-  window.addEventListener(
-    "scroll",
-    () => {
-      if (!ticking) {
-        requestAnimationFrame(updateTopNav);
-        ticking = true;
-      }
-    },
-    { passive: true }
-  );
-  window.addEventListener("resize", updateTopNav);
+  if (currentY <= 10) {
+    topNav.classList.remove("nav-hidden");
+  } else if (Math.abs(diff) > 6) {
+    if (diff > 0) topNav.classList.add("nav-hidden"); // scroll dolů
+    else topNav.classList.remove("nav-hidden");       // scroll nahoru
+  }
+
+  lastScrollY = currentY;
+  ticking = false;
+}
+
+window.addEventListener(
+  "scroll",
+  () => {
+    if (!ticking) {
+      requestAnimationFrame(updateTopNav);
+      ticking = true;
+    }
+  },
+  { passive: true }
+);
+
+window.addEventListener("resize", () => {
+  lastScrollY = window.scrollY;
+  updateTopNav();
+});
+
+// inicializace
+updateTopNav();
+
 
   /* =========================================================
      BANNER SLIDESHOW (3 fotky + doty) – bez úprav HTML
@@ -308,29 +314,79 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   /* =========================================================
-     Swipe (mobile) – galerie + texty
-     ========================================================= */
-  function addSwipe(el, onLeft, onRight) {
-    let startX = 0;
+   Swipe (mobile) – galerie + texty (vylepšené proti scrollu)
+   ========================================================= */
+function addSwipe(el, onLeft, onRight) {
+  let startX = 0;
+  let startY = 0;
+  let lastX = 0;
+  let lastY = 0;
+  let isTracking = false;
 
-    el.addEventListener(
-      "touchstart",
-      (e) => (startX = e.touches[0].clientX),
-      { passive: true }
-    );
+  // citlivost
+  const MIN_X = 70;        // minimální horizontální posun v px
+  const RATIO = 1.8;       // X musí být aspoň 1.8× větší než Y
 
-    el.addEventListener(
-      "touchend",
-      (e) => {
-        const diff = e.changedTouches[0].clientX - startX;
-        if (Math.abs(diff) > 15) diff > 0 ? onRight() : onLeft();
-      },
-      { passive: true }
-    );
-  }
+  el.addEventListener(
+    "touchstart",
+    (e) => {
+      if (e.touches.length !== 1) return; // jen 1 prst
+      isTracking = true;
+      startX = lastX = e.touches[0].clientX;
+      startY = lastY = e.touches[0].clientY;
+    },
+    { passive: true }
+  );
 
-  if (lbGallery) addSwipe(lbGallery, () => lbGallery.querySelector(".next")?.click(), () => lbGallery.querySelector(".prev")?.click());
-  if (lbText) addSwipe(lbText, () => lbTextNext?.click(), () => lbTextPrev?.click());
+  el.addEventListener(
+    "touchmove",
+    (e) => {
+      if (!isTracking || e.touches.length !== 1) return;
+      lastX = e.touches[0].clientX;
+      lastY = e.touches[0].clientY;
+    },
+    { passive: true }
+  );
+
+  el.addEventListener(
+    "touchend",
+    () => {
+      if (!isTracking) return;
+      isTracking = false;
+
+      const dx = lastX - startX;
+      const dy = lastY - startY;
+
+      const absX = Math.abs(dx);
+      const absY = Math.abs(dy);
+
+      // pokud je to spíš scroll (vertikální), nic nedělej
+      if (absX < MIN_X) return;
+      if (absX < absY * RATIO) return;
+
+      // swipe doprava = předchozí, doleva = další
+      if (dx > 0) onRight();
+      else onLeft();
+    },
+    { passive: true }
+  );
+}
+
+if (lbGallery) {
+  addSwipe(
+    lbGallery,
+    () => lbGallery.querySelector(".next")?.click(),
+    () => lbGallery.querySelector(".prev")?.click()
+  );
+}
+
+if (lbText) {
+  addSwipe(
+    lbText,
+    () => lbTextNext?.click(),
+    () => lbTextPrev?.click()
+  );
+}
 
   /* =========================================================
      Kalkulačka v ceníku (calc-btn + #calc-output)
