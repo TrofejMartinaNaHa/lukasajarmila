@@ -4,7 +4,7 @@ body {
   overflow-x: hidden;
   padding-top: 15px;
   font-family: "DM Sans", sans-serif;
-  background-image: linear-gradient(to right, white 0%, white 50%, #fcf9fc 61%, #fcfafc 100%);
+  /*background-image: linear-gradient(to right, white 0%, white 50%, #fcf9fc 61%, #fcfafc 100%);*/
 }
 
 /* === HORIZONTÁLNÍ MENU === */
@@ -577,6 +577,28 @@ body {
 }
 
 /* === BANNER SLIDESHOW === */
+
+/* === BANNER: maska ve tvaru "oka" (oblý top/bottom, rovné boky) === */
+.banner{
+  position: relative;
+  overflow: hidden;
+
+  /* WebKit (Safari iOS) */
+  -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 60" preserveAspectRatio="none"><path fill="white" d="M0 20 Q50 0 100 20 L100 40 Q50 60 0 40 Z"/></svg>');
+  -webkit-mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+
+  /* Standard */
+  mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="15 1 70 50" preserveAspectRatio="none"><path fill="white" d="M-5 20 Q40 -10 100 15 L100 40 Q50 62 0 40 Z"/></svg>');
+  mask-size: 100% 100%;
+  mask-repeat: no-repeat;
+  mask-position: center;
+}
+
+/* doty nad maskou */
+.banner-dots{ z-index: 10; }
+
 #banner-slider {
   position: relative;
 }
