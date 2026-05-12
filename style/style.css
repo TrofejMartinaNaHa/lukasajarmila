@@ -4,7 +4,13 @@ body {
   overflow-x: hidden;
   padding-top: 15px;
   font-family: "DM Sans", sans-serif;
-  /*background-image: linear-gradient(to right, white 0%, white 50%, #fcf9fc 61%, #fcfafc 100%);*/
+  /*background-image: inear-gradient(to right, white 0%, white 50%, #fcf9fc 61%, #fcfafc 100%);*/
+  background: url(bg_kapky_mene.png);
+        background-position: top;
+        background-repeat: repeat-y;
+        background-size: contain;
+
+
 }
 
 /* === HORIZONTÁLNÍ MENU === */
