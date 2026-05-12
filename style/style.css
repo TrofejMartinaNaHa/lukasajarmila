@@ -4,13 +4,42 @@ body {
   overflow-x: hidden;
   padding-top: 15px;
   font-family: "DM Sans", sans-serif;
-  /*background-image: inear-gradient(to right, white 0%, white 50%, #fcf9fc 61%, #fcfafc 100%);*/
-  background: url(bg_kapky_mene.png);
+  font-family: var(--font-body);
+  color: var(--text-color);
+  /*background-image: linear-gradient(to right, white 0%, white 50%, #fcf9fc 61%, #fcfafc 100%);*/
+  background: url(bg_elipsy_tri_mobil.png);
         background-position: top;
         background-repeat: repeat-y;
         background-size: contain;
+}
 
+:root {
+  --font-body: Arial, Helvetica, sans-serif;
+  --font-heading: "Silkscreen", monospace;
+  --text-color: #111;
+}
 
+.heading-pixel,
+.text-section h1,
+.text-section h2,
+.text-section h3 {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: 0;
+  margin: 0 0 18px 0;
+}
+
+.text-section h2 {
+  font-size: clamp(1.05rem, 2vw, 1.65rem);
+}
+
+.text-copy,
+.text-section p,
+.text-section li {
+  font-family: "DM Sans", sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
 }
 
 /* === HORIZONTÁLNÍ MENU === */
@@ -35,7 +64,7 @@ body {
 }
 .top-nav .left { justify-content: flex-start; padding-left: 10px; }
 .top-nav .right { justify-content: flex-end; padding-right: 10px; }
-.menu-icon { cursor: pointer; font-size: 20px; color: #ffc107; margin-right: 15px;}
+.menu-icon { cursor: pointer; font-size: 20px; color: #bafbe1; margin-right: 15px;}
 
 /* === SIDE MENU === */
 .side-menu {
@@ -104,7 +133,7 @@ body {
     margin: 0;
     font-size: 1.8rem;
     font-weight: bold;
-    border-bottom: 3px solid #ffc107;
+    border-bottom: 3px solid #bafbe1;
     color: #212529;
 }
 
@@ -141,11 +170,12 @@ body {
 }
 .text-section h2 {
   margin: 0 0 1rem;
-  padding-top: 5px;
-  font-weight: bold;
+  padding: 10px;
+  
   font-size: calc(1.25rem + .9vw);
-  color: #212529;
-  border-bottom: 1px solid #ffc107;
+  color: #111; 
+  border: 1px dashed #ffc107;
+  border-radius: 7px;
 }
 .text-section p { font-weight: normal; }
 
@@ -231,6 +261,27 @@ body {
   display: block;
 }
 
+
+.pixel-list {
+  list-style: none;
+  padding: 0;
+  margin: 14px 0 0 0;
+}
+
+.pixel-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.pixel-bullet {
+  width: 18px;
+  height: auto;
+  flex: 0 0 auto;
+  margin-top: 4px;
+  color: #111;
+}
 
 /* === FORMULÁŘ === */
 .order-form { width: 100%; }
@@ -487,6 +538,8 @@ body {
 
 /* === GRID OD 785 PX === */
 @media (min-width: 785px) {
+
+  body { background: url(bg_elipsy_tri_pc.png); }
   .col-custom-6 { flex: 0 0 50%; max-width: 50%; }
   .section-row { flex-direction: row; }
 

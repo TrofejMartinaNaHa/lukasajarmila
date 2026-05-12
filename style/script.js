@@ -85,8 +85,8 @@ updateTopNav();
     // zdroje banneru (1. je ten aktuální z HTML)
     const slides = [
       bannerImg.getAttribute("src"),
-      "style/gallery1.jpg",
-      "style/gallery5.jpg",
+      "style/banner_NS_dvere_okno.jpg",
+      "style/banner_dvere.jpg",
     ].filter(Boolean);
 
     let current = 0;
