@@ -15,7 +15,7 @@ body {
 
 :root {
   --font-body: Arial, Helvetica, sans-serif;
-  --font-heading: "Silkscreen", monospace;
+  --font-heading: 'Pixelify Sans', sans-serif;
   --text-color: #111;
 }
 
@@ -154,6 +154,7 @@ body {
 .section-row > div {
   border-radius: 10%;
   overflow: hidden;
+  border: 1px dashed #1118275e;
 }
 
 /* === TEXTOVÉ SEKCE === */
@@ -171,16 +172,21 @@ body {
 .text-section h2 {
   margin: 0 0 1rem;
   padding: 10px;
+  font-size: calc(1.5rem + .9vw);
+  border-radius: 7%;
+  background-color: #36b5ff;
+  color: #ffc107; 
+  text-shadow: 2px 2px #ff0000;
   
-  font-size: calc(1.25rem + .9vw);
-  color: #111; 
-  border: 1px dashed #ffc107;
-  border-radius: 7px;
 }
-.text-section p { font-weight: normal; }
+.text-section p { 
+  font-weight: normal;
+  font-size: 1.05rem;
+  padding-left: 9px;
+}
 
 .emotikon_uprostred_p {
-    font-size: 1rem;
+    font-size: 1.05rem;
     text-align: center;
     margin: 0;
 }
@@ -272,14 +278,27 @@ body {
   display: flex;
   align-items: flex-start;
   gap: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 3px;
+  padding: 7px;
+  border-radius: 10%;
+  border: 1px dashed #f5f5f5;
+  background-color: #ffc1074a;
+}
+
+.pixel-list a {
+   text-decoration: none;
+}
+
+.pixel-list li:hover {
+    background-color: #36b5ff;
+    color: white;
 }
 
 .pixel-bullet {
   width: 18px;
   height: auto;
   flex: 0 0 auto;
-  margin-top: 4px;
+  margin-top: 9px;
   color: #111;
 }
 
@@ -539,7 +558,7 @@ body {
 /* === GRID OD 785 PX === */
 @media (min-width: 785px) {
 
-  body { background: url(bg_elipsy_tri_pc.png); }
+ /*  body { background: url(bg_elipsy_tri_pc.png); } */
   .col-custom-6 { flex: 0 0 50%; max-width: 50%; }
   .section-row { flex-direction: row; }
 
