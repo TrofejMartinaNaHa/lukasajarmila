@@ -427,3 +427,24 @@ if (lbText) {
     }
   }
 });
+
+
+// =========================
+// SCROLL NA H2 PO KLIKNUTÍ
+// =========================
+
+document.querySelectorAll('.scroll-heading').forEach(heading => {
+
+  heading.style.cursor = 'pointer';
+
+  heading.addEventListener('click', () => {
+
+    heading.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    });
+
+    history.replaceState(null, null, '#' + heading.id);
+  });
+
+});
