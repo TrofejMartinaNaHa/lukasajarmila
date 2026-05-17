@@ -20,9 +20,9 @@ body::before {
   position: fixed;
   inset: 0;
 
-  background: url(bg_struktura_dvere.PNG) center center / cover no-repeat;
+  background: url(bg_ctverce.PNG) center center / cover no-repeat;
 
-  opacity: 0.08;
+  opacity: 0.2;
   filter: saturate(0.3);
 
   z-index: -1;
@@ -63,14 +63,14 @@ body::before {
   top: 0;
   left: 0;
   width: 100%;
-  height: 63px;
+  height: 85px;
   position:fixed;
   display: flex;
   background: transparent;
   color: #fff;
   font-size: 14px;
   z-index: 10000;
-  background-color: white;
+  border-bottom: 5px dashed white;
 }
 .top-nav .nav-col {
   flex: 1;
@@ -80,7 +80,7 @@ body::before {
 }
 .top-nav .left { justify-content: flex-start; padding-left: 10px; }
 .top-nav .right { justify-content: flex-end; padding-right: 10px; }
-.menu-icon { cursor: pointer; font-size: 20px; color: #1b1b1b; margin-right: 15px; background-color: white;
+.menu-icon { cursor: pointer; font-size: 20px; color: #1b1b1b; margin-right: 15px;
     padding: 5px;
     border-radius: 50%; height: 50px; width: 50px;
     font-weight: bold; text-align:center;
@@ -89,11 +89,11 @@ body::before {
 /* === SIDE MENU === */
 .side-menu {
   position: fixed;
-  top: 49px;
+  top: 97px;
   right: -200px;
   width: 200px;
   height: 100%;
-  background: #ffc107;
+  
   display: flex;
   flex-direction: column;
   padding-top: 20px;
@@ -102,10 +102,16 @@ body::before {
 }
 .side-menu a {
   
-  padding: 12px 20px;
+  padding: 12px 40px;
   text-decoration: none;
   letter-spacing: 0.7px; 
   border-radius: 10%;
+}
+.side-menu a span {
+    background-color: #0a58ca;
+    color: white;
+    padding: 2px;
+    font-weight: 500;
 }
 .side-menu a:hover { background: #61bdff; color: white; }
 .side-menu.active { right: 0; }
@@ -116,8 +122,9 @@ body::before {
   overflow: hidden;
   max-width: 910px;
   margin: 40px auto 20px auto;
-  border-radius: 0%;
+  border-radius: 100%;
   aspect-ratio: 16 / 9;
+  padding: 31px;
 }
 
 /* video jako pozadí */
@@ -155,7 +162,7 @@ body::before {
     margin: 0;
     font-size: 1.8rem;
     font-weight: bold;
-    border-bottom: 19px solid #61bdff;
+    border-bottom: 19px solid #ffc107;
     color: #252525;
     padding-bottom: 5px;  
     border-radius: 30%;
@@ -174,6 +181,8 @@ body::before {
   display: flex;
   flex-wrap: wrap;
   align-items: stretch;
+  background-color: #dee2e63d;
+  border-top: 5px dashed white; 
 }
 .section-row > div {
   
@@ -188,13 +197,26 @@ body::before {
   flex-direction: column;
   justify-content: center;
   padding: 2rem;
-  background-color: #f1f1f147;
+  
   box-sizing: border-box;
   aspect-ratio: 1 / 1; /* nad breakpointem chceme čtverec */
   height: auto;
-  
 
+  }
+  
+.text-section a span
+    {
+    background-color: #0a58ca;
+    color: white;
+    padding: 2px;
+    
 }
+
+.text-section a 
+    {
+    text-decoration: none;
+}
+
 .text-section h2 {
   margin: 10px 0 10px 0;
   padding: 10px;
@@ -263,7 +285,7 @@ body::before {
 /* === DEKORACE (ponechány jen spodní) === */
 .icon-deco {
   
-  height: 120px;
+  height: 140px;
   width: auto;
   z-index: 3;
   opacity: 1;
@@ -271,7 +293,7 @@ body::before {
   border-radius: 50%;
 }
 .icon-bottom-right {
-  margin: 0px auto;
+  margin: 10px auto;
   
 }
 
@@ -317,17 +339,25 @@ body::before {
   gap: 10px;
   margin-bottom: 3px;
   padding: 7px;
-  border-radius: 10%;
+  
   color: #252525;
+  border-bottom: 5px dashed transparent; /* pro hladký hover efekt */
 }
 
 .pixel-list a {
    text-decoration: none;
 }
 
-.pixel-list li:hover {
-    background-color: #36b5ff;
+.pixel-list li span {
+    background-color: #0a58ca;
+    padding: 0px 2px;
     color: white;
+    font-size: 1.05rem;
+}
+
+.pixel-list li:hover {
+    
+    border-bottom: 5px dashed white;
 }
 
 .pixel-bullet {
@@ -373,8 +403,24 @@ body::before {
   height: auto;
  
   border-radius: 0%;
+  
 }
-.layer { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+.second-row .kukatko-section {
+    border-right: 5px dashed white;
+}
+
+.third-row .kukatko-section {
+    border-left: 5px dashed white;
+}
+
+.first-row .foto-ukazka-vlozene {
+     border-right: 5px dashed white;
+    
+}
+
+
+.layer { position: absolute; top: 0; left: 0; width: 100%; height: 100%; padding: 12px;}
 .layer img { width: 100%; height: 100%; object-fit: cover; padding: 10px; border-radius: 50% ; }
 .layer-top { z-index: 1; }
 .layer-bottom {
@@ -657,6 +703,33 @@ body::before {
     height: auto;
   }
 
+  .second-row .kukatko-section {
+    border-top: 5px dashed white;
+    border-right: none;
+}
+
+.third-row .kukatko-section {
+    border-top: 5px dashed white;
+    border-left: none;
+}
+
+    .first-row .foto-ukazka-vlozene {
+      border-top: 5px dashed white;
+      border-right: none;
+    }
+
+    .section-row > div {
+      margin-top: 0;
+    }
+
+    .section-row {
+    border-top: none;
+    border-left: 5px dashed white; 
+}
+
+    
+
+
   /* TEXT/FORM: zrušíme čtvercové fixování */
   .text-section {
     aspect-ratio: auto;
@@ -742,6 +815,8 @@ body::before {
 
   opacity: 0;
   transition: opacity 600ms ease;
+  border-right: 5px dashed white;
+  border-left: 5px dashed white;
 }
 
 /* aktivní slide */
