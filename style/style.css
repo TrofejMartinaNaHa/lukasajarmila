@@ -6,7 +6,9 @@ body {
   font-family: "DM Sans", sans-serif;
   font-family: var(--font-body);
   color: var(--text-color);
-  /*background-image: linear-gradient(to right, white 0%, white 50%, #fcf9fc 61%, #fcfafc 100%);
+  background-image: linear-gradient(to right, white 0%, white 50%, #fcf9fc 61%, #fcfafc 100%);
+ /* background-image: linear-gradient(to bottom, #5fcaffa8 0%, #ff930770 50%, #00c6ffc2 100%);
+  background-image: linear-gradient(to right, white 0%, white 50%, #fcf9fc 61%, #fcfafc 100%);
   background: url(bg_struktura_dvere.PNG);
         background-position: top;
         background-repeat: repeat-y;
@@ -154,8 +156,8 @@ body::before {
     font-size: 1.8rem;
     font-weight: bold;
     border-bottom: 19px solid #61bdff;
-    color: #ffc107;
-    padding-bottom: 5px;
+    color: #252525;
+    padding-bottom: 5px;  
     border-radius: 30%;
 }
 
@@ -186,11 +188,11 @@ body::before {
   flex-direction: column;
   justify-content: center;
   padding: 2rem;
-  background-color: #f1f1f1c7;
+  background-color: #f1f1f147;
   box-sizing: border-box;
   aspect-ratio: 1 / 1; /* nad breakpointem chceme čtverec */
   height: auto;
-  border-radius: 10%;
+  
 
 }
 .text-section h2 {
@@ -204,6 +206,13 @@ body::before {
   letter-spacing: 0.5px;
   
 }
+
+.text-section h2 span {
+    background-color: #0a58ca;
+    color: white;
+    text-shadow: 2px 2px black;
+}
+
 .text-section p { 
   font-weight: normal;
   font-size: 1.05rem;
@@ -309,8 +318,6 @@ body::before {
   margin-bottom: 3px;
   padding: 7px;
   border-radius: 10%;
-  border: 2px dashed white;
-  background-color: white;
   color: #252525;
 }
 
@@ -324,11 +331,11 @@ body::before {
 }
 
 .pixel-bullet {
-  width: 18px;
+  width: 40px;
   height: auto;
   flex: 0 0 auto;
-  margin-top: 9px;
   color: #111;
+  padding:5px;
 }
 
 .sipka-sekce {
@@ -364,12 +371,12 @@ body::before {
   overflow: hidden;
   aspect-ratio: 1/1; /* vždy čtverec */
   height: auto;
-  border: 21px dashed #61bdff;
+ 
   border-radius: 0%;
 }
 .layer { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
-.layer img { width: 100%; height: 100%; object-fit: cover; padding: 26px; border-radius: 12% ; }
-.layer-top { z-index: 1; background-color: white; }
+.layer img { width: 100%; height: 100%; object-fit: cover; padding: 10px; border-radius: 50% ; }
+.layer-top { z-index: 1; }
 .layer-bottom {
   z-index: 2;
   transition: clip-path 0.3s ease-out;
@@ -383,7 +390,7 @@ body::before {
   aspect-ratio: 1/1; /* vždy čtverec */
   height: auto;
   padding: 0 !important;
-  border-radius: 10%;
+  
 }
 .galerie-grid {
   display: grid;
@@ -573,7 +580,7 @@ body::before {
     padding: 20px 0;
     font-size: 14px;
     margin-top: 20px;
-    background-color: white;
+    background-color: #ffffff78;
 }
 .footer p { margin: 0; line-height: 1.6; color: #212529;}
 .footer a { color: #212529;
